@@ -12,6 +12,17 @@ dotnet new sln -o .
 
 #dotnet nuget update source github --username suzu-devworks --password "{parsonal access token}" --store-password-in-clear-text
 
+
+## Examples.Features.CS${CSVER}.Tests
+CSVER=11
+dotnet new xunit -o src/Examples.Features.CS${CSVER}.Tests
+dotnet sln add src/Examples.Features.CS${CSVER}.Tests
+cd src/Examples.Features.CS${CSVER}.Tests
+dotnet add package Moq
+dotnet add package ChainingAssertion.Core.Xunit
+cd ../../
+
+
 dotnet build
 
 # Update outdated package
