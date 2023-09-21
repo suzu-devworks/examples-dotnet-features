@@ -5,7 +5,7 @@ services:
       context: ./
       target: "develop-stage"
       args:
-        "VARIANT": "8.0-preview"
+        "VARIANT": "8.0"
     tty: true
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

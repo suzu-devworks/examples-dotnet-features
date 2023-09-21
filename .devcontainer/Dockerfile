@@ -1,4 +1,4 @@
-ARG VARIANT="latest"
+ARG VARIANT="6.0"
 
 FROM mcr.microsoft.com/dotnet/sdk:${VARIANT} as develop-stage
 WORKDIR /workspace
