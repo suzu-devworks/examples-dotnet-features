@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>$(MyTestingFrameworks)</TargetFrameworks>
     <LangVersion>7.3</LangVersion>
     <RootNamespace>Examples</RootNamespace>
 
