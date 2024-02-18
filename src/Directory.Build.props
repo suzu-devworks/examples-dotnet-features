@@ -3,5 +3,7 @@
     <MyTargetFramework>net9.0</MyTargetFramework>
     <MyTargetFrameworks>net9.0;net8.0</MyTargetFrameworks>
     <MyTestingFrameworks>net9.0</MyTestingFrameworks>
+
+    <LatestFramework>net9.0</LatestFramework>
   </PropertyGroup>
 </Project>
