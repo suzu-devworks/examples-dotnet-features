@@ -1,7 +1,5 @@
-ARG VARIANT="6.0"
-
+ARG VARIANT=9.0-preview-bookworm-slim
 FROM mcr.microsoft.com/dotnet/sdk:${VARIANT} as develop-stage
-WORKDIR /workspace
 
 # Configure apt and install packages
 RUN set -x \
