@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
-    <MyTargetFramework>net8.0</MyTargetFramework>
-    <MyTargetFrameworks>net8.0;net6.0</MyTargetFrameworks>
-    <MyTestingFrameworks>net8.0</MyTestingFrameworks>
+    <MyTargetFramework>net9.0</MyTargetFramework>
+    <MyTargetFrameworks>net9.0;net8.0</MyTargetFrameworks>
+    <MyTestingFrameworks>net9.0</MyTestingFrameworks>
   </PropertyGroup>
 </Project>
