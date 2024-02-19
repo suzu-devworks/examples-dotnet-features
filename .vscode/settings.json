@@ -33,6 +33,10 @@
     ".devcontainer/devcontainer.json"
   ],
   "cSpell.words": [
+    "Contravariance",
+    "Contravariances",
+    "contravariantly",
+    "covariantly",
     "Stackalloc",
     "structs",
     "Unmanaged"
