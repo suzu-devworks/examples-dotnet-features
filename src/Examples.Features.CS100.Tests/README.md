@@ -58,8 +58,17 @@
 
 > グローバルな using ディレクティブ
 
-* [Implicit Using Statements](https://dotnetcoretutorials.com/2021/08/31/implicit-using-statements-in-net-6/)
+* [Implicit Using directives](https://learn.microsoft.com/ja-jp/dotnet/core/tutorials/top-level-templates#implicit-using-directives)
 
+```cs
+global using System;
+global using System.IO;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Net.Http;
+global using System.Threading;
+global using System.Threading.Tasks;
+```
 
 ### File-scoped namespace declaration
 
@@ -69,6 +78,7 @@
 
 ```cs
 namespace MyNamespace;
+
 ```
 
 
@@ -76,12 +86,10 @@ namespace MyNamespace;
 
 > 拡張プロパティのパターン
 
-次ができるようになりました。
-* 入れ子になったプロパティ
-* プロパティのフォールド参照
+入れ子になったプロパティまたはプロパティ パターン内のフィールドを参照できます。
 
 ```cs
-// C# 9.0 or later
+// C# 8.0 or later
 data is { Prop1: { Prop2: pattern } }
 
 // C# 10.0 or later
