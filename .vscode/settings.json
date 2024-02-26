@@ -38,6 +38,7 @@
     "contravariantly",
     "covariantly",
     "Stackalloc",
+    "struct",
     "structs",
     "Unmanaged"
   ]

@@ -5,39 +5,39 @@ using System.Text;
 using ChainingAssertion;
 using Xunit;
 
-// for C# 7.2
-
-namespace Examples.Features.CS7minor2.StackallocArrays
+namespace Examples.Features.CS72.InitializersOnStackallocArrays
 {
     /// <summary>
-    /// Tests for C# 7.2, Initializers on stackalloc arrays.
+    /// Tests for Initializers on stackalloc arrays in C# 7.2.
     /// </summary>
     /// <seealso href="https://learn.microsoft.com/ja-jp/dotnet/csharp/language-reference/operators/stackalloc" />
-    public class UnitTests
+    public class InitializersOnStackallocArraysTests
     {
-
         [Fact]
-        public void WhenCreatingReadBuffer_WithSpan()
+        public void WhenCreatingAReadBuffer_UsingSpan()
         {
             var encoding = Encoding.UTF8;
             var bufferSize = 32;
 
             // No need to use `unsafe` context.
             // Don't need to pin it using the `fixed` statement.
+
+            // C# 7.1 : error CS8302: Feature 'ref structs' is not available in C# 7.1. Please use language version 7.2 or greater.
             Span<byte> buffer = bufferSize <= 128 ? stackalloc byte[bufferSize] : new byte[bufferSize];
 
-            var outlist = new List<byte>();
+            var list = new List<byte>();
 
             using (var reader = new MemoryStream(encoding.GetBytes(Text)))
             {
                 int count;
                 while ((count = reader.Read(buffer)) > 0)
                 {
-                    outlist.AddRange(buffer.Slice(0, count).ToArray());
+                    list.AddRange(buffer.Slice(0, count).ToArray());
                 }
             }
 
-            encoding.GetString(outlist.ToArray()).Is(Text);
+            var actual = encoding.GetString(list.ToArray());
+            actual.Is(Text);
 
             return;
         }
@@ -53,12 +53,17 @@ namespace Examples.Features.CS7minor2.StackallocArrays
             You can learn more about the relationships between language and library for background on this dependency.";
 
         [Fact]
-        public void WhenCreatingReadBuffer_WithFactory()
+        public void WhenCreatingReadBuffer_UsingFactory()
         {
+            Span<byte> buffer = CreateBuffer(32);
+
+            buffer.Length.Is(32);
+
             Span<byte> CreateBuffer(int size)
             {
                 if (size > 1000) { throw new ArgumentOutOfRangeException(); }
 
+                // C# 7.1 : error CS8302: Feature 'ref structs' is not available in C# 7.1. Please use language version 7.2 or greater.
                 Span<byte> stack = stackalloc byte[size];
                 // error CS8352 Cannot use variable 'stack' in this context
                 //      because it may expose referenced variables outside of their declaration scope.
@@ -66,14 +71,8 @@ namespace Examples.Features.CS7minor2.StackallocArrays
 
                 return new byte[size];
             };
-
-            Span<byte> buffer = CreateBuffer(32);
-            buffer.Length.Is(32);
-
             return;
         }
 
     }
-
 }
-
