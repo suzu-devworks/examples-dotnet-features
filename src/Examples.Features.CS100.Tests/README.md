@@ -125,14 +125,12 @@ const string FullProductName = $"{Platform} - Language: {Language} Version: {Ver
 
 ### Assignment and declaration in same deconstruction
 
-> 同じ Deconstractor 内で宣言と代入を同時に実行できる。
+> 同じ Deconstructor 内で宣言と代入を同時に実行できる。
 
 ```cs
 // C# 9.0 or later
-// Initialization:
 (int x, int y) = point;
 
-// assignment:
 int x1 = 0;
 int y1 = 0;
 (x1, y1) = point;
