@@ -1,4 +1,4 @@
-namespace Examples.Features.CS10.Tests;
+namespace Examples.Features.CS100.Tests;
 
 public class UnitTest1
 {
