@@ -23,7 +23,7 @@ namespace Examples.Features.CS73.OverloadResolutions
             var actual2 = new[] { 1, 2, 3 }.FirstOrNull();
             actual2.IsInstanceOf<int?>();
 
-            // c# 7.2 : OK
+            // C# 7.2 : OK
             // call OverloadResolutionExtensions with the int as a strict.
             var actual3 = new[] { 1, 2, 3 }.FirstOrNull(default);
             actual3.IsInstanceOf<int?>();

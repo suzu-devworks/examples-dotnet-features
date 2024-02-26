@@ -11,7 +11,7 @@ namespace Examples.Features.CS70.BinaryLiteralsAndDigitSeparators
         [Fact]
         public void BasicUsage()
         {
-            // c# 6.0 (0x)
+            // C# 6.0 (0x)
             int actual61 = 0xFF21;
             actual61.Is(65313);
 

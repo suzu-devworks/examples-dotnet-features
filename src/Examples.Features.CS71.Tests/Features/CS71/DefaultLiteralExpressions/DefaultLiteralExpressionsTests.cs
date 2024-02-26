@@ -7,7 +7,7 @@ using Xunit;
 namespace Examples.Features.CS71.DefaultLiteralExpressions
 {
     /// <summary>
-    /// Tests default literal expressions in c# 7.1.
+    /// Tests default literal expressions in C# 7.1.
     /// </summary>
     public class DefaultLiteralExpressionsTests
     {

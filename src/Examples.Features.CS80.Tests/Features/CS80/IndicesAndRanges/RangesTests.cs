@@ -5,7 +5,7 @@ using Xunit;
 namespace Examples.Features.CS80.IndicesAndRanges
 {
     /// <summary>
-    /// Tests for Indices and ranges in c# 8.0.
+    /// Tests for Indices and ranges in C# 8.0.
     /// </summary>
     public class RangesTests
     {

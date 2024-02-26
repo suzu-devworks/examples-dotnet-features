@@ -15,7 +15,7 @@
 
 ## Table of contents. <!-- omit in toc -->
 
-- [Examples.Features.CS90.Tests](#examplesfeaturescsharp90tests)
+- [Examples.Features.CS90.Tests](#examplesfeaturescs90tests)
   - [C# version 9.0](#c-version-90)
     - [See also](#see-also)
     - [Since](#since)
@@ -69,7 +69,7 @@ init のみのセッターでは、オブジェクトの構築時のみ、プロ
 小規模なコンソール プログラムとユーティリティの Main() として使用できるようです。
 
 ```cs
-// c# 9.0 or later
+// C# 9.0 or later
 using System;
 
 Console.WriteLine("Hello World!");

@@ -51,7 +51,7 @@ stack size は 4MB(64-bit) または 1MB(32-bit) しかないのでサイズに�
 
 > パターンをサポートする任意のタイプで `fixed` を使用できます。
 
-※ c# 7.3 ?
+※ C# 7.3 ?
 
 
 ### Access fixed fields without pinning.

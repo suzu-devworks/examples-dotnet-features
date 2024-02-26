@@ -14,14 +14,14 @@ namespace Examples.Features.CS90.InitOnlySetters
         public void BasicUsage()
         {
             var person1 = new PersonOfPrivateSetter();
-            // CS0272 The property or indexer '...Id' cannot be used in this context because the set accessor is inaccessible.
+            // error CS0272: The property or indexer '...Id' cannot be used in this context because the set accessor is inaccessible.
             //person1.Id = "123";
             //person1.Name = "HOGE";
 
             person1.Id.IsNull();
             person1.Name.IsNull();
 
-            // CS0272 The property or indexer '...Id' cannot be used in this context because the set accessor is inaccessible.
+            // error CS0272: The property or indexer '...Id' cannot be used in this context because the set accessor is inaccessible.
             //person1 = new PrivateSetterPerson() { Id = "123", Name = "HOGE" };
 
 #pragma warning disable IDE0017 // Object initialization can be simplified
@@ -47,7 +47,7 @@ namespace Examples.Features.CS90.InitOnlySetters
 
 
             var person3 = new PersonOfInitSetter();
-            // CS8852 Init-only property or indexer '...Id' can only be assigned in an object initializer, or on 'this' or 'base' in an instance constructor or an 'init' accessor.
+            // error CS8852: Init-only property or indexer '...Id' can only be assigned in an object initializer, or on 'this' or 'base' in an instance constructor or an 'init' accessor.
             //person3.Id = "123";
             //person3.Name = "HOGE";
 
@@ -59,7 +59,7 @@ namespace Examples.Features.CS90.InitOnlySetters
             person3.Id.Is("456");
             person3.Name.Is("Foo");
 
-            // CS8852 Init-only property or indexer '...Id' can only be assigned in an object initializer, or on 'this' or 'base' in an instance constructor or an 'init' accessor.
+            // error CS8852: Init-only property or indexer '...Id' can only be assigned in an object initializer, or on 'this' or 'base' in an instance constructor or an 'init' accessor.
             //person3.Id = "789";
             //person3.Name = "Bar";
 

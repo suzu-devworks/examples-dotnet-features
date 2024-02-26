@@ -19,7 +19,7 @@ namespace Examples.Features.CS72.LeadingUnderscoresInNumericLiterals
             actual_70_2_.Is(123456789.987654);
 
             // C# 7.2 or later
-            // c# 7.1 : error CS8302: Feature 'leading digit separator' is not available in C# 7.1. Please use language version 7.2 or greater.
+            // C# 7.1 : error CS8302: Feature 'leading digit separator' is not available in C# 7.1. Please use language version 7.2 or greater.
             long actual_72_1 = 0x_dead_beaf;
             actual_72_1.Is(3735928495L);
 
