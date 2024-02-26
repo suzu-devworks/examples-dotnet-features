@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-namespace Examples.Features.CS6.CollectionInitializers
+namespace Examples.Features.CS60.CollectionInitializers
 {
 
-    public static class Extensions
+    public static class StudentNameExtensions
     {
         public static void Add(this IList<StudentName> list, int id, string firstName, string lastName)
         {
