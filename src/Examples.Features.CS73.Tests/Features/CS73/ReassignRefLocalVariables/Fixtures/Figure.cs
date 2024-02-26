@@ -1,4 +1,4 @@
-namespace Examples.Features.CS7minor3.RefLocalVariables
+namespace Examples.Features.CS73.ReassignRefLocalVariables.Fixtures
 {
     public struct Figure
     {
