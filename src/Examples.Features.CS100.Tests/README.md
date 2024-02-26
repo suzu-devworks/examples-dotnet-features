@@ -81,10 +81,10 @@ namespace MyNamespace;
 * プロパティのフォールド参照
 
 ```cs
-// CS9.0～
+// C# 9.0 or later
 data is { Prop1: { Prop2: pattern } }
 
-// CS10.0～
+// C# 10.0 or later
 data is { Prop1.Prop2: pattern }
 
 ```
@@ -102,7 +102,7 @@ data is { Prop1.Prop2: pattern }
 使用するのが const ならば文字列補完がつかえるようになりました。
 
 ```cs
-// CS10.0～
+// C# 10.0 or later
 const string Language = "C#";
 const string Platform = ".NET";
 const string Version = "10.0";
@@ -120,7 +120,7 @@ const string FullProductName = $"{Platform} - Language: {Language} Version: {Ver
 > 同じ Deconstractor 内で宣言と代入を同時に実行できる。
 
 ```cs
-// CS9.0～
+// C# 9.0 or later
 // Initialization:
 (int x, int y) = point;
 
@@ -129,7 +129,7 @@ int x1 = 0;
 int y1 = 0;
 (x1, y1) = point;
 
-// CS10.0～
+// C# 10.0 or later
 int x = 0;
 (x, int y) = point;
 ```
