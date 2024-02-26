@@ -81,6 +81,29 @@ int[][] twoDFromVariables = [row0, row1, row2];
 
 > `ref readonly` パラメーター
 
+`ref readonly` パラメーターが追加されたことにより、`ref` パラメーターまたは `in` パラメーターを使用する API がより明確になります。
+
+これによりコールサイト ルールは次のようになります:
+
+| Callsite annotation | ref parameter | ref readonly parameter | in parameter | out parameter |
+| ------------------- | ------------- | ---------------------- | ------------ | ------------- |
+| ref                 | Allowed       | Allowed                | Warning      | Error         |
+| in                  | Error         | Allowed                | Allowed      | Error         |
+| out                 | Error         | Error                  | Error        | Allowed       |
+| No annotation       | Error         | Warning                | Allowed      | Error         |
+
+`ref readonly` を指定すると `ref` または `in` が無い場合には警告が表示されます。
+
+右辺値、左辺値のルールは次のとおりです：
+
+| Value kind | ref parameter | ref readonly parameter | in parameter | out parameter |
+| ---------- | ------------- | ---------------------- | ------------ | ------------- |
+| rvalue     | Error         | Warning                | Allowed      | Error         |
+| lvalue     | Allowed       | Allowed                | Allowed      | Allowed       |
+
+`ref readonly` を指定すると 右辺値参照で警告が表示されます。
+
+
 ### Default lambda parameters
 
 > 既定のラムダ パラメーター
