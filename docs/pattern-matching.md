@@ -5,11 +5,11 @@ is 式、switch ステートメント、switch 式を使って、入力式を任
 ## Pattern types <!-- omit in toc -->
 
 - [Declaration and type patterns](#declaration-and-type-patterns)
-- [Constant pattern](#constant-pattern)
-- [var pattern](#var-pattern)
-- [Discard pattern](#discard-pattern)
-- [Positional pattern](#positional-pattern)
-- [Property pattern](#property-pattern)
+- [Constant patterns](#constant-patterns)
+- [var patterns](#var-patterns)
+- [Discard patterns](#discard-patterns)
+- [Positional patterns](#positional-patterns)
+- [Property patterns](#property-patterns)
 - [Logical patterns](#logical-patterns)
 - [Relational patterns](#relational-patterns)
 - [List patterns](#list-patterns)
@@ -45,7 +45,7 @@ is 式、switch ステートメント、switch 式を使って、入力式を任
     }
 ```
 
-### Constant pattern
+### Constant patterns
 
 > 定数パターン
 
@@ -85,7 +85,7 @@ is 式、switch ステートメント、switch 式を使って、入力式を任
     }
 ```
 
-### var pattern
+### var patterns
 
 > var パターン
 
@@ -108,7 +108,7 @@ nullを含む任意の式に一致させ、その結果を宣言された変数�
     }
 ```
 
-### Discard pattern
+### Discard patterns
 
 > 破棄パターン
 
@@ -116,15 +116,16 @@ nullを含む任意の式に一致させ、その結果を宣言された変数�
 
 - C# 8.0 から導入 
 
-### Positional pattern
+### Positional patterns
 
 > 位置指定パターン
 
 式の結果を分解し、結果の値が入れ子になったパターンに一致するかどうかをテストします。
+タプルをつかったパターンもこのパターンです。
 
 - C# 8.0 から導入 
 
-### Property pattern
+### Property patterns
 
 > プロパティ パターン
 
