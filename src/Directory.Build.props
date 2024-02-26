@@ -5,5 +5,6 @@
     <MyTestingFrameworks>net9.0</MyTestingFrameworks>
 
     <LatestFramework>net9.0</LatestFramework>
+    <AvailableLTSFrameworks>net8.0;net6.0;net481</AvailableLTSFrameworks>
   </PropertyGroup>
 </Project>
