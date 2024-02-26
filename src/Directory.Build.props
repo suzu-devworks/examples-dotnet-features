@@ -3,5 +3,8 @@
     <MyTargetFramework>net9.0</MyTargetFramework>
     <MyTargetFrameworks>net9.0;net8.0</MyTargetFrameworks>
     <MyTestingFrameworks>net9.0</MyTestingFrameworks>
+
+    <LatestFramework>net9.0</LatestFramework>
+    <AvailableLTSFrameworks>net8.0;net6.0;net481</AvailableLTSFrameworks>
   </PropertyGroup>
 </Project>
