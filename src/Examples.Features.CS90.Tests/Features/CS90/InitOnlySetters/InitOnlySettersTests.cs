@@ -1,20 +1,19 @@
 using ChainingAssertion;
+using Examples.Features.CS90.InitOnlySetters.Fixtures;
 using Xunit;
 
-#nullable enable
-
-namespace Examples.Features.CS9.InitOnlySetters
+namespace Examples.Features.CS90.InitOnlySetters
 {
     /// <summary>
-    /// Tests for C# 9.0 Init only setters.
+    /// Tests for Init only setters in C# 9.0.
     /// </summary>
-    public class UnitTests
+    public class InitOnlySettersTests
     {
 
         [Fact]
-        public void WhenSomeInitialize()
+        public void BasicUsage()
         {
-            var person1 = new PrivateSetterPerson();
+            var person1 = new PersonOfPrivateSetter();
             // CS0272 The property or indexer '...Id' cannot be used in this context because the set accessor is inaccessible.
             //person1.Id = "123";
             //person1.Name = "HOGE";
@@ -25,10 +24,9 @@ namespace Examples.Features.CS9.InitOnlySetters
             // CS0272 The property or indexer '...Id' cannot be used in this context because the set accessor is inaccessible.
             //person1 = new PrivateSetterPerson() { Id = "123", Name = "HOGE" };
 
-
 #pragma warning disable IDE0017 // Object initialization can be simplified
-            var person2 = new InternalSetterPerson();
-#pragma warning restore IDE0017 // Object initialization can be simplified
+            var person2 = new PersonOfInternalSetter();
+#pragma warning restore IDE0017
 
             person2.Id = "123";
             person2.Name = "HOGE";
@@ -36,19 +34,19 @@ namespace Examples.Features.CS9.InitOnlySetters
             person2.Id.Is("123");
             person2.Name.Is("HOGE");
 
-            person2 = new InternalSetterPerson() { Id = "456", Name = "Foo" };
+            person2 = new PersonOfInternalSetter() { Id = "456", Name = "Foo" };
 
             person2.Id.Is("456");
             person2.Name.Is("Foo");
 
-            // Rewritable with internal scope.
+            // Re-writable with internal scope.
             person2.Id = "789";
             person2.Name = "Bar";
             person2.Id.Is("789");
             person2.Name.Is("Bar");
 
 
-            var person3 = new InitOnlyPerson();
+            var person3 = new PersonOfInitSetter();
             // CS8852 Init-only property or indexer '...Id' can only be assigned in an object initializer, or on 'this' or 'base' in an instance constructor or an 'init' accessor.
             //person3.Id = "123";
             //person3.Name = "HOGE";
@@ -56,7 +54,7 @@ namespace Examples.Features.CS9.InitOnlySetters
             person3.Id.IsNull();
             person3.Name.IsNull();
 
-            person3 = new InitOnlyPerson() { Id = "456", Name = "Foo" };
+            person3 = new PersonOfInitSetter() { Id = "456", Name = "Foo" };
 
             person3.Id.Is("456");
             person3.Name.Is("Foo");

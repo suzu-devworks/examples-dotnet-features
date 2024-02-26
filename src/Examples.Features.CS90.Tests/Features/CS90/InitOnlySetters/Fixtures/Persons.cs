@@ -1,9 +1,9 @@
-namespace Examples.Features.CS9.InitOnlySetters
+namespace Examples.Features.CS90.InitOnlySetters.Fixtures
 {
     /// <summary>
     /// Define standard private-setter property.
     /// </summary>
-    public class PrivateSetterPerson
+    public class PersonOfPrivateSetter
     {
         public string? Id { get; private set; }
         public string? Name { get; private set; }
@@ -12,7 +12,7 @@ namespace Examples.Features.CS9.InitOnlySetters
     /// <summary>
     /// Define Standard internal-setter property.
     /// </summary>
-    public class InternalSetterPerson
+    public class PersonOfInternalSetter
     {
         public string? Id { get; internal set; }
         public string? Name { get; internal set; }
@@ -21,7 +21,7 @@ namespace Examples.Features.CS9.InitOnlySetters
     /// <summary>
     /// Define Standard init-only property.
     /// </summary>
-    public class InitOnlyPerson
+    public class PersonOfInitSetter
     {
         public string? Id { get; init; }
         public string? Name { get; init; }
