@@ -108,17 +108,25 @@ int[][] twoDFromVariables = [row0, row1, row2];
 
 > 既定のラムダ パラメーター
 
+ラムダ式のパラメーターに既定値を定義できるようになりました。
+
 ### Alias any type
 
 > 任意の型の別名設定
+
+using 別名ディレクティブを使うと、名前付き型だけでなく、任意の型に別名を設定できます。
 
 ### Inline arrays
 
 > インライン配列
 
+インライン配列を使用すると、開発者は、struct 型でサイズが固定の配列を作成できます。
+
 ### Experimental attribute
 
 > 試験段階の属性
+
+型、メソッド、またはアセンブリには、試験的機能を示す `System.Diagnostics.CodeAnalysis.ExperimentalAttribute` マークを付けることができます。
 
 ### Interceptors
 
