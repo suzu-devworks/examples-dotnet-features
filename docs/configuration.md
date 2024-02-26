@@ -12,14 +12,17 @@ dotnet new sln -o .
 
 #dotnet nuget update source github --username suzu-devworks --password "{parsonal access token}" --store-password-in-clear-text
 
-
-## Examples.Features.CS${CSVER}.Tests
-CSVER=10
+## Examples.Features.CS{CSVER}.Tests
+CSVER=120
 dotnet new xunit -o src/Examples.Features.CS${CSVER}.Tests
 dotnet sln add src/Examples.Features.CS${CSVER}.Tests
 cd src/Examples.Features.CS${CSVER}.Tests
-dotnet add package Moq
-dotnet add package ChainingAssertion.Core.Xunit
+dotnet add package Microsoft.NET.Test.Sdk
+dotnet add package xunit
+dotnet add package xunit.runner.visualstudio
+dotnet add package coverlet.collector
+dotnet add package moq
+dotnet add package FluentAssertions
 cd ../../
 
 
