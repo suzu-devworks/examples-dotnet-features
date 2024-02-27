@@ -21,21 +21,21 @@
     - [See also](#see-also)
     - [Since](#since)
   - [Features](#features)
-    - [Accessing fixed fields without pinning.](#accessing-fixed-fields-without-pinning)
+    - [\*Accessing fixed fields without pinning.](#accessing-fixed-fields-without-pinning)
     - [Reassign ref local variables.](#reassign-ref-local-variables)
     - [Using initializers on stackalloc arrays.](#using-initializers-on-stackalloc-arrays)
-    - [Using fixed statements with any type that supports a pattern.](#using-fixed-statements-with-any-type-that-supports-a-pattern)
-    - [Using more generic constraints.](#using-more-generic-constraints)
+    - [\*Using fixed statements with any type that supports a pattern.](#using-fixed-statements-with-any-type-that-supports-a-pattern)
+    - [\*Using more generic constraints.](#using-more-generic-constraints)
     - [Testing == and != with tuple types.](#testing--and--with-tuple-types)
     - [Using expression variables in more locations.](#using-expression-variables-in-more-locations)
     - [Attach attributes to the backing field of auto-implemented properties.](#attach-attributes-to-the-backing-field-of-auto-implemented-properties)
-    - [Method resolution when arguments differ by in has been improved.](#method-resolution-when-arguments-differ-by-in-has-been-improved)
+    - [\*Method resolution when arguments differ by in has been improved.](#method-resolution-when-arguments-differ-by-in-has-been-improved)
     - [Overload resolution now has fewer ambiguous cases.](#overload-resolution-now-has-fewer-ambiguous-cases)
 
 
 ## Features
 
-### Accessing fixed fields without pinning.
+### *Accessing fixed fields without pinning.
 
 > ピン留めを使用せずに fixed フィールドにアクセスできます。
 
@@ -74,7 +74,7 @@ Span<int> arr4 = stackalloc[] { 1, 2, 3 };
 ```
 
 
-### Using fixed statements with any type that supports a pattern.
+### *Using fixed statements with any type that supports a pattern.
 
 > パターンをサポートする型と共に fixed ステートメントを使用できます。
 
@@ -83,7 +83,7 @@ Span<int> arr4 = stackalloc[] { 1, 2, 3 };
 `GetPinnableReference()`というメソッドが重要らしい。
 
 
-### Using more generic constraints.
+### *Using more generic constraints.
 
 > ジェネリック型制約が追加されました。
 
@@ -181,7 +181,7 @@ public event PropertyChangedEventHandler PropertyChanged;
 ```
 
 
-### Method resolution when arguments differ by in has been improved.
+### *Method resolution when arguments differ by in has been improved.
 
 > 引数が in によって異なる場合のメソッド解決が改善されました。
 

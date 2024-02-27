@@ -21,30 +21,30 @@
     - [See also](#see-also)
     - [Since](#since)
   - [Features](#features)
-    - [Readonly members](#readonly-members)
-    - [Default interface methods](#default-interface-methods)
+    - [\*Readonly members](#readonly-members)
+    - [\*Default interface methods](#default-interface-methods)
     - [Pattern matching enhancements](#pattern-matching-enhancements)
-    - [Using declarations](#using-declarations)
-    - [Static local functions](#static-local-functions)
-    - [Disposable ref structs](#disposable-ref-structs)
-    - [Nullable reference types](#nullable-reference-types)
-    - [Asynchronous streams](#asynchronous-streams)
-    - [Asynchronous disposable](#asynchronous-disposable)
+    - [\*Using declarations](#using-declarations)
+    - [\*Static local functions](#static-local-functions)
+    - [\*Disposable ref structs](#disposable-ref-structs)
+    - [\*Nullable reference types](#nullable-reference-types)
+    - [\*Asynchronous streams](#asynchronous-streams)
+    - [\*Asynchronous disposable](#asynchronous-disposable)
     - [Indices and ranges](#indices-and-ranges)
-    - [Null-coalescing assignment](#null-coalescing-assignment)
-    - [Unmanaged constructed types](#unmanaged-constructed-types)
-    - [Stackalloc in nested expressions](#stackalloc-in-nested-expressions)
-    - [Enhancement of interpolated verbatim strings](#enhancement-of-interpolated-verbatim-strings)
+    - [\*Null-coalescing assignment](#null-coalescing-assignment)
+    - [\*Unmanaged constructed types](#unmanaged-constructed-types)
+    - [\*Stackalloc in nested expressions](#stackalloc-in-nested-expressions)
+    - [\*Enhancement of interpolated verbatim strings](#enhancement-of-interpolated-verbatim-strings)
 
 
 ## Features
 
-### Readonly members
+### *Readonly members
 
 > 読み取り専用メンバー
 
 
-### Default interface methods
+### *Default interface methods
 
 > インターフェイスのデフォルトメソッド
 
@@ -59,32 +59,32 @@
 * Positional patterns
 
 
-### Using declarations
+### *Using declarations
 
 > using 宣言 (IDisposable)
 
 
-### Static local functions
+### *Static local functions
 
 > 静的ローカル関数
 
 
-### Disposable ref structs
+### *Disposable ref structs
 
 > 破棄可能な `ref` 構造体
 
 
-### Nullable reference types
+### *Nullable reference types
 
 > Null 許容参照型
 
 
-### Asynchronous streams
+### *Asynchronous streams
 
 > 非同期ストリーム
 
 
-### Asynchronous disposable
+### *Asynchronous disposable
 
 > 非同期の破棄可能
 
@@ -103,7 +103,7 @@
 * 範囲演算子の `..`、範囲の先頭と末尾をそのオペランドとして指定します。
 
 
-### Null-coalescing assignment
+### *Null-coalescing assignment
 
 > null 合体割り当て
 
@@ -117,14 +117,14 @@ numbers.Add(i ??= 20);        // not set 20 (i == 17).
 ```
 
 
-### Unmanaged constructed types
+### *Unmanaged constructed types
 
 > 構築されたアンマネージド型
 
-### Stackalloc in nested expressions
+### *Stackalloc in nested expressions
 
 > 入れ子になった式の stackalloc
 
-### Enhancement of interpolated verbatim strings
+### *Enhancement of interpolated verbatim strings
 
 > verbatim 補間文字列の拡張

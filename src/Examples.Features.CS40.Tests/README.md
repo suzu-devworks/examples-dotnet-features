@@ -21,9 +21,9 @@
     - [Since](#since)
   - [Features](#features)
     - [Dynamic binding](#dynamic-binding)
-    - [Named and optional arguments](#named-and-optional-arguments)
+    - [\*Named and optional arguments](#named-and-optional-arguments)
     - [Generic Co- and Contra- variance](#generic-co--and-contra--variance)
-    - [Embedded interop types](#embedded-interop-types)
+    - [\*Embedded interop types](#embedded-interop-types)
 
 
 ## Features
@@ -44,7 +44,7 @@ DLR(Dynamic Language Runtime)の流行を見越して追加された機能と思
 * 多重ディスパッチ
 
 
-### Named and optional arguments
+### *Named and optional arguments
 
 > オプション引数、名前付き引数
 
@@ -76,7 +76,7 @@ anExample.ExampleMethod(3, optionalint: 4);
   * 最初に指定された型のみを使用できることを意味します。
 
 
-### Embedded interop types
+### *Embedded interop types
 
 > COM(Embedded) 相互運用型の特別処理
 

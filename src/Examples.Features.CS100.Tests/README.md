@@ -20,9 +20,9 @@
     - [See also](#see-also)
     - [Since](#since)
   - [Features](#features)
-    - [Record structs](#record-structs)
-    - [Improvements of structure types](#improvements-of-structure-types)
-    - [Interpolated string handlers](#interpolated-string-handlers)
+    - [\*Record structs](#record-structs)
+    - [\*Improvements of structure types](#improvements-of-structure-types)
+    - [\*Interpolated string handlers](#interpolated-string-handlers)
     - [global using directives](#global-using-directives)
     - [File-scoped namespace declaration](#file-scoped-namespace-declaration)
     - [Extended property patterns](#extended-property-patterns)
@@ -30,26 +30,26 @@
     - [Allow const interpolated strings](#allow-const-interpolated-strings)
     - [Record types can seal ToString()](#record-types-can-seal-tostring)
     - [Assignment and declaration in same deconstruction](#assignment-and-declaration-in-same-deconstruction)
-    - [Improved definite assignment](#improved-definite-assignment)
-    - [Allow AsyncMethodBuilder attribute on methods](#allow-asyncmethodbuilder-attribute-on-methods)
-    - [CallerArgumentExpression attribute](#callerargumentexpression-attribute)
-    - [Enhanced #line pragma](#enhanced-line-pragma)
+    - [\*Improved definite assignment](#improved-definite-assignment)
+    - [\*Allow AsyncMethodBuilder attribute on methods](#allow-asyncmethodbuilder-attribute-on-methods)
+    - [\*CallerArgumentExpression attribute](#callerargumentexpression-attribute)
+    - [\*Enhanced #line pragma](#enhanced-line-pragma)
 
 
 ## Features
 
-### Record structs
+### *Record structs
 
 > レコード構造体
 
-### Improvements of structure types
+### *Improvements of structure types
 
 > 構造体型の機能強化
 
 * パラメータなしのコンストラクタ
 
 
-### Interpolated string handlers
+### *Interpolated string handlers
 
 > 補間された文字列ハンドラー
 
@@ -161,17 +161,17 @@ int x = 0;
 ```
 
 
-### Improved definite assignment
+### *Improved definite assignment
 
 > 限定代入の機能強化
 
 
-### Allow AsyncMethodBuilder attribute on methods
+### *Allow AsyncMethodBuilder attribute on methods
 
 > メソッドで AsyncMethodBuilder 属性を許可する
 
 
-### CallerArgumentExpression attribute
+### *CallerArgumentExpression attribute
 
 > CallerArgumentExpression 属性での診断
 
@@ -188,7 +188,7 @@ public static void Validate(bool condition, [CallerArgumentExpression("condition
 ```
 
 
-### Enhanced #line pragma
+### *Enhanced #line pragma
 
 > 拡張 #line pragma
 

@@ -15,7 +15,7 @@
 
 ## Table of contents. <!-- omit in toc -->
 
-- [Examples.Features.CS70.Tests](#examplesfeaturescsharp70tests)
+- [Examples.Features.CS70.Tests](#examplesfeaturescs70tests)
   - [C# version 7.０](#c-version-7０)
     - [See also](#see-also)
     - [Since](#since)
@@ -24,12 +24,12 @@
     - [Tuples and deconstruction](#tuples-and-deconstruction)
     - [Pattern matching](#pattern-matching)
     - [Local functions](#local-functions)
-    - [Expanded expression bodied members](#expanded-expression-bodied-members)
+    - [\*Expanded expression bodied members](#expanded-expression-bodied-members)
     - [Ref locals and returns](#ref-locals-and-returns)
-    - [Discards](#discards)
+    - [\*Discards](#discards)
     - [Binary literals and Digit separators](#binary-literals-and-digit-separators)
-    - [Throw expressions](#throw-expressions)
-    - [Generalized async return types](#generalized-async-return-types)
+    - [\*Throw expressions](#throw-expressions)
+    - [\*Generalized async return types](#generalized-async-return-types)
 
 
 ## Features
@@ -97,7 +97,7 @@ C#6.0 以前にも匿名関数やラムダ式など、ローカルスコープ�
 そしてラムダ式などの `Func<T>` や `Action<T>` オブジェクトの生成がなくなり、効率の良い最適化がかかりパフォーマンスが上がることもあるようです。
 
 
-### Expanded expression bodied members
+### *Expanded expression bodied members
 
 > 拡張された式形式のメンバー
 
@@ -111,7 +111,7 @@ C#6.0 以前にも匿名関数やラムダ式など、ローカルスコープ�
 戻り値とローカル変数でも参照渡しを使えるようになりました。
 これにより、巨大な値型を無駄なコピーなく取り扱えるようになります。
 
-### Discards
+### *Discards
 
 > 破棄
 
@@ -144,9 +144,9 @@ C#6.0 以前にも匿名関数やラムダ式など、ローカルスコープ�
 また `_` はあくまで桁区切りなので余計な所には書けません。
 
 
-### Throw expressions
+### *Throw expressions
 
-> Throw 式
+> `throw` 式
 
 C# 7.0 以降、`throw` は、式およびステートメントとして使用できます。 これにより、以前サポートされていなかったコンテキストでの例外のスローが可能になります。
 
@@ -168,9 +168,9 @@ C# 7.0 以降、`throw` は、式およびステートメントとして使用�
 ```
 
 
-### Generalized async return types
+### *Generalized async return types
 
-> asyncメソッドの返り値型の一般化
+> `async` メソッドの返り値型の一般化
 
 asyncメソッドの戻り値で指定できるのは、`void`、`Task`、`Task<TResult>` のみでしたが、特定の条件を満たすように作れば任意の型を指定できるようになりました。
 

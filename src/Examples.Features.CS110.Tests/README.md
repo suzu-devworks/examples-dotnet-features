@@ -20,34 +20,34 @@
     - [See also](#see-also)
     - [Since](#since)
   - [Features](#features)
-    - [Raw string literals](#raw-string-literals)
-    - [Generic math support](#generic-math-support)
-    - [Generic attributes](#generic-attributes)
-    - [UTF-8 string literals](#utf-8-string-literals)
-    - [Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
-    - [List patterns](#list-patterns)
-    - [File-local types](#file-local-types)
-    - [Required members](#required-members)
-    - [Auto-default structs](#auto-default-structs)
-    - [Pattern match Span on a constant string](#pattern-match-span-on-a-constant-string)
-    - [Extended nameof scope](#extended-nameof-scope)
-    - [Numeric IntPtr](#numeric-intptr)
-    - [ref fields and scoped ref](#ref-fields-and-scoped-ref)
-    - [Improved method group conversion to delegate](#improved-method-group-conversion-to-delegate)
+    - [\*Raw string literals](#raw-string-literals)
+    - [\*Generic math support](#generic-math-support)
+    - [\*Generic attributes](#generic-attributes)
+    - [\*UTF-8 string literals](#utf-8-string-literals)
+    - [\*Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
+    - [\*List patterns](#list-patterns)
+    - [\*File-local types](#file-local-types)
+    - [\*Required members](#required-members)
+    - [\*Auto-default structs](#auto-default-structs)
+    - [\*Pattern match Span on a constant string](#pattern-match-span-on-a-constant-string)
+    - [\*Extended nameof scope](#extended-nameof-scope)
+    - [\*Numeric IntPtr](#numeric-intptr)
+    - [\*ref fields and scoped ref](#ref-fields-and-scoped-ref)
+    - [\*Improved method group conversion to delegate](#improved-method-group-conversion-to-delegate)
 
 ## Features
 
-### Raw string literals
-### Generic math support
-### Generic attributes
-### UTF-8 string literals
-### Newlines in string interpolation expressions
-### List patterns
-### File-local types
-### Required members
-### Auto-default structs
-### Pattern match Span<char> on a constant string
-### Extended nameof scope
-### Numeric IntPtr
-### ref fields and scoped ref
-### Improved method group conversion to delegate
+### *Raw string literals
+### *Generic math support
+### *Generic attributes
+### *UTF-8 string literals
+### *Newlines in string interpolation expressions
+### *List patterns
+### *File-local types
+### *Required members
+### *Auto-default structs
+### *Pattern match Span<char> on a constant string
+### *Extended nameof scope
+### *Numeric IntPtr
+### *ref fields and scoped ref
+### *Improved method group conversion to delegate
