@@ -120,7 +120,19 @@ const string FullProductName = $"{Platform} - Language: {Language} Version: {Ver
 
 ### Record types can seal ToString()
 
-> レコードの型で ToString を sealed することができる。
+> レコードの型で `ToString()` を `sealed` することができる。
+
+`sealed` に することで派生レコードでは `ToString()` を `override` できなります。
+これにより共通の文字列表現を強制できるようになります。 
+
+```cs
+// C# 10.0 or later
+private record SealedRecord(int Value)
+{
+    public sealed override string ToString()
+        => $"<<< {GetType().Name}: {{ Value = {Value} }} >>>";
+}
+```
 
 
 ### Assignment and declaration in same deconstruction
