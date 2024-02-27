@@ -58,8 +58,17 @@
 
 > グローバルな using ディレクティブ
 
-* [Implicit Using Statements](https://dotnetcoretutorials.com/2021/08/31/implicit-using-statements-in-net-6/)
+* [Implicit Using directives](https://learn.microsoft.com/ja-jp/dotnet/core/tutorials/top-level-templates#implicit-using-directives)
 
+```cs
+global using System;
+global using System.IO;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Net.Http;
+global using System.Threading;
+global using System.Threading.Tasks;
+```
 
 ### File-scoped namespace declaration
 
@@ -69,6 +78,7 @@
 
 ```cs
 namespace MyNamespace;
+
 ```
 
 
@@ -76,15 +86,13 @@ namespace MyNamespace;
 
 > 拡張プロパティのパターン
 
-次ができるようになりました。
-* 入れ子になったプロパティ
-* プロパティのフォールド参照
+入れ子になったプロパティまたはプロパティ パターン内のフィールドを参照できます。
 
 ```cs
-// CS9.0～
+// C# 8.0 or later
 data is { Prop1: { Prop2: pattern } }
 
-// CS10.0～
+// C# 10.0 or later
 data is { Prop1.Prop2: pattern }
 
 ```
@@ -94,6 +102,14 @@ data is { Prop1.Prop2: pattern }
 
 > ラムダ式の機能強化
 
+C# 10 には、ラムダ式の処理方法に多くの機能強化が加えられています。
+
+- ラムダ式には自然型があり、コンパイラによってラムダ式またはメソッド グループからデリゲート型を推測できます。
+- ラムダ式には、コンパイラによって推測できない場合に、戻り値の型を宣言できます。
+- 属性をラムダ式に適用できます。
+
+自然型？コンパイラーがパラメーターなどから推測できる型のことらしい。
+
 
 ### Allow const interpolated strings
 
@@ -102,7 +118,7 @@ data is { Prop1.Prop2: pattern }
 使用するのが const ならば文字列補完がつかえるようになりました。
 
 ```cs
-// CS10.0～
+// C# 10.0 or later
 const string Language = "C#";
 const string Platform = ".NET";
 const string Version = "10.0";
@@ -112,24 +128,34 @@ const string FullProductName = $"{Platform} - Language: {Language} Version: {Ver
 
 ### Record types can seal ToString()
 
-> レコードの型で ToString を sealed することができる。
+> レコードの型で `ToString()` を `sealed` することができる。
+
+`sealed` に することで派生レコードでは `ToString()` を `override` できなります。
+これにより共通の文字列表現を強制できるようになります。 
+
+```cs
+// C# 10.0 or later
+private record SealedRecord(int Value)
+{
+    public sealed override string ToString()
+        => $"<<< {GetType().Name}: {{ Value = {Value} }} >>>";
+}
+```
 
 
 ### Assignment and declaration in same deconstruction
 
-> 同じ Deconstractor 内で宣言と代入を同時に実行できる。
+> 同じ Deconstructor 内で宣言と代入を同時に実行できる。
 
 ```cs
-// CS9.0～
-// Initialization:
+// C# 9.0 or later
 (int x, int y) = point;
 
-// assignment:
 int x1 = 0;
 int y1 = 0;
 (x1, y1) = point;
 
-// CS10.0～
+// C# 10.0 or later
 int x = 0;
 (x, int y) = point;
 ```
