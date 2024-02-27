@@ -24,7 +24,7 @@
     - [Alias any type](#alias-any-type)
     - [Inline arrays](#inline-arrays)
     - [Experimental attribute](#experimental-attribute)
-    - [Interceptors](#interceptors)
+    - [\*Interceptors](#interceptors)
 
 ## Features
 
@@ -77,6 +77,7 @@ int[] row2 = [7, 8, 9];
 int[][] twoDFromVariables = [row0, row1, row2];
 ```
 
+
 ### ref readonly parameters
 
 > `ref readonly` パラメーター
@@ -110,6 +111,7 @@ int[][] twoDFromVariables = [row0, row1, row2];
 
 ラムダ式のパラメーターに既定値を定義できるようになりました。
 
+
 ### Alias any type
 
 > 任意の型の別名設定
@@ -120,6 +122,7 @@ using 別名ディレクティブを使うと、名前付き型だけでなく�
 
 - `int`, `string` などキーワードを using エイリアスの右辺に書けるようになった
 - タプル型、ポインター型、配列型などが、C# の専用構文を使って書けるようになった
+
 
 ### Inline arrays
 
@@ -141,7 +144,7 @@ using 別名ディレクティブを使うと、名前付き型だけでなく�
 
 型、メソッド、またはアセンブリには、試験的機能を示す `System.Diagnostics.CodeAnalysis.ExperimentalAttribute` マークを付けることができます。
 
-### Interceptors
+### *Interceptors
 
 > インターセプター
 

@@ -1,15 +1,17 @@
-// C #11 notation
+#pragma warning disable format
+// C# 11.0
 using Primitive11 = System.Int32;
 using Nullable11 = System.Nullable<int>;
 using Tuple11 = System.ValueTuple<int, int>;
 
-// C# 12 notation
+// C# 12.0 or later
 using Primitive12 = int;
 using Nullable12 = int?;
 using Tuple12 = (int, int);
 using Array12 = int[];
 
 using Point = (int x, int y);
+#pragma warning restore format
 
 namespace Examples.Features.CS120.AliasAnyType;
 
