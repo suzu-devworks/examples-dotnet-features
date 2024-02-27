@@ -23,19 +23,19 @@
     - [Records](#records)
     - [Init only setters](#init-only-setters)
     - [Top-level statements](#top-level-statements)
-    - [Pattern matching enhancements](#pattern-matching-enhancements)
-    - [Performance and interop](#performance-and-interop)
-    - [Fit and finish features](#fit-and-finish-features)
-      - [Target-typed new expressions](#target-typed-new-expressions)
-      - [static anonymous functions](#static-anonymous-functions)
-      - [Target-typed conditional expressions](#target-typed-conditional-expressions)
-      - [Covariant return types](#covariant-return-types)
-      - [Extension GetEnumerator support for foreach loops](#extension-getenumerator-support-for-foreach-loops)
-      - [Lambda discard parameters](#lambda-discard-parameters)
-      - [Attributes on local functions](#attributes-on-local-functions)
-    - [Support for code generators](#support-for-code-generators)
+    - [\*Pattern matching enhancements](#pattern-matching-enhancements)
+    - [\*Performance and interop](#performance-and-interop)
+    - [\*Fit and finish features](#fit-and-finish-features)
+      - [\*Target-typed new expressions](#target-typed-new-expressions)
+      - [\*static anonymous functions](#static-anonymous-functions)
+      - [\*Target-typed conditional expressions](#target-typed-conditional-expressions)
+      - [\*Covariant return types](#covariant-return-types)
+      - [\*Extension GetEnumerator support for foreach loops](#extension-getenumerator-support-for-foreach-loops)
+      - [\*Lambda discard parameters](#lambda-discard-parameters)
+      - [\*Attributes on local functions](#attributes-on-local-functions)
+    - [\*Support for code generators](#support-for-code-generators)
       - [Module initializers](#module-initializers)
-      - [New features for partial methods](#new-features-for-partial-methods)
+      - [\*New features for partial methods](#new-features-for-partial-methods)
 
 
 ## Features
@@ -76,12 +76,12 @@ Console.WriteLine("Hello World!");
 ```
 
 
-### Pattern matching enhancements
+### *Pattern matching enhancements
 
 > パターンマッチングの拡張
 
 
-### Performance and interop
+### *Performance and interop
 
 > パフォーマンスと相互運用
 
@@ -91,11 +91,11 @@ Console.WriteLine("Hello World!");
 
 
 <!-- ----- -->
-### Fit and finish features
+### *Fit and finish features
 
 > 適合性と完成度の機能
 
-#### Target-typed new expressions
+#### *Target-typed new expressions
 
 > new式 の型推論
 
@@ -110,38 +110,38 @@ List<string> lines = new();
 ```
 
 
-#### static anonymous functions
+#### *static anonymous functions
 
 > 静的匿名関数
 
 
-#### Target-typed conditional expressions
+#### *Target-typed conditional expressions
 
 > 条件式（3項演算子）の型推論
 
 
-#### Covariant return types
+#### *Covariant return types
 
 > 戻り値の共変性
 
 
-#### Extension GetEnumerator support for foreach loops
+#### *Extension GetEnumerator support for foreach loops
 
 > foreach ループの拡張機能 GetEnumerator サポート
 
 
-#### Lambda discard parameters
+#### *Lambda discard parameters
 
 > ラムダ式のパラメータ廃棄
 
 
-#### Attributes on local functions
+#### *Attributes on local functions
 
 > ローカル関数の属性
 
 
 <!-- ----- -->
-### Support for code generators
+### *Support for code generators
 
 > コード ジェネレーターのサポート1
 
@@ -160,7 +160,7 @@ List<string> lines = new();
     * Must be accessible from the containing module
 
 
-#### New features for partial methods
+#### *New features for partial methods
 
 > 部分メソッドの新機能
 

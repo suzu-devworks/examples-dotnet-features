@@ -51,21 +51,21 @@ stack size は 4MB(64-bit) または 1MB(32-bit) しかないのでサイズに�
 
 > パターンをサポートする任意のタイプで `fixed` を使用できます。
 
-※ C# 7.3 ?
+※ C# 7.3
 
 
 ### Access fixed fields without pinning.
 
 > ピン留めを使用せずに `fixed` フィールドにアクセスできます。
 
-※ C# 7.3 ?
+※ C# 7.3
 
 
 ### Reassign ref local variables.
 
 > `ref` ローカル変数を再割り当てすることができます。
 
-※ C# 7.3 ?
+※ C# 7.3
 
 
 ### Declare readonly struct types, to indicate that a struct is immutable and should be passed as an in parameter to its member methods.
@@ -113,7 +113,7 @@ C# 7.2 で `Span<T>` 構造体という型が提供されましたが、この�
 
 > 追加のジェネリック制約を使用できます。
 
-※ C# 7.3 ?
+※ C# 7.3
 
 
 ### Non-trailing named arguments

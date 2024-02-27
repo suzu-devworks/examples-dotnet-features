@@ -30,7 +30,7 @@
 
 ### async Main method
 
-> 非同期 Main
+> 非同期 `Main`
 
 アプリケーションのエントリ ポイントに `async` 修飾子を設定できます。
 
@@ -75,7 +75,7 @@ public static Task<int> Main(string[] args)
 
 ### default literal expressions
 
->　default 式
+> `default` 式
 
 これまでも既定値を作るために、`default(T)` という構文がありましたが、`default` 式になったので簡略化しました。
 

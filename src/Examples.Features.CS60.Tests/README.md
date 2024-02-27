@@ -22,23 +22,23 @@
     - [See also](#see-also)
     - [Since](#since)
   - [Features](#features)
-    - [Compiler-as-a-service (Roslyn)](#compiler-as-a-service-roslyn)
-    - [Static Imports](#static-imports)
-    - [Exception filters](#exception-filters)
-    - [Await in catch/finally blocks](#await-in-catchfinally-blocks)
-    - [Auto property initializers](#auto-property-initializers)
-    - [Default values for getter-only properties](#default-values-for-getter-only-properties)
-    - [Expression-bodied members](#expression-bodied-members)
-    - [Null propagator (null-conditional operator, succinct null checking)](#null-propagator-null-conditional-operator-succinct-null-checking)
-    - [String interpolation](#string-interpolation)
-    - [nameof operator](#nameof-operator)
+    - [\*Compiler-as-a-service (Roslyn)](#compiler-as-a-service-roslyn)
+    - [\*Static Imports](#static-imports)
+    - [\*Exception filters](#exception-filters)
+    - [\*Await in catch/finally blocks](#await-in-catchfinally-blocks)
+    - [\*Auto property initializers](#auto-property-initializers)
+    - [\*Default values for getter-only properties](#default-values-for-getter-only-properties)
+    - [\*Expression-bodied members](#expression-bodied-members)
+    - [\*Null propagator (null-conditional operator, succinct null checking)](#null-propagator-null-conditional-operator-succinct-null-checking)
+    - [\*String interpolation](#string-interpolation)
+    - [\*nameof operator](#nameof-operator)
     - [Index initializers](#index-initializers)
     - [Extension Add methods in collection initializers](#extension-add-methods-in-collection-initializers)
 
 
 ## Features
 
-### Compiler-as-a-service (Roslyn)
+### *Compiler-as-a-service (Roslyn)
 
 > .NET Compiler Platform, better known by its codename "Roslyn", is a set of open-source compilers and code analysis APIs for C# and Visual Basic .NET languages from Microsoft.
 
@@ -49,7 +49,7 @@
 コンパイラをC#で作り直したことにより、コード解析などいろいろできるようになったらしい。
 
 
-### Static Imports
+### *Static Imports
 
 > `using static` ステートメント
 
@@ -65,7 +65,7 @@ public static void Main(string[] args)
 ```
 
 
-### Exception filters
+### *Exception filters
 
 > 例外フィルタ
 
@@ -95,7 +95,7 @@ public static void Main(string[] args)
 これは使える・・・
 
 
-### Await in catch/finally blocks
+### *Await in catch/finally blocks
 
 > `catch`/`finally` での `await`
 
@@ -120,7 +120,7 @@ public static void Main(string[] args)
 制限あったんだ・・・
 
 
-### Auto property initializers
+### *Auto property initializers
 
 > 自動実装プロパティの初期化子
 
@@ -146,7 +146,7 @@ public int Value { get; } = 100;
 ```
 
 
-### Default values for getter-only properties
+### *Default values for getter-only properties
 
 > get のみの自動実装プロパティおよびコンストラクタ代入
 
@@ -162,7 +162,7 @@ public int Value { get; }
 ```
 
 
-### Expression-bodied members
+### *Expression-bodied members
 
 > Expression-bodied メンバ
 
@@ -190,7 +190,7 @@ public int InnerProduct(Point p) => X * p.X + Y * p.Y;
 ```
 
 
-### Null propagator (null-conditional operator, succinct null checking)
+### *Null propagator (null-conditional operator, succinct null checking)
 
 > null 条件演算子
 
@@ -216,7 +216,7 @@ var result = func?.Invoke();
 nullチェックを書くのがめんどくさくなってきた。
 
 
-### String interpolation
+### *String interpolation
 
 > 文字列補間（テンプレート文字列）
 
@@ -229,7 +229,7 @@ var formatted = $"({x}, {y})";
 ```
 
 
-### nameof operator
+### *nameof operator
 
 > nameof 演算子
 

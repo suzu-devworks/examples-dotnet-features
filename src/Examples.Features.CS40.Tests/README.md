@@ -53,10 +53,10 @@ DLR(Dynamic Language Runtime)の流行を見越して追加された機能と思
 PrintOrderDetails(orderNum: 31, productName: "Red Mug", sellerName: "Gift Shop");
 PrintOrderDetails(productName: "Red Mug", sellerName: "Gift Shop", orderNum: 31);
 
-public void ExampleMethod(int required, string optionalstr = "default string",
-    int optionalint = 10);
+public void ExampleMethod(int required, string optionalStr = "default string",
+    int optionalInt = 10);
 
-anExample.ExampleMethod(3, optionalint: 4);
+anExample.ExampleMethod(3, optionalInt: 4);
 ```
 
 

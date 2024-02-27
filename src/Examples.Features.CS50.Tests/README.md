@@ -46,7 +46,7 @@ public async Task FunctionAsync(CancellationToken cancelToken)
 
 ### Caller info attributes
 
-> Caller Info 属性
+> Caller info 属性
 
 Caller Information can help us in tracing, debugging and creating diagnose tools.
 
