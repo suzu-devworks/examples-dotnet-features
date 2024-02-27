@@ -1,14 +1,14 @@
 #pragma warning disable format
 // C# 11.0
-using Primitive11 = System.Int32;
-using Nullable11 = System.Nullable<int>;
-using Tuple11 = System.ValueTuple<int, int>;
+using CS11Nullable = System.Nullable<int>;
+using CS11Primitive = System.Int32;
+using CS11Tuple = System.ValueTuple<int, int>;
 
 // C# 12.0 or later
-using Primitive12 = int;
-using Nullable12 = int?;
-using Tuple12 = (int, int);
-using Array12 = int[];
+using CS12Array = int[];
+using CS12Nullable = int?;
+using CS12Primitive = int;
+using CS12Tuple = (int, int);
 
 using Point = (int x, int y);
 #pragma warning restore format
@@ -20,36 +20,36 @@ public class AliasAnyTypeTests
     [Fact]
     public void BasicUsage()
     {
-        Primitive11 value11 = 1;
-        Primitive12 value12 = value11;
+        CS11Primitive value11 = 1;
+        CS12Primitive value12 = value11;
 
         value12.Should()
-            .BeOfType(typeof(Primitive12))
-            .And.BeOfType(typeof(Primitive11))
+            .BeOfType(typeof(CS12Primitive))
+            .And.BeOfType(typeof(CS11Primitive))
             .And.BeOfType(typeof(int));
 
-        Nullable11 nullable11 = null;
-        Nullable12 nullable12 = nullable11;
+        CS11Nullable nullable11 = null;
+        CS12Nullable nullable12 = nullable11;
 
         nullable12.Should().NotHaveValue()
             .And.BeNull();
         // nullable12.Should()
-        //     .BeOfType(typeof(Nullable12))
-        //     .And.BeOfType(typeof(Primitive11))
+        //     .BeOfType(typeof(CS12Nullable))
+        //     .And.BeOfType(typeof(CS11Nullable))
         //     .And.BeOfType(typeof(int?));
 
-        Tuple11 tuple11 = (1, 2);
-        Tuple12 tuple12 = tuple11;
+        CS11Tuple tuple11 = (1, 2);
+        CS12Tuple tuple12 = tuple11;
 
         tuple12.Should()
-            .BeOfType(typeof(Tuple12))
-            .And.BeOfType(typeof(Tuple11))
+            .BeOfType(typeof(CS12Tuple))
+            .And.BeOfType(typeof(CS11Tuple))
             .And.BeOfType(typeof((int, int)));
 
-        Array12 arrays12 = [1, 2, 3];
+        CS12Array arrays12 = [1, 2, 3];
 
         arrays12.Should()
-            .BeOfType(typeof(Array12))
+            .BeOfType(typeof(CS12Array))
             .And.BeOfType(typeof(int[]));
 
         Point point12 = (800, 600);
