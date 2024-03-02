@@ -38,6 +38,7 @@
     "contravariantly",
     "covariantly",
     "Linq",
+    "nameof",
     "Stackalloc",
     "struct",
     "structs",
