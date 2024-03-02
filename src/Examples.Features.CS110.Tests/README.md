@@ -23,7 +23,7 @@
     - [Raw string literals](#raw-string-literals)
     - [\*Generic math support](#generic-math-support)
     - [\*Generic attributes](#generic-attributes)
-    - [\*UTF-8 string literals](#utf-8-string-literals)
+    - [UTF-8 string literals](#utf-8-string-literals)
     - [\*Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
     - [List patterns](#list-patterns)
     - [\*File-local types](#file-local-types)
@@ -68,9 +68,19 @@ var location = $$"""
 
 > 汎用属性
 
-### *UTF-8 string literals
+### UTF-8 string literals
 
 > UTF-8 の文字列リテラル
+
+.NET の文字列は、UTF-16 エンコードを使用して格納されます。 UTF-8 は、Web プロトコルやその他の重要なライブラリの標準です。
+C# 11 以降では、文字列リテラルに u8 サフィックスを追加して UTF-8 エンコードを指定できます。 
+UTF-8 リテラルは ReadOnlySpan<byte> オブジェクトとして格納されます。
+
+```cs
+ReadOnlySpan<byte> AuthWithTrailingSpace = new byte[] { 0x41, 0x55, 0x54, 0x48, 0x20 };
+ReadOnlySpan<byte> AuthStringLiteral = "AUTH "u8;
+```
+
 
 ### *Newlines in string interpolation expressions
 
