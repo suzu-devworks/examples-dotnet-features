@@ -38,16 +38,57 @@
 ## Features
 
 ### *Raw string literals
+
+> 未加工の文字リテラル
+
 ### *Generic math support
+
+> ジェネリック型数値演算のサポート
+
 ### *Generic attributes
+
+> 汎用属性
+
 ### *UTF-8 string literals
+
+> UTF-8 の文字列リテラル
+
 ### *Newlines in string interpolation expressions
+
+> 文字列補間式の改行
+
 ### *List patterns
+
+> リスト パターン
+
 ### *File-local types
+
+> ファイルローカル型
+
 ### *Required members
+
+> 必須メンバー
+
 ### *Auto-default structs
+
+> auto-default 構造体
+
 ### *Pattern match Span<char> on a constant string
+
+> string 定数での Span<char> のパターン マッチ
+
 ### *Extended nameof scope
+
+> 拡張 nameof スコープ
+
 ### *Numeric IntPtr
+
+> 数値 IntPtr
+
 ### *ref fields and scoped ref
+
+> ref フィールドと scoped ref
+
 ### *Improved method group conversion to delegate
+
+> 改善された、メソッド グループからデリゲートへの変換
