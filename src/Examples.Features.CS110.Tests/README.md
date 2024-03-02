@@ -25,7 +25,7 @@
     - [\*Generic attributes](#generic-attributes)
     - [\*UTF-8 string literals](#utf-8-string-literals)
     - [\*Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
-    - [\*List patterns](#list-patterns)
+    - [List patterns](#list-patterns)
     - [\*File-local types](#file-local-types)
     - [\*Required members](#required-members)
     - [\*Auto-default structs](#auto-default-structs)
@@ -57,9 +57,27 @@
 
 > 文字列補間式の改行
 
-### *List patterns
+### List patterns
 
 > リスト パターン
+
+シーケンス要素が対応する入れ子になったパターンと一致するかどうかをテストします。
+
+```cs
+    if (value is [ pattern (, pattern)* ])
+    {
+        // ...
+    }
+```
+
+シーケンス要素を評価するのは定数ではなく *入れ子になったパターン* なので
+
+- 任意のパターンを評価するために破棄パターンを使用する。
+- `var` パターンで変数をキャプチャする
+- `and/or` や `>`,`>=` などの論理パターンを評価する
+- プロパティパターンを評価する。
+
+などができます。
 
 ### *File-local types
 
