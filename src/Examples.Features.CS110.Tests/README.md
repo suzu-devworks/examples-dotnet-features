@@ -20,7 +20,7 @@
     - [See also](#see-also)
     - [Since](#since)
   - [Features](#features)
-    - [\*Raw string literals](#raw-string-literals)
+    - [Raw string literals](#raw-string-literals)
     - [\*Generic math support](#generic-math-support)
     - [\*Generic attributes](#generic-attributes)
     - [\*UTF-8 string literals](#utf-8-string-literals)
@@ -37,9 +37,28 @@
 
 ## Features
 
-### *Raw string literals
+### Raw string literals
 
 > 未加工の文字リテラル
+
+未加工の文字リテラルには、エスケープ シーケンスを必要とせずに、空白文字、改行、埋め込み引用符、その他の特殊文字を含む任意のテキストを含めることができます。 
+開始の引用符の後と、終わりの引用符の前の改行は、最終的なコンテンツには含まれません。
+終わりの二重引用符の左側にある空白文字は、文字列リテラルから削除されます。
+
+```cs
+string longMessage = """
+    This is a long message.
+    It has several lines.
+        Some are indented
+                more than others.
+    Some should start at the first column.
+    Some have "quoted text" in them.
+    """;
+
+var location = $$"""
+   You are at {{{Longitude}}, {{Latitude}}}
+   """;
+```
 
 ### *Generic math support
 
