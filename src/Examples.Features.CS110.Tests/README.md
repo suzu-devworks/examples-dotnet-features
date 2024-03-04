@@ -26,7 +26,7 @@
     - [UTF-8 string literals](#utf-8-string-literals)
     - [\*Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
     - [List patterns](#list-patterns)
-    - [\*File-local types](#file-local-types)
+    - [File-local types](#file-local-types)
     - [Required members](#required-members)
     - [\*Auto-default structs](#auto-default-structs)
     - [\*Pattern match Span on a constant string](#pattern-match-span-on-a-constant-string)
@@ -108,9 +108,21 @@ ReadOnlySpan<byte> AuthStringLiteral = "AUTH "u8;
 
 などができます。
 
-### *File-local types
+### File-local types
 
 > ファイルローカル型
+
+`file` 修飾子は、最上位レベルの型のスコープと可視性を、それが宣言されているファイルに制限します。
+`file` 修飾子は、ソース ジェネレーターによって書き込まれた型に通常適用されます。 
+
+```cs
+file class HiddenWidget
+{
+    // implementation
+}
+
+```
+
 
 ### Required members
 
