@@ -27,7 +27,7 @@
     - [\*Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
     - [List patterns](#list-patterns)
     - [\*File-local types](#file-local-types)
-    - [\*Required members](#required-members)
+    - [Required members](#required-members)
     - [\*Auto-default structs](#auto-default-structs)
     - [\*Pattern match Span on a constant string](#pattern-match-span-on-a-constant-string)
     - [\*Extended nameof scope](#extended-nameof-scope)
@@ -112,9 +112,22 @@ ReadOnlySpan<byte> AuthStringLiteral = "AUTH "u8;
 
 > ファイルローカル型
 
-### *Required members
+### Required members
 
 > 必須メンバー
+
+`required` 修飾子は、適用対象の "フィールド" または "プロパティ" を、オブジェクト初期化子を使って初期化する必要があることを示します。
+
+- `required` 修飾子は、`struct`, および `class` 型 (`record` および `record struct` 型を含む) で宣言されている "フィールド" と "プロパティ"に適用できます。
+- `required` 修飾子は、`interface` のメンバーには適用できません。
+- `required` メンバーは初期化される必要がありますが、型が `null` 許容の参照型である場合 `null` に初期化できます。
+- `required` メンバーの可視性は、それを含んでいる型と少なくとも同じである必要があります。
+- 基底クラスで宣言されている `required` メンバーを、派生クラスで隠ぺいすることはできません。
+- 型パラメーターに `new()` 制約が含まれる場合、任意の `required` メンバーを持つ型を型引数として使うことはできません。
+- レコードの位置指定パラメーターの宣言では、required 修飾子を使用できません。
+
+`SetsRequiredMembersAttribute` 属性を使用してコンストラクターで全てのメンバーを初期化することを指定できますが、コンパイラによる `required` のチェックが無効になるため注意が必要です。
+ 
 
 ### *Auto-default structs
 
