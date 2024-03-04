@@ -24,7 +24,7 @@
     - [\*Generic math support](#generic-math-support)
     - [Generic attributes](#generic-attributes)
     - [UTF-8 string literals](#utf-8-string-literals)
-    - [\*Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
+    - [Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
     - [List patterns](#list-patterns)
     - [File-local types](#file-local-types)
     - [Required members](#required-members)
@@ -85,9 +85,20 @@ ReadOnlySpan<byte> AuthStringLiteral = "AUTH "u8;
 ```
 
 
-### *Newlines in string interpolation expressions
+### Newlines in string interpolation expressions
 
 > 文字列補間式の改行
+
+文字列補間の `{` と `}` の文字内のテキストが複数行にまたがるようになりました。
+
+```cs
+var a = 1;
+var b = 2;
+var newLineInterpolationsMessage = $"a: {
+    a
+    }, b: {b}";
+```
+
 
 ### List patterns
 
