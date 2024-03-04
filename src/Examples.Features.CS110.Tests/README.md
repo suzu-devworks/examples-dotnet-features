@@ -22,7 +22,7 @@
   - [Features](#features)
     - [Raw string literals](#raw-string-literals)
     - [\*Generic math support](#generic-math-support)
-    - [\*Generic attributes](#generic-attributes)
+    - [Generic attributes](#generic-attributes)
     - [UTF-8 string literals](#utf-8-string-literals)
     - [\*Newlines in string interpolation expressions](#newlines-in-string-interpolation-expressions)
     - [List patterns](#list-patterns)
@@ -64,9 +64,12 @@ var location = $$"""
 
 > ジェネリック型数値演算のサポート
 
-### *Generic attributes
+### Generic attributes
 
 > 汎用属性
+
+基底クラスが System.Attribute であるジェネリッククラスを宣言できます。 
+この機能により、System.Type パラメーターを必要とする属性の構文がより便利になります。
 
 ### UTF-8 string literals
 
