@@ -28,7 +28,7 @@
     - [List patterns](#list-patterns)
     - [File-local types](#file-local-types)
     - [Required members](#required-members)
-    - [\*Auto-default structs](#auto-default-structs)
+    - [Auto-default structs](#auto-default-structs)
     - [\*Pattern match Span on a constant string](#pattern-match-span-on-a-constant-string)
     - [\*Extended nameof scope](#extended-nameof-scope)
     - [\*Numeric IntPtr](#numeric-intptr)
@@ -155,9 +155,12 @@ file class HiddenWidget
 `SetsRequiredMembersAttribute` 属性を使用してコンストラクターで全てのメンバーを初期化することを指定できますが、コンパイラによる `required` のチェックが無効になるため注意が必要です。
  
 
-### *Auto-default structs
+### Auto-default structs
 
 > auto-default 構造体
+
+コンストラクターによって初期化されていないすべてのフィールドまたは自動プロパティが、コンパイラによって自動的に初期化されるようになりました。
+
 
 ### *Pattern match Span<char> on a constant string
 
