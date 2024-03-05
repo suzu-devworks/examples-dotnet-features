@@ -30,7 +30,7 @@
     - [Required members](#required-members)
     - [Auto-default structs](#auto-default-structs)
     - [\*Pattern match Span on a constant string](#pattern-match-span-on-a-constant-string)
-    - [\*Extended nameof scope](#extended-nameof-scope)
+    - [Extended nameof scope](#extended-nameof-scope)
     - [\*Numeric IntPtr](#numeric-intptr)
     - [\*ref fields and scoped ref](#ref-fields-and-scoped-ref)
     - [\*Improved method group conversion to delegate](#improved-method-group-conversion-to-delegate)
@@ -166,9 +166,22 @@ file class HiddenWidget
 
 > string 定数での Span<char> のパターン マッチ
 
-### *Extended nameof scope
+### Extended nameof scope
 
 > 拡張 nameof スコープ
+
+`nameof` 式が、メソッド、ローカル関数、ラムダ式のパラメータのパラメータ属性で使用できるようになりました。
+
+```cs
+[ParameterString(nameof(msg))]
+public static void Method(string msg)
+{
+    [ParameterString(nameof(T))]
+    void LocalFunction<T>(T param) { }
+
+    var lambdaExpression = ([ParameterString(nameof(aNumber))] int aNumber) => aNumber.ToString();
+}
+```
 
 ### *Numeric IntPtr
 
