@@ -77,6 +77,15 @@ int[] row2 = [7, 8, 9];
 int[][] twoDFromVariables = [row0, row1, row2];
 ```
 
+コレクション式のスプレッド演算子である `..` は、その引数をコレクションの要素に置き換えます。
+
+```cs
+int[] row0 = [1, 2, 3];
+int[] row1 = [4, 5, 6];
+int[] row2 = [7, 8, 9];
+int[] single = [.. row0, .. row1, .. row2];
+```
+
 
 ### ref readonly parameters
 

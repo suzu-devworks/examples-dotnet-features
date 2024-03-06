@@ -420,6 +420,8 @@ dotnet_diagnostic.IDE0060.severity = warning
 #> IDE0100: Remove unnecessary equality operator
 dotnet_diagnostic.IDE0100.severity = warning
 
+#> IDE1006: Naming rule violation
+dotnet_diagnostic.IDE1006.severity = warning
 
 #> #### .NET Coding Excludes files  ####
 [src/**/{Migrations}/*.{cs,vb}]
