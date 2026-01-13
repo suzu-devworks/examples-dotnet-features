@@ -1,0 +1,20 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [],
+  "ignoreWords": [
+    "Contravariance",
+    "Contravariances",
+    "contravariantly",
+    "covariantly",
+    "Linq",
+    "nameof",
+    "Stackalloc",
+    "struct",
+    "structs",
+    "Unmanaged"
+  ],
+  "import": []
+}
