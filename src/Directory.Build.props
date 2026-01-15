@@ -1,10 +1,6 @@
 <Project>
   <PropertyGroup>
-    <MyTargetFramework>net9.0</MyTargetFramework>
-    <MyTargetFrameworks>net9.0;net8.0</MyTargetFrameworks>
-    <MyTestingFrameworks>net9.0</MyTestingFrameworks>
-
-    <LatestFramework>net9.0</LatestFramework>
-    <AvailableLTSFrameworks>net8.0;net6.0;net481</AvailableLTSFrameworks>
+    <LatestFramework>net10.0</LatestFramework>
+    <LTSFrameworks>net8.0;net10.0</LTSFrameworks>
   </PropertyGroup>
 </Project>
