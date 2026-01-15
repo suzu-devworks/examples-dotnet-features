@@ -1,9 +1,7 @@
 using System.Runtime.CompilerServices;
-using FluentAssertions;
-using FluentAssertions.Execution;
 using Xunit;
 
-namespace Examples.Features.CS50.CallerInfoAttributes
+namespace Examples.Features.CSharp50.Tests.CallerInfoAttributes
 {
     /// <summary>
     /// Tests for Caller info attributes in C# 5.0.
@@ -11,16 +9,9 @@ namespace Examples.Features.CS50.CallerInfoAttributes
     public class CallerInfoAttributesTests
     {
         [Fact]
-        public void BasicUsage()
+        public void When_UsingCallerFilePath_Then_ReturnsThisFilePath()
         {
-            using (var scope = new AssertionScope())
-            {
-                GetFilePath().Should().EndWith(@"CallerInfoAttributesTests.cs");
-                GetLineNumber().Should().Be(19);
-                GetMemberName().Should().Be("BasicUsage");
-            }
-
-            return;
+            Assert.EndsWith(@"CallerInfoAttributesTests.cs", GetFilePath());
         }
 
         private static string GetFilePath([CallerFilePath] string path = null)
@@ -28,9 +19,21 @@ namespace Examples.Features.CS50.CallerInfoAttributes
             return path;
         }
 
+        [Fact]
+        public void When_UsingCallerLineNumber_Then_ReturnsThisFilePath()
+        {
+            Assert.Equal(25, GetLineNumber());
+        }
+
         private static int GetLineNumber([CallerLineNumber] int line = -1)
         {
             return line;
+        }
+
+        [Fact]
+        public void When_UsingCallerMemberName_Then_ReturnsThisMethodName()
+        {
+            Assert.Equal("When_UsingCallerMemberName_Then_ReturnsThisMethodName", GetMemberName());
         }
 
         private static string GetMemberName([CallerMemberName] string name = null)
