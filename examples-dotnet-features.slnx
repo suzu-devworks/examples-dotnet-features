@@ -1,2 +1,5 @@
 <Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Examples.Features.CSharp40.Tests/Examples.Features.CSharp40.Tests.csproj" />
+  </Folder>
 </Solution>

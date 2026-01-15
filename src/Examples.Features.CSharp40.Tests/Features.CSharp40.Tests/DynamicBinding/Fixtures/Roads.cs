@@ -1,4 +1,4 @@
-namespace Examples.Features.CS40.DynamicBinding.Fixtures
+namespace Examples.Features.CSharp40.Tests.DynamicBinding.Fixtures
 {
     public interface IRoad
     {

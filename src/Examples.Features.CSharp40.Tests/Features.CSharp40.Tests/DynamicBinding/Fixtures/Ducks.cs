@@ -1,6 +1,6 @@
 using System;
 
-namespace Examples.Features.CS40.DynamicBinding.Fixtures
+namespace Examples.Features.CSharp40.Tests.DynamicBinding.Fixtures
 {
     public class DuckAnimal
     {
