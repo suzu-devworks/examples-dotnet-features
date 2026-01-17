@@ -33,13 +33,11 @@ namespace Examples.Features.CSharp60.Tests.IndexInitializers
 
         private static IDictionary<int, StudentName> InitializeStatic()
         {
-#pragma warning disable IDE0028 // Collection initialization can be simplified
             IDictionary<int, StudentName> dict = new Dictionary<int, StudentName>();
             dict.Add(111, new StudentName(211, "Sachin", "Karnik"));
             dict.Add(112, new StudentName(317, "Dina", "Salimzianova"));
             dict.Add(113, new StudentName(198, "Andy", "Ruth"));
             // spell-checker: words Salimzianova Sachin Karnik
-#pragma warning restore IDE0028 // Collection initialization can be simplified
 
             return dict;
         }
@@ -81,7 +79,7 @@ namespace Examples.Features.CSharp60.Tests.IndexInitializers
                 [2, 1] = 0.0,
                 [2, 2] = 1.0,
             };
-            #pragma warning restore format
+#pragma warning restore format
 
             Assert.Equal(1.0, identity.Det);
         }

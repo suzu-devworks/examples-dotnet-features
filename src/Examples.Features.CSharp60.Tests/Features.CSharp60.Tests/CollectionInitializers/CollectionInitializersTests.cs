@@ -4,42 +4,6 @@ using Xunit;
 
 namespace Examples.Features.CSharp60.Tests.CollectionInitializers
 {
-    public static class Extensions
-    {
-        public static void Add(this List<Cat> list, string name, int age)
-        {
-            list.Add(new Cat { Name = name, Age = age });
-        }
-
-        public static void Add(this Queue<Cat> queue, Cat entry)
-        {
-            queue.Enqueue(entry);
-        }
-
-        public static void Add(this Queue<Cat> queue, string name, int age)
-        {
-            queue.Add(new Cat { Name = name, Age = age });
-        }
-
-        public static void Add(this IDictionary<string, Cat> dict, Cat entry)
-        {
-            if (entry == null)
-            {
-                dict.Add("null", null);
-            }
-            else
-            {
-                dict.Add(entry.Name, entry);
-            }
-        }
-
-        public static void Add(this IDictionary<string, Cat> dict, string name, int age)
-        {
-            dict.Add(new Cat { Name = name, Age = age });
-        }
-
-    }
-
     /// <summary>
     /// Tests for Extension Add methods in collection initializers in C# 6.0.
     /// </summary>
@@ -113,6 +77,42 @@ namespace Examples.Features.CSharp60.Tests.CollectionInitializers
             };
 
             Assert.Equal(catsWithCs30.Count, catsWithCs60.Count);
+        }
+
+    }
+
+    public static class Extensions
+    {
+        public static void Add(this List<Cat> list, string name, int age)
+        {
+            list.Add(new Cat { Name = name, Age = age });
+        }
+
+        public static void Add(this Queue<Cat> queue, Cat entry)
+        {
+            queue.Enqueue(entry);
+        }
+
+        public static void Add(this Queue<Cat> queue, string name, int age)
+        {
+            queue.Add(new Cat { Name = name, Age = age });
+        }
+
+        public static void Add(this IDictionary<string, Cat> dict, Cat entry)
+        {
+            if (entry == null)
+            {
+                dict.Add("null", null);
+            }
+            else
+            {
+                dict.Add(entry.Name, entry);
+            }
+        }
+
+        public static void Add(this IDictionary<string, Cat> dict, string name, int age)
+        {
+            dict.Add(new Cat { Name = name, Age = age });
         }
 
     }

@@ -17,7 +17,7 @@ namespace Examples.Features.CSharp60.Tests.NameOfOperators
         // public const string HelperConstMemberName = Helper.NameOf(() => MyMember);
 
         [Fact]
-        public void When_GettingMemberName_Then_Returns()
+        public void When_GettingMemberName_Then_ReturnExpectedNames()
         {
             // Use Helper
             {
