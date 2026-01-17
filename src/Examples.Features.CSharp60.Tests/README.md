@@ -1,10 +1,26 @@
-# Examples.Features.CS60.Tests
+# C# version 6.0 (Examples.Features.CSharp60.Tests)
 
-## C# version 6.0
+## Table of contents. <!-- omit in toc -->
 
-### See also
+- [Overview](#overview)
+  - [Since](#since)
+- [Features](#features)
+  - [Compiler-as-a-service (Roslyn)](#compiler-as-a-service-roslyn)
+  - [Static Imports](#static-imports)
+  - [Exception filters](#exception-filters)
+  - [Await in catch/finally blocks](#await-in-catchfinally-blocks)
+  - [Auto property initializers](#auto-property-initializers)
+  - [Default values for getter-only properties](#default-values-for-getter-only-properties)
+  - [Expression-bodied members](#expression-bodied-members)
+  - [Null propagator (null-conditional operator, succinct null checking)](#null-propagator-null-conditional-operator-succinct-null-checking)
+  - [String interpolation](#string-interpolation)
+  - [nameof operator](#nameof-operator)
+  - [Index initializers](#index-initializers)
+  - [Extension Add methods in collection initializers](#extension-add-methods-in-collection-initializers)
 
-* [The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-60)
+## Overview
+
+- [The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-60)
 
 ### Since
 
@@ -14,42 +30,17 @@
 - .NET Core 1.1
 - Visual Studio 2015
 
-
-## Table of contents. <!-- omit in toc -->
-
-- [Examples.Features.CS60.Tests](#examplesfeaturescs60tests)
-  - [C# version 6.0](#c-version-60)
-    - [See also](#see-also)
-    - [Since](#since)
-  - [Features](#features)
-    - [\*Compiler-as-a-service (Roslyn)](#compiler-as-a-service-roslyn)
-    - [\*Static Imports](#static-imports)
-    - [\*Exception filters](#exception-filters)
-    - [\*Await in catch/finally blocks](#await-in-catchfinally-blocks)
-    - [\*Auto property initializers](#auto-property-initializers)
-    - [\*Default values for getter-only properties](#default-values-for-getter-only-properties)
-    - [\*Expression-bodied members](#expression-bodied-members)
-    - [\*Null propagator (null-conditional operator, succinct null checking)](#null-propagator-null-conditional-operator-succinct-null-checking)
-    - [\*String interpolation](#string-interpolation)
-    - [\*nameof operator](#nameof-operator)
-    - [Index initializers](#index-initializers)
-    - [Extension Add methods in collection initializers](#extension-add-methods-in-collection-initializers)
-
-
 ## Features
 
-### *Compiler-as-a-service (Roslyn)
+### Compiler-as-a-service (Roslyn)
 
 > .NET Compiler Platform, better known by its codename "Roslyn", is a set of open-source compilers and code analysis APIs for C# and Visual Basic .NET languages from Microsoft.
 
-* https://github.com/dotnet/roslyn
+- <https://github.com/dotnet/roslyn>
 
-**C#6.0はこれが主役**
+コンパイラをC#で作り直したことにより、コード解析などいろいろできるようになったらしい。**C#6.0はこれが主役**
 
-コンパイラをC#で作り直したことにより、コード解析などいろいろできるようになったらしい。
-
-
-### *Static Imports
+### Static Imports
 
 > `using static` ステートメント
 
@@ -64,8 +55,7 @@ public static void Main(string[] args)
 }
 ```
 
-
-### *Exception filters
+### Exception filters
 
 > 例外フィルタ
 
@@ -94,8 +84,7 @@ public static void Main(string[] args)
 
 これは使える・・・
 
-
-### *Await in catch/finally blocks
+### Await in catch/finally blocks
 
 > `catch`/`finally` での `await`
 
@@ -119,8 +108,7 @@ public static void Main(string[] args)
 
 制限あったんだ・・・
 
-
-### *Auto property initializers
+### Auto property initializers
 
 > 自動実装プロパティの初期化子
 
@@ -133,11 +121,12 @@ public int Value
   set { this._value = value; }
 }
 
-// C# 6.0 or later
+// C# 3.0 or later
 public Constructor()
 {
   this.Value = 100;
 }
+
 public int Value { get; private set; }
 
 // C# 6.0 or later
@@ -145,8 +134,7 @@ public int Value { get; } = 100;
 
 ```
 
-
-### *Default values for getter-only properties
+### Default values for getter-only properties
 
 > get のみの自動実装プロパティおよびコンストラクタ代入
 
@@ -161,8 +149,7 @@ public int Value { get; }
 
 ```
 
-
-### *Expression-bodied members
+### Expression-bodied members
 
 > Expression-bodied メンバ
 
@@ -171,7 +158,7 @@ public int Value { get; }
 関数、読み取り専用 (getter のみ) のプロパティで使えるます。
 
 ```cs
-// C# 6.0 or later
+// Older
 public int Count
 {
     get { return _vertexes.Length; }
@@ -189,13 +176,12 @@ public int InnerProduct(Point p) => X * p.X + Y * p.Y;
 
 ```
 
-
-### *Null propagator (null-conditional operator, succinct null checking)
+### Null propagator (null-conditional operator, succinct null checking)
 
 > null 条件演算子
 
 ```cs
-// C# 6.0 or later
+// Older
 int? len = null;
 if (obj != null)
 {
@@ -215,21 +201,19 @@ var result = func?.Invoke();
 
 nullチェックを書くのがめんどくさくなってきた。
 
-
-### *String interpolation
+### String interpolation
 
 > 文字列補間（テンプレート文字列）
 
 ```cs
-// C# 6.0 or later
+// Older
 var formatted = string.Format("({0}, {1})", x, y);
 
 // C# 6.0 or later
 var formatted = $"({x}, {y})";
 ```
 
-
-### *nameof operator
+### nameof operator
 
 > nameof 演算子
 
@@ -247,17 +231,14 @@ nameof(MyNamespace.MyClass))
 
 `PropertyChangedEventArgs` は `nameof` と C#5.0の `[CallerMemberName]`とどっちがいいだろう・・・
 
-
 ### Index initializers
 
 > Index 初期化子
 
 Dictionary の初期化が直観的になった。"Index"　なので Dictionary に限ったことではない。
 
-
 ### Extension Add methods in collection initializers
 
 > コレクション初期化子内でのAdd拡張メソッドの利用
 
 C# 3.0 で「コレクション初期化子」が追加されましたが、これは、Add メソッドの呼び出しに展開されるものです。これまでは、Add は通常のメソッドでないといけませんでした。 これが、C# 6 で、拡張メソッドでもよくなりました。
-

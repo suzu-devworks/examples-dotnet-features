@@ -1,4 +1,4 @@
-namespace Examples.Features.CS60.IndexInitializers.Fixtures
+namespace Examples.Features.CSharp60.Tests.IndexInitializers.Fixtures
 {
     public class StudentName
     {
