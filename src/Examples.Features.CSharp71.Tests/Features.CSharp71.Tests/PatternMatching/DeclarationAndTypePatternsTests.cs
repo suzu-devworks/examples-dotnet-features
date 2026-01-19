@@ -1,5 +1,4 @@
 using System;
-using ChainingAssertion;
 using Examples.Features.CS71.PatternMatching.Fixtures;
 using Xunit;
 
@@ -11,20 +10,18 @@ namespace Examples.Features.CS71.PatternMatching
     public class DeclarationAndTypePatternsTests
     {
         [Fact]
-        public void WhenUsingIfExpressions_WithGenericTypeParameters()
+        public void When_UsingIfExpressions_WithGenericTypeParameters_Then_CanBeReferencedBySpecificType()
         {
             string actual;
 
             actual = DoIfStatement(new Derived1());
-            actual.Is(nameof(Derived1));
+            Assert.Equal(nameof(Derived1), actual);
 
             actual = DoIfStatement(new Derived2());
-            actual.IsNull();
+            Assert.Null(actual);
 
             actual = DoIfStatement(new Derived3());
-            actual.IsNull();
-
-            return;
+            Assert.Null(actual);
 
             string DoIfStatement<T>(T input) where T : Based
             {
@@ -41,20 +38,18 @@ namespace Examples.Features.CS71.PatternMatching
         }
 
         [Fact]
-        public void WhenUsingSwitchStatements_WithGenericTypeParameters()
+        public void When_UsingSwitchStatements_WithGenericTypeParameters_Then_CanBeUsedLookLikeOverride()
         {
             string actual;
 
             actual = DoSwitchStatement(new Derived1());
-            actual.Is(nameof(Derived1));
+            Assert.Equal(nameof(Derived1), actual);
 
             actual = DoSwitchStatement(new Derived2());
-            actual.Is(nameof(Derived2));
+            Assert.Equal(nameof(Derived2), actual);
 
             actual = DoSwitchStatement(new Derived3());
-            actual.Is(nameof(Derived3));
-
-            return;
+            Assert.Equal(nameof(Derived3), actual);
 
             string DoSwitchStatement<T>(T input) where T : Based
             {

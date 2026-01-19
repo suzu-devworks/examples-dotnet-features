@@ -1,30 +1,24 @@
-# Examples.Features.CS71.Tests
+# C# version 7.1 (Examples.Features.CSharp71.Tests)
 
-## C# version 7.1
+## Table of contents. <!-- omit in toc -->
 
-### See also
+- [Overview](#overview)
+  - [Since](#since)
+- [Features](#features)
+  - [async Main method](#async-main-method)
+  - [default literal expressions](#default-literal-expressions)
+  - [Inferred tuple element names](#inferred-tuple-element-names)
+  - [Pattern matching on generic type parameters](#pattern-matching-on-generic-type-parameters)
 
-* [The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-71)
+## Overview
+
+- [The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-71)
 
 ### Since
 
 - August 2017
 - .NET Core 2.0
 - Visual Studio 2017 version 15.3
-
-
-## Table of contents. <!-- omit in toc -->
-
-- [Examples.Features.CS71.Tests](#examplesfeaturescs71tests)
-  - [C# version 7.1](#c-version-71)
-    - [See also](#see-also)
-    - [Since](#since)
-  - [Features](#features)
-    - [async Main method](#async-main-method)
-    - [default literal expressions](#default-literal-expressions)
-    - [Inferred tuple element names](#inferred-tuple-element-names)
-    - [Pattern matching on generic type parameters](#pattern-matching-on-generic-type-parameters)
-
 
 ## Features
 
@@ -72,7 +66,6 @@ public static Task<int> Main(string[] args)
 }
 ```
 
-
 ### default literal expressions
 
 > `default` 式
@@ -86,17 +79,14 @@ default リテラルは、次のいずれの場合でも使用できます。
 - メソッド呼び出しでの引数値の指定。
 - return ステートメント内、または式のようなメンバー内の式として。
 
-
 ### Inferred tuple element names
 
 > タプル要素名の推論
 
 C# 7.0で追加したタプルの要素名が、タプル構築時に渡した変数から推論できるようになりました。
 
-
 ### Pattern matching on generic type parameters
 
 > ジェネリック型に対するパターンマッチング
 
 型がジェネリック型パラメーターである変数にパターン マッチ式を使用できます。
-
