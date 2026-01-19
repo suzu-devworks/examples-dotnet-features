@@ -10,7 +10,7 @@ namespace Examples.Features.CSharp60.Tests.CollectionInitializers
     public class CollectionInitializersTests
     {
         [Fact]
-        public void When_WhenInitializingList_WithExtensionAddMethods_Then_InitialingSuccessful()
+        public void When_InitializingList_WithExtensionAddMethods_Then_InitialingSuccessful()
         {
             // C# 3.0 or later
             var catsWithCs30 = new List<Cat>
@@ -34,7 +34,7 @@ namespace Examples.Features.CSharp60.Tests.CollectionInitializers
         }
 
         [Fact]
-        public void When_WhenInitializingQueue_WithExtensionAddMethods_Then_InitialingSuccessful()
+        public void When_InitializingQueue_WithExtensionAddMethods_Then_InitialingSuccessful()
         {
             // C# 2.0 or later
             Queue<Cat> catsWithCs20 = new Queue<Cat>();
@@ -56,7 +56,7 @@ namespace Examples.Features.CSharp60.Tests.CollectionInitializers
         }
 
         [Fact]
-        public void When_WhenInitializingDictionary_WithExtensionAddMethods_Then_InitialingSuccessful()
+        public void When_InitializingDictionary_WithExtensionAddMethods_Then_InitialingSuccessful()
         {
             // C# 3.0 or later
             var catsWithCs30 = new Dictionary<string, Cat>()

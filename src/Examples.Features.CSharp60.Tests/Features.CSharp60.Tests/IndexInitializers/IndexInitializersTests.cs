@@ -10,7 +10,7 @@ namespace Examples.Features.CSharp60.Tests.IndexInitializers
     public class IndexInitializersTests
     {
         [Fact]
-        public void When_WhenInitializingDictionary_Then_Successful()
+        public void When_InitializingDictionary_Then_Successful()
         {
             var data = new List<IDictionary<int, StudentName>>()
             {
