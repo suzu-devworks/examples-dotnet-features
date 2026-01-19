@@ -1,4 +1,4 @@
-namespace Examples.Features.CS70.RefLocalsAndReturns.Fixtures
+namespace Examples.Features.CSharp70.Tests.RefLocalsAndReturns.Fixtures
 {
     public class Book
     {

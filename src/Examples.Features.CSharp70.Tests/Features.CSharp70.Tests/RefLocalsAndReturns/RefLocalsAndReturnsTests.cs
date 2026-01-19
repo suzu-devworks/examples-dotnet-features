@@ -1,68 +1,61 @@
 using System;
 using System.Linq;
-using ChainingAssertion;
-using Examples.Features.CS70.RefLocalsAndReturns.Fixtures;
+using Examples.Features.CSharp70.Tests.RefLocalsAndReturns.Fixtures;
 using Xunit;
 
-namespace Examples.Features.CS70.RefLocalsAndReturns
+namespace Examples.Features.CSharp70.Tests.RefLocalsAndReturns
 {
     /// <summary>
     /// Tests for Ref locals and returns in C# 7.0.
     /// </summary>
     public class RefLocalsAndReturnsTests
     {
-
         [Fact]
-        public void WhenUsingRefLocals()
+        public void When_UpdatingValueWithRefLocal_Then_UpdatesAreReflectedInReference()
         {
             int a = 1;
             ref int alias = ref a;
 
-            a.Is(1);
-            alias.Is(a);
+            Assert.Equal(a, alias);
 
             // update origin.
             a = 2;
-
-            a.Is(2);
-            alias.Is(a);
+            Assert.Equal(a, alias);
 
             // update alias.
             alias = 3;
-
-            a.Is(3);
-            alias.Is(a);
-
-            return;
+            Assert.Equal(a, alias);
         }
 
-        [Fact]
-        public void WhenUsingRefLocals_WithArray()
-        {
-            int[] xs = new[] { 0, 0, 0 };
 
-            ref int element0 = ref xs[0];
+        [Fact]
+        public void When_UpdatingArrayWithRefLocal_Then_UpdatesAreReflectedInOriginal()
+        {
+            int[] array = new[] { 0, 0, 0 };
+
+            ref int element0 = ref array[0];
+            // update element.
             element0 = 1;
 
-            ref int element2 = ref xs[2];
+            ref int element2 = ref array[2];
+            // update element.
             element2 = 3;
 
-            xs.IsStructuralEqual(new[] { 1, 0, 3 });
-
-            return;
+            var expected = new[] { 1, 0, 3 };
+            Assert.True(expected.SequenceEqual(array));
         }
 
         [Fact]
-        public void WhenUsingRefReturnFunction()
+        public void When_UpdatingArrayWithRefReturnFunction_Then_UpdatesAreReflectedInOriginal()
         {
-            int[] xs = new[] { 10, 20, 30, 40 };
+            int[] array = new[] { 10, 20, 30, 40 };
 
-            ref int found = ref FindFirst(xs, s => s == 30);
+            ref int found = ref FindFirst(array, e => e == 30);
+            // update element.
             found = 0;
 
-            xs.IsStructuralEqual(new[] { 10, 20, 0, 40 });
-
-            return;
+            var expected = new[] { 10, 20, 0, 40 };
+            Assert.True(expected.SequenceEqual(array));
 
             ref int FindFirst(int[] numbers, Func<int, bool> predicate)
             {
@@ -78,7 +71,7 @@ namespace Examples.Features.CS70.RefLocalsAndReturns
         }
 
         [Fact]
-        public void WhenUsingRefReturnFunction_WithMatrix()
+        public void When_UpdatingMatrixWithRefLocalFunction_Then_UpdatesAreReflectedInOriginal()
         {
             int[,] array2d = new[,] {
                 { 0, 0, 1 },
@@ -86,18 +79,17 @@ namespace Examples.Features.CS70.RefLocalsAndReturns
                 { 1, 0, 0 },
             };
 
-            array2d[0, 2].Is(1);
-            array2d[1, 1].Is(1);
-            array2d[2, 0].Is(1);
+            Assert.Equal(1, array2d[0, 2]);
+            Assert.Equal(1, array2d[1, 1]);
+            Assert.Equal(1, array2d[2, 0]);
 
             ref var found = ref Find(array2d, s => s > 0);
+            // update element.
             found = 0;
 
-            array2d[0, 2].Is(0);
-            array2d[1, 1].Is(1);
-            array2d[2, 0].Is(1);
-
-            return;
+            Assert.Equal(0, array2d[0, 2]);
+            Assert.Equal(1, array2d[1, 1]);
+            Assert.Equal(1, array2d[2, 0]);
 
             ref int Find(int[,] matrix, Func<int, bool> predicate)
             {
@@ -113,28 +105,28 @@ namespace Examples.Features.CS70.RefLocalsAndReturns
                 }
                 throw new InvalidOperationException("Not found");
             }
-
         }
 
         [Fact]
-        public void WhenUsingRefReturnFunction_WithClassArray()
+        public void When_UpdateCollectionWithRefReturnMember_Then_UpdatesAreReflectedInOriginal()
         {
             var bc = new BookCollection();
 
-            ref var found = ref bc.GetBookByTitle("Call of the Wild, The");
-
-            found.Is(x => x.Title == "Call of the Wild, The" && x.Author == "Jack London");
-
-            found = new Book { Title = "Republic, The", Author = "Plato" };
-
-            // search for the same thing again.
             ref var book = ref bc.GetBookByTitle("Call of the Wild, The");
 
-            book.IsNull();
+            Assert.Equal("Call of the Wild, The", book.Title);
+            Assert.Equal("Jack London", book.Author);
 
+            // update element reference.
+            book = new Book { Title = "Republic, The", Author = "Plato" };
+
+            // search for the same thing again.
+            ref var again = ref bc.GetBookByTitle("Call of the Wild, The");
+
+            Assert.Null(again);
         }
 
-        private class BookCollection
+        public class BookCollection
         {
             private readonly Book[] _books = {
                 new Book { Title = "Call of the Wild, The", Author = "Jack London" },
@@ -155,29 +147,29 @@ namespace Examples.Features.CS70.RefLocalsAndReturns
         }
 
         [Fact]
-        public void WhenUsingRefReturnFunction_WithStructArray()
+        public void When_UpdatingStructArrayWithRefReturnFunction_Then_UpdatesAreReflectedInOriginal()
         {
             Figure[] array = Enumerable.Range(0, 10)
                 .Select(n => new Figure { Id = n, Name = $"fig.{n}" })
                 .ToArray();
 
             // define ref variable.
-            ref Figure found = ref Find(7, array);
+            ref Figure byRefValue = ref Find(7, array);
 
             // Updated array over reference to found(ref variable).
-            found = new Figure { Id = 999, Name = "new." };
-            array[7].Id.Is(999);
-            array[7].Name.Is("new.");
+            byRefValue = new Figure { Id = 999, Name = "updated." };
+
+            Assert.Equal(999, array[7].Id);
+            Assert.Equal("updated.", array[7].Name);
 
             // define normal variable.
-            Figure figureByVal = Find(5, array);
+            Figure byValue = Find(5, array);
 
             // Not update array.
-            figureByVal = new Figure { Id = 888, Name = "not update." };
-            array[5].Id.Is(5);
-            array[5].Name.Is("fig.5");
+            byValue = new Figure { Id = 888, Name = "not update." };
 
-            return;
+            Assert.Equal(5, array[5].Id);
+            Assert.Equal("fig.5", array[5].Name);
 
             // define ref return function.
             ref Figure Find(int id, Figure[] figures)

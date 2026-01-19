@@ -1,8 +1,7 @@
 using System;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS70.PatternMatching
+namespace Examples.Features.CSharp70.Tests.PatternMatching
 {
     /// <summary>
     /// Tests for Constant patterns of pattern matching in C# 7.0.
@@ -14,36 +13,22 @@ namespace Examples.Features.CS70.PatternMatching
         [InlineData(103, true)]
         [InlineData(202, false)]
         [InlineData(301, true)]
-        public void WhenUsingIfExpressions(object input, bool expected)
+        public void When_UsingIfExpressions_Then_ReturnsByExplicitlyConstants(object input, bool expected)
         {
-            var actual = IsIntConstant(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, IsIntConstant(input));
 
             bool IsIntConstant(object value)
             {
                 // Constant Pattern: `is <constant>`
-                if ((input is 103) || (input is 207) || (input is 301))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return (value is 103) || (value is 207) || (value is 301);
             }
-
         }
 
         [Theory]
         [MemberData(nameof(SwitchStatementsData))]
-        public void WhenUsingSwitchStatements(int input, decimal expected)
+        public void When_UsingSwitchStatements_Then_ReturnsByExplicitlyConstants(int input, decimal expected)
         {
-            var actual = GetGroupTicketPrice(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, GetGroupTicketPrice(input));
 
             decimal GetGroupTicketPrice(int visitorCount)
             {
@@ -75,36 +60,23 @@ namespace Examples.Features.CS70.PatternMatching
         [Theory]
         [InlineData(null, true)]
         [InlineData("abc", false)]
-        public void WhenUsingIfExpressions_WithNull(object input, bool expected)
+        public void When_UsingIfExpressionsIsNull_Then_CheckingForNull(object input, bool expected)
         {
-            var actual = IsNull(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, IsNull(input));
 
             bool IsNull(object value)
             {
                 // Null Constant Pattern: `is null`
-                if (value is null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return value is null;
             }
         }
 
         [Theory]
         [InlineData(null, true)]
         [InlineData("abc", false)]
-        public void WhenUsingSwitchStatements_WithNull(object input, bool expected)
+        public void When_UsingSwitchStatementsCaseIsNull_Then_CheckingForNull(object input, bool expected)
         {
-            bool actual = IsNull(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, IsNull(input));
 
             bool IsNull(object value)
             {
@@ -133,24 +105,14 @@ namespace Examples.Features.CS70.PatternMatching
         [InlineData(ContactType.MobilePhone, true)]
         [InlineData(ContactType.Email, false)]
         [InlineData(ContactType.SocialNetwork, false)]
-        public void WhenUsingIfExpressions_WithEnum(ContactType input, bool expected)
+        public void When_UsingExpressionsWithEnum_Then_CanBeUsedAsConstant(ContactType input, bool expected)
         {
-            var actual = IsPhoneContact(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, IsPhoneContact(input));
 
             bool IsPhoneContact(object value)
             {
                 // Constant Pattern: `is <constant>`
-                if (value is ContactType.MobilePhone || value is ContactType.Phone)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return value is ContactType.MobilePhone || value is ContactType.Phone;
             }
         }
 
@@ -160,12 +122,9 @@ namespace Examples.Features.CS70.PatternMatching
         [InlineData(ContactType.MobilePhone, "000-0000-0000")]
         [InlineData(ContactType.Email, "xxxxxxx@xxxxxxxx.xx.xx")]
         [InlineData(ContactType.SocialNetwork, "@xxxxxxxxxx")]
-        public void WhenUsingSwitchStatements_WithEnum(ContactType input, string expected)
+        public void When_UsingSwitchStatementsWithEnum_Then_CanBeUsedAsConstant(ContactType input, string expected)
         {
-            var actual = GetPattern(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, GetPattern(input));
 
             string GetPattern(ContactType value)
             {
