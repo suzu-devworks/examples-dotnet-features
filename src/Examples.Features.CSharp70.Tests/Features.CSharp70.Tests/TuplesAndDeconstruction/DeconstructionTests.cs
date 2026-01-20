@@ -26,7 +26,7 @@ namespace Examples.Features.CSharp70.Tests.TuplesAndDeconstruction
         }
 
         [Fact]
-        public void WhenUsingExtensionMethod()
+        public void When_UsingDeconstructExtensionMethod_Then_Works()
         {
             // KeyValuePair has no `Deconstruct` definition.
             var (key, value) = new KeyValuePair<string, int>("one", 1);
