@@ -1,9 +1,8 @@
 using System.Linq;
-using ChainingAssertion;
-using Examples.Features.CS72.InModifierOnParameters.Fixtures;
+using Examples.Features.CSharp72.Tests.InModifierOnParameters.Fixtures;
 using Xunit;
 
-namespace Examples.Features.CS72.InModifierOnParameters
+namespace Examples.Features.CSharp72.Tests.InModifierOnParameters
 {
     /// <summary>
     /// Tests for Verifying hidden copy with in modifier parameter in C# 7.2.
@@ -11,7 +10,7 @@ namespace Examples.Features.CS72.InModifierOnParameters
     public class HiddenCopiesOfMemoryTests
     {
         [Fact]
-        public void WhenUsingInModifier_WithMutableObject_HiddenCopiesOfMemoryForReadOnly()
+        public void When_UsingInModifierWithMutableObject_Then_HiddenCopiesOfMemoryForReadOnly()
         {
             var counter = new Counter();
 
@@ -20,7 +19,7 @@ namespace Examples.Features.CS72.InModifierOnParameters
                 foreach (var i in Enumerable.Range(1, 3))
                 {
                     var actual = GetCount(counter);          // Counter is memory copied.
-                    actual.Is(1);
+                    Assert.Equal(1, actual);
                 }
 
                 int GetCount(Counter c) => c.IncrementedCount;
@@ -31,7 +30,7 @@ namespace Examples.Features.CS72.InModifierOnParameters
                 foreach (var i in Enumerable.Range(1, 3))
                 {
                     var actual = GetCount(counter);        // Counter is memory copied to maintain reading.
-                    actual.Is(1);
+                    Assert.Equal(1, actual);
                 }
 
                 int GetCount(in Counter c) => c.IncrementedCount;
@@ -39,31 +38,33 @@ namespace Examples.Features.CS72.InModifierOnParameters
 
             // call by ref modifier
             {
-
                 foreach (var i in Enumerable.Range(1, 3))
                 {
                     var actual = GetCount(ref counter);   // no copy
-                    actual.Is(i);
+                    Assert.Equal(i, actual);
                 }
 
                 int GetCount(ref Counter c) => c.IncrementedCount;
             }
+        }
 
-            return;
+        public struct Counter
+        {
+            private int _count;
+
+            public int IncrementedCount => ++_count;
         }
 
         [Fact]
-        public void WhenUsingInModifier_WithReadOnlyStruct_AvoidsHiddenCopiesOfMemory()
+        public void When_UsingInModifierWithReadOnlyStruct_Then_AvoidsHiddenCopiesOfMemory()
         {
             var value = new NoReadOnly(100);
             var actual = HiddenCopies.GetValue(value, 999);
-            actual.Is(100);         // not modified.
+            Assert.Equal(100, actual);         // not modified.
 
             var readValue = new ReadOnly(200);
             var readonlyActual = HiddenCopies.GetValue(readValue, 999);
-            readonlyActual.Is(200); // not modified.
-
-            return;
+            Assert.Equal(200, readonlyActual); // not modified.
         }
 
         private static class HiddenCopies
@@ -84,6 +85,7 @@ namespace Examples.Features.CS72.InModifierOnParameters
                 return input.Value;
             }
         }
+
 
     }
 }

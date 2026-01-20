@@ -1,7 +1,6 @@
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS72.ConditionalRefExpressions
+namespace Examples.Features.CSharp72.Tests.ConditionalRefExpressions
 {
     /// <summary>
     /// Tests for Conditional <c>ref</c> expressions in C# 7.2.
@@ -9,7 +8,7 @@ namespace Examples.Features.CS72.ConditionalRefExpressions
     public class ConditionalRefExpressionsTests
     {
         [Fact]
-        public void BasicUsage()
+        public void When_UsingConditionalRefExpression_Then_CanReceiveResultByReference()
         {
             int a = 100;
             int b = 200;
@@ -19,10 +18,8 @@ namespace Examples.Features.CS72.ConditionalRefExpressions
 
             alias *= 2;
 
-            a.Is(100);
-            b.Is(400);
-
-            return;
+            Assert.Equal(100, a);
+            Assert.Equal(400, b);
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Examples.Features.CS72.RefReadonlyModifierOnMethodReturns.Fixtures
+namespace Examples.Features.CSharp72.Tests.RefReadonlyModifierOnMethodReturns.Fixtures
 {
     public struct SamplePoint
     {

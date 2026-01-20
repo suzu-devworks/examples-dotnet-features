@@ -18,6 +18,7 @@
     "contravariantly",
     "covariantly",
     "nameof",
+    "stackalloc",
     "Xunit"
   ],
   "import": []

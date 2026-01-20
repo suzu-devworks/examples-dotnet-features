@@ -1,8 +1,7 @@
 using System;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS72.ReadonlyStructTypes
+namespace Examples.Features.CSharp72.Tests.ReadonlyStructTypes
 {
     /// <summary>
     /// Tests for Declare <c>readonly</c> struct types in C# 7.2.
@@ -11,7 +10,7 @@ namespace Examples.Features.CS72.ReadonlyStructTypes
     public class ReadonlyStructTypesTests
     {
         [Fact]
-        public void BasicUsage()
+        public void When_UsingReadonlyStruct_Then_PropertiesAreReadOnly()
         {
             var point1 = new Coords(100.0, 100.0);
 
@@ -19,18 +18,16 @@ namespace Examples.Features.CS72.ReadonlyStructTypes
             // point1.X = 0;
             // point1.Y = 0;
 
-            point1.Is(p => p.X == 100.0 && p.Y == 100.0);
+            Assert.True(point1.X == 100.0 && point1.Y == 100.0);
 
             // overwrite!
             point1 = new Coords(200.0, 200.0);
-
-            point1.Is(p => p.X == 200.0 && p.Y == 200.0);
+            Assert.True(point1.X == 200.0 && point1.Y == 200.0);
 
             // By the way, find the distance between two points.
             var distance = point1.GetDistance(new Coords(180.0, 120.0));
-            distance.Is(x => 82.46 < x && x < 82.47);
+            Assert.True(82.46 < distance && distance < 82.47);
 
-            return;
         }
 
         // C# 7.1 : error CS8302: Feature 'readonly structs' is not available in C# 7.1. Please use language version 7.2 or greater.

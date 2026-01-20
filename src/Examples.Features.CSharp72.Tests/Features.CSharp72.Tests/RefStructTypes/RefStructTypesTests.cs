@@ -1,8 +1,7 @@
 using System;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS72.RefStructTypes
+namespace Examples.Features.CSharp72.Tests.RefStructTypes
 {
     /// <summary>
     /// Tests for Declare <c>ref struct</c> types in for C# 7.2.
@@ -11,7 +10,7 @@ namespace Examples.Features.CS72.RefStructTypes
     public class RefStructTypesTests
     {
         [Fact]
-        public void BasicUsage()
+        public void When_UsingRefStruct_Then_CannotExposeScopedVariablesOutside()
         {
             // C# 7.1 :error CS8302: Feature 'ref structs' is not available in C# 7.1. Please use language version 7.2 or greater.
             Span<int> local = stackalloc int[1];
@@ -22,7 +21,7 @@ namespace Examples.Features.CS72.RefStructTypes
 
                 ModifyStruct(ref @struct);
 
-                @struct.Id.Is(1);
+                Assert.Equal(1, @struct.Id);
 
                 void ModifyStruct(ref NormalStruct param)
                 {
@@ -38,7 +37,7 @@ namespace Examples.Features.CS72.RefStructTypes
 
                 ModifyStruct(ref @struct);
 
-                @struct.Id.Is(0);
+                Assert.Equal(0, @struct.Id);
 
                 void ModifyStruct(ref RefStruct param)
                 {
@@ -56,7 +55,7 @@ namespace Examples.Features.CS72.RefStructTypes
 
                 ModifyStruct(ref @struct);
 
-                @struct.Id.Is(0);
+                Assert.Equal(0, @struct.Id);
 
                 void ModifyStruct(ref ReadonlyRefStruct param)
                 {

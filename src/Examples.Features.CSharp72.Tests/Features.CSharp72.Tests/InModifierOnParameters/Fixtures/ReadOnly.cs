@@ -1,14 +1,5 @@
-namespace Examples.Features.CS72.InModifierOnParameters.Fixtures
+namespace Examples.Features.CSharp72.Tests.InModifierOnParameters.Fixtures
 {
-    public struct NoReadOnly
-    {
-        public int Value;
-
-        public NoReadOnly(int value) => Value = value;
-
-        public void SetValue(int value) => Value = value;
-    }
-
     // C# 7.1 : error CS8302: Feature 'readonly structs' is not available in C# 7.1. Please use language version 7.2 or greater.
     public readonly struct ReadOnly
     {
@@ -22,5 +13,4 @@ namespace Examples.Features.CS72.InModifierOnParameters.Fixtures
         // public void M(int value) => X = value;
         public void SetValue(int value) => _ = value;
     }
-
 }

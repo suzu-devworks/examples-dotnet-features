@@ -1,7 +1,6 @@
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS72.NonTrailingNamedArguments
+namespace Examples.Features.CSharp72.Tests.NonTrailingNamedArguments
 {
     /// <summary>
     /// Tests for Non-trailing named arguments in C# 7.2.
@@ -9,7 +8,7 @@ namespace Examples.Features.CS72.NonTrailingNamedArguments
     public class NonTrailingNamedArgumentsTests
     {
         [Fact]
-        public void BasicUsage()
+        public void When_UsingNonTrailingNamedArguments_Then_AllMethodCallVariationsWork()
         {
             // The method can be called in the normal way, by using positional arguments.
             PrintOrderDetails("Gift Shop", 31, "Red Mug");
@@ -34,15 +33,11 @@ namespace Examples.Features.CS72.NonTrailingNamedArguments
             // error CS8323: Named argument 'orderNum' is used out-of - position but is followed by an unnamed argument
             //PrintOrderDetails(orderNum: 31, productName: "Red Mug", "Gift Shop");
 
-            return;
-
             void PrintOrderDetails(string sellerName, int orderNum, string productName)
             {
-                sellerName.Is("Gift Shop");
-                orderNum.Is(31);
-                productName.Is("Red Mug");
-
-                return;
+                Assert.Equal("Gift Shop", sellerName);
+                Assert.Equal(31, orderNum);
+                Assert.Equal("Red Mug", productName);
             }
         }
     }

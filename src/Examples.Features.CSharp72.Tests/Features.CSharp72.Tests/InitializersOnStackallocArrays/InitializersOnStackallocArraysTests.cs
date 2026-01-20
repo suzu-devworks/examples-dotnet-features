@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS72.InitializersOnStackallocArrays
+namespace Examples.Features.CSharp72.Tests.InitializersOnStackallocArrays
 {
     /// <summary>
     /// Tests for Initializers on stackalloc arrays in C# 7.2.
@@ -14,7 +13,7 @@ namespace Examples.Features.CS72.InitializersOnStackallocArrays
     public class InitializersOnStackallocArraysTests
     {
         [Fact]
-        public void WhenCreatingAReadBuffer_UsingSpan()
+        public void When_AllocatingMemoryWithStackalloc_Then_CanUseSpanToHandleStackMemory()
         {
             var encoding = Encoding.UTF8;
             var bufferSize = 32;
@@ -27,7 +26,7 @@ namespace Examples.Features.CS72.InitializersOnStackallocArrays
 
             var list = new List<byte>();
 
-            using (var reader = new MemoryStream(encoding.GetBytes(Text)))
+            using (var reader = new MemoryStream(encoding.GetBytes(ExpectedText)))
             {
                 int count;
                 while ((count = reader.Read(buffer)) > 0)
@@ -37,12 +36,10 @@ namespace Examples.Features.CS72.InitializersOnStackallocArrays
             }
 
             var actual = encoding.GetString(list.ToArray());
-            actual.Is(Text);
-
-            return;
+            Assert.Equal(ExpectedText, actual);
         }
 
-        private static readonly string Text = @"The C# language relies on types and methods
+        private static readonly string ExpectedText = @"The C# language relies on types and methods
             in what the C# specification defines as a standard library for some of the features.
             The .NET platform delivers those types and methods in a number of packages.
             One example is exception processing. Every throw statement or expression
@@ -53,15 +50,15 @@ namespace Examples.Features.CS72.InitializersOnStackallocArrays
             You can learn more about the relationships between language and library for background on this dependency.";
 
         [Fact]
-        public void WhenCreatingReadBuffer_UsingFactory()
+        public void When_AllocatingMemoryWithStackalloc_Then_CannotBeUsedOutsideScopeOfDeclaration()
         {
             Span<byte> buffer = CreateBuffer(32);
 
-            buffer.Length.Is(32);
+            Assert.Equal(32, buffer.Length);
 
             Span<byte> CreateBuffer(int size)
             {
-                if (size > 1000) { throw new ArgumentOutOfRangeException(); }
+                ArgumentOutOfRangeException.ThrowIfGreaterThan(size, 1000);
 
                 // C# 7.1 : error CS8302: Feature 'ref structs' is not available in C# 7.1. Please use language version 7.2 or greater.
                 Span<byte> stack = stackalloc byte[size];
@@ -70,8 +67,7 @@ namespace Examples.Features.CS72.InitializersOnStackallocArrays
                 // return stack;
 
                 return new byte[size];
-            };
-            return;
+            }
         }
 
     }

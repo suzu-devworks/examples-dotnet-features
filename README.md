@@ -1,4 +1,5 @@
 # examples-dotnet-features
+
 Workspace for studying dotnet programming.
 
 ---
@@ -6,11 +7,9 @@ Workspace for studying dotnet programming.
 [![build](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/dotnet-build.yml)
 [![CodeQL](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/codeql.yml)
 
-
 ## References
 
 - [Wikipedia ...](https://en.wikipedia.org/wiki/C_Sharp_(programming_language))
-
 
 ## C# features
 
@@ -20,7 +19,7 @@ Workspace for studying dotnet programming.
 - [C# version 9.0](./src/Examples.Features.CS90.Tests/)
 - [C# version 8.0](./src/Examples.Features.CS80.Tests/)
 - [C# version 7.3](./src/Examples.Features.CS73.Tests/)
-- [C# version 7.2](./src/Examples.Features.CS72.Tests/)
+- [C# version 7.2](./src/Examples.Features.CSharp72.Tests.Tests/)
 - [C# version 7.1](./src/Examples.Features.CS71.Tests/)
 - [C# version 7.0](./src/Examples.Features.CS70.Tests/)
 - [C# version 6.0](./src/Examples.Features.CS60.Tests/)
