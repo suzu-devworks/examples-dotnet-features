@@ -1,10 +1,9 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS73.AttachAttributesToBackingFields
+namespace Examples.Features.CSharp73.Tests.AttachAttributesToBackingFields
 {
     /// <summary>
     /// Tests for Attach attributes to the backing field of auto-implemented properties in C# 7.3.
@@ -12,7 +11,7 @@ namespace Examples.Features.CS73.AttachAttributesToBackingFields
     public class AttachAttributesToBackingFieldsTests
     {
         [Fact]
-        public void BasicUsage()
+        public void When_AttachingAttributesToBackingFields_Then_AttributesAreRecognized()
         {
             // It appears that `NonSerializedAttribute` is only used in `SoapFormatter`(system.runtime.serialization.formatters.soap.dll).
             // `BinaryFormatter` is deprecated.
@@ -23,7 +22,7 @@ namespace Examples.Features.CS73.AttachAttributesToBackingFields
                     .Where(x => x.GetCustomAttributes(inherit: false)
                                     .Any(a => a is NonSerializedAttribute));
 
-                fields.Count().Is(2);
+                Assert.Equal(2, fields.Count());
             }
 
             // C# 7.3 or later
@@ -32,10 +31,8 @@ namespace Examples.Features.CS73.AttachAttributesToBackingFields
                     .Where(x => x.GetCustomAttributes(inherit: false)
                                     .Any(a => a is NonSerializedAttribute));
 
-                fields.Count().Is(2);
+                Assert.Equal(2, fields.Count());
             }
-
-            return;
         }
 
         public class OldFigure

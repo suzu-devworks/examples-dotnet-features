@@ -1,4 +1,4 @@
-namespace Examples.Features.CS73.ReassignRefLocalVariables.Fixtures
+namespace Examples.Features.CSharp73.Tests.ReassignRefLocalVariables.Fixtures
 {
     public struct Figure
     {

@@ -1,10 +1,24 @@
-# Examples.Features.CS73.Tests
+# C# version 7.3 (Examples.Features.CSharp73.Tests)
 
-## C# version 7.3
+## Table of contents. <!-- omit in toc -->
 
-### See also
+- [Overview](#overview)
+  - [Since](#since)
+- [Features](#features)
+  - [Accessing fixed fields without pinning](#accessing-fixed-fields-without-pinning)
+  - [Reassign ref local variables](#reassign-ref-local-variables)
+  - [Using initializers on stackalloc arrays](#using-initializers-on-stackalloc-arrays)
+  - [Using fixed statements with any type that supports a pattern](#using-fixed-statements-with-any-type-that-supports-a-pattern)
+  - [Using more generic constraints](#using-more-generic-constraints)
+  - [Testing == and != with tuple types](#testing--and--with-tuple-types)
+  - [Using expression variables in more locations](#using-expression-variables-in-more-locations)
+  - [Attach attributes to the backing field of auto-implemented properties](#attach-attributes-to-the-backing-field-of-auto-implemented-properties)
+  - [Method resolution when arguments differ by in has been improved](#method-resolution-when-arguments-differ-by-in-has-been-improved)
+  - [Overload resolution now has fewer ambiguous cases](#overload-resolution-now-has-fewer-ambiguous-cases)
 
-* [The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-73)
+## Overview
+
+- [The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-73)
 
 ### Since
 
@@ -13,36 +27,15 @@
 - .NET Framework 4.8
 - Visual Studio 2017 version 15.7
 
-
-## Table of contents. <!-- omit in toc -->
-
-- [Examples.Features.CS73.Tests](#examplesfeaturescs73tests)
-  - [C# version 7.3](#c-version-73)
-    - [See also](#see-also)
-    - [Since](#since)
-  - [Features](#features)
-    - [\*Accessing fixed fields without pinning.](#accessing-fixed-fields-without-pinning)
-    - [Reassign ref local variables.](#reassign-ref-local-variables)
-    - [Using initializers on stackalloc arrays.](#using-initializers-on-stackalloc-arrays)
-    - [\*Using fixed statements with any type that supports a pattern.](#using-fixed-statements-with-any-type-that-supports-a-pattern)
-    - [\*Using more generic constraints.](#using-more-generic-constraints)
-    - [Testing == and != with tuple types.](#testing--and--with-tuple-types)
-    - [Using expression variables in more locations.](#using-expression-variables-in-more-locations)
-    - [Attach attributes to the backing field of auto-implemented properties.](#attach-attributes-to-the-backing-field-of-auto-implemented-properties)
-    - [\*Method resolution when arguments differ by in has been improved.](#method-resolution-when-arguments-differ-by-in-has-been-improved)
-    - [Overload resolution now has fewer ambiguous cases.](#overload-resolution-now-has-fewer-ambiguous-cases)
-
-
 ## Features
 
-### *Accessing fixed fields without pinning.
+### Accessing fixed fields without pinning
 
 > ピン留めを使用せずに fixed フィールドにアクセスできます。
 
-* `unsafe` なので保留。
+- `unsafe` なので保留。
 
-
-### Reassign ref local variables.
+### Reassign ref local variables
 
 > `ref` ローカル変数を再割り当てできます。
 
@@ -57,7 +50,7 @@ ref int rx = ref x;
 rx = ref y
 ```
 
-### Using initializers on stackalloc arrays.
+### Using initializers on stackalloc arrays
 
 > `stackalloc` 配列で初期化子を使用できます。
 
@@ -73,8 +66,7 @@ Span<int> arr3 = stackalloc int[] { 1, 2, 3 };
 Span<int> arr4 = stackalloc[] { 1, 2, 3 };
 ```
 
-
-### *Using fixed statements with any type that supports a pattern.
+### Using fixed statements with any type that supports a pattern
 
 > パターンをサポートする型と共に fixed ステートメントを使用できます。
 
@@ -82,18 +74,16 @@ Span<int> arr4 = stackalloc[] { 1, 2, 3 };
 
 `GetPinnableReference()`というメソッドが重要らしい。
 
-
-### *Using more generic constraints.
+### Using more generic constraints
 
 > ジェネリック型制約が追加されました。
 
-* `unmanaged`
-* `System.Enum`
-* `System.Delegate`
-* `System.MulticastDelegate`
+- `unmanaged`
+- `System.Enum`
+- `System.Delegate`
+- `System.MulticastDelegate`
 
-
-### Testing == and != with tuple types.
+### Testing == and != with tuple types
 
 > タプル型を使用して == と != をテストできます。
 
@@ -118,14 +108,13 @@ var t2 = (B: 5, A: 10);
 (t1 != t2).IsFalse();
 ```
 
-
-### Using expression variables in more locations.
+### Using expression variables in more locations
 
 > 式の変数をより多くの場所で使用できます。
 
 C# 7.0から式中で、 `is` 演算子や `out` 変数宣言を使って、 式中でも変数宣言できるようになりましたが、 いくつか制限がありました。 C# 7.3で、これまではできなかった以下の個所でも変数宣言ができるようになりました。
 
-* クエリ式
+- クエリ式
 
 ```cs
 // C# 7.3 or later
@@ -136,9 +125,9 @@ var q =
     select s;
 ```
 
-* コンストラクター初期子
-* フィールド初期化子
-* プロパティ初期化子
+- コンストラクター初期子
+- フィールド初期化子
+- プロパティ初期化子
 
 ```cs
 // C# 7.3 or later
@@ -161,8 +150,7 @@ public class Derived
 }
 ```
 
-
-### Attach attributes to the backing field of auto-implemented properties.
+### Attach attributes to the backing field of auto-implemented properties
 
 > 自動実装プロパティのバッキング フィールドに `field` 指定の属性を指定できます。
 
@@ -180,18 +168,16 @@ public double X { get; set; }
 public event PropertyChangedEventHandler PropertyChanged;
 ```
 
-
-### *Method resolution when arguments differ by in has been improved.
+### Method resolution when arguments differ by in has been improved
 
 > 引数が in によって異なる場合のメソッド解決が改善されました。
 
-* [see ...](https://docs.microsoft.com/ja-jp/dotnet/csharp/language-reference/keywords/in-parameter-modifier#overload-resolution-rules)
+- [see ...](https://docs.microsoft.com/ja-jp/dotnet/csharp/language-reference/keywords/in-parameter-modifier#overload-resolution-rules)
 
-
-### Overload resolution now has fewer ambiguous cases.
+### Overload resolution now has fewer ambiguous cases
 
 > オーバーロードの解決のあいまいなケースが削減されました。
 
-* 静的メソッドかインスタンス メソッドかの違いで解決できるようになった
-* ジェネリック型制約の違いで解決できるようになった
-* メソッド グループを引数にするとき、メソッドの戻り値を見るようになった
+- 静的メソッドかインスタンス メソッドかの違いで解決できるようになった
+- ジェネリック型制約の違いで解決できるようになった
+- メソッド グループを引数にするとき、メソッドの戻り値を見るようになった

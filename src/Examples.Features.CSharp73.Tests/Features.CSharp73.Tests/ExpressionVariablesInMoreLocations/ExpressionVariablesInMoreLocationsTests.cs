@@ -1,8 +1,7 @@
 using System.Linq;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS73.ExpressionVariablesInMoreLocations
+namespace Examples.Features.CSharp73.Tests.ExpressionVariablesInMoreLocations
 {
     /// <summary>
     /// Tests for Using expression variables in more locations in C# 7.3.
@@ -10,7 +9,7 @@ namespace Examples.Features.CS73.ExpressionVariablesInMoreLocations
     public class ExpressionVariablesInMoreLocationsTests
     {
         [Fact]
-        public void WhenDeclaringVariables_WithinQueryExpression()
+        public void When_DeclaringVariablesWithinQueryExpression_Then_VariablesCanBeUsedInFilters()
         {
             var query =
                 from s in new[] { "a", "abc", "112", "132", "451", null }
@@ -20,29 +19,26 @@ namespace Examples.Features.CS73.ExpressionVariablesInMoreLocations
                 where int.TryParse(s, out var x) && (x % 3) == 0
                 select s;
 
-            query.ToArray().IsStructuralEqual(new[] { "132" });
-
-            return;
+            var expected = new[] { "132" };
+            Assert.Equal(expected, query.ToArray());
         }
 
         [Fact]
-        public void WhenDeclaringVariables_WithinMemberInitializers()
+        public void When_DeclaringVariablesWithinMemberInitializers_Then_VariablesCanBeUsedInInitializers()
         {
             Derived instance;
 
             instance = new Derived(100);
 
-            instance.Is(x => x.Value == 100 && x.Field == 123 && x.Property == 123);
+            Assert.True(instance.Value == 100 && instance.Field == 123 && instance.Property == 123);
 
             instance = new Derived("200");
 
-            instance.Is(x => x.Value == 200 && x.Field == 123 && x.Property == 123);
+            Assert.True(instance.Value == 200 && instance.Field == 123 && instance.Property == 123);
 
             instance = new Derived("ABC");
 
-            instance.Is(x => x.Value == int.MinValue && x.Field == 123 && x.Property == 123);
-
-            return;
+            Assert.True(instance.Value == int.MinValue && instance.Field == 123 && instance.Property == 123);
         }
 
         private class Base

@@ -1,7 +1,6 @@
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS73.TestingEqualsWithTupleTypes
+namespace Examples.Features.CSharp73.Tests.TestingEqualsWithTupleTypes
 {
     /// <summary>
     /// Tests for Testing == and != with tuple types in C# 7.3.
@@ -9,7 +8,7 @@ namespace Examples.Features.CS73.TestingEqualsWithTupleTypes
     public class TestingEqualsWithTupleTypesTests
     {
         [Fact]
-        public void WhenTestingEqualityOfTuples_WithDifferentTypes()
+        public void When_ComparingTuples_Then_ImplicitConversionsWork()
         {
             (int a, byte b) left = (5, 10);
             (long a, int b) right = (5, 10);
@@ -17,16 +16,16 @@ namespace Examples.Features.CS73.TestingEqualsWithTupleTypes
             //  int -> long : ok
             //  byte -> int: ok
             // C# 7.2 : error CS8320: Feature 'tuple equality' is not available in C# 7.2. Please use language version 7.3 or greater.
-            (left == right).IsTrue();
-            (left != right).IsFalse();
+            Assert.True(left == right);
+            Assert.False(left != right);
 
             (decimal, float) right2 = (5m, 10.0f);
             // implicit conversions:
             //  int -> decimal : ok
             //  byte -> float: ok
             // C# 7.2 : error CS8320: Feature 'tuple equality' is not available in C# 7.2. Please use language version 7.3 or greater.
-            (left == right2).IsTrue();
-            (left != right2).IsFalse();
+            Assert.True(left == right2);
+            Assert.False(left != right2);
 
             // error CS8384 Tuple types used as operands of an == or != operator must have matching cardinalities
             // (int a, byte b, int c) right3 = (5, 10, 0);
@@ -39,23 +38,19 @@ namespace Examples.Features.CS73.TestingEqualsWithTupleTypes
             //  float -> double: ok
             //  short -> decimal: ok
             // C# 7.2 : error CS8320: Feature 'tuple equality' is not available in C# 7.2. Please use language version 7.3 or greater.
-            (values1 == values2).IsTrue();
-            (values1 != values2).IsFalse();
-
-            return;
+            Assert.True(values1 == values2);
+            Assert.False(values1 != values2);
         }
 
         [Fact]
-        public void WhenTestingEqualityOfTuples_WithDifferentNames()
+        public void When_ComparingTuples_Then_NamesAreIgnored()
         {
             var left = (A: 5, B: 10);
             var right = (B: 5, A: 10);
 
             // C# 7.2 : error CS8320: Feature 'tuple equality' is not available in C# 7.2. Please use language version 7.3 or greater.
-            (left == right).IsTrue();
-            (left != right).IsFalse();
-
-            return;
+            Assert.True(left == right);
+            Assert.False(left != right);
         }
 
     }
