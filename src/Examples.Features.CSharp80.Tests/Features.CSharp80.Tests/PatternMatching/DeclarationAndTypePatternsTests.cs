@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS80.PatternMatchingEnhancements
+#pragma warning disable xUnit1045 // Avoid using TheoryData type arguments that might not be serializable
+
+namespace Examples.Features.CSharp80.Tests.PatternMatching
 {
     /// <summary>
     /// Tests for Declaration and type patterns of pattern matching in C# 8.0.
@@ -13,15 +14,14 @@ namespace Examples.Features.CS80.PatternMatchingEnhancements
     {
         [Theory]
         [MemberData(nameof(SwitchExpressionsData))]
-        public void WhenUsingSwitchExpressions(object input, string? expected)
+        public void When_EvaluatedInSwitchExpression_Then_AssignedResultToNewVariable(object input, string? expected)
         {
             var actual = GetMessage(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, actual);
 
             static string? GetMessage(object value)
             {
+                // C# 8.0 now allows you to use pattern matching in switch expressions.
                 return value switch
                 {
                     // Declaration Pattern: `<type> <variable> => ...`

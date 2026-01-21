@@ -1,8 +1,7 @@
 using System;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS80.IndicesAndRanges
+namespace Examples.Features.CSharp80.Tests.IndicesAndRanges
 {
     /// <summary>
     /// Tests for Indices and ranges in C# 8.0.
@@ -10,25 +9,23 @@ namespace Examples.Features.CS80.IndicesAndRanges
     public class IndicesTests
     {
         [Fact]
-        public void BasicUsage()
+        public void When_IndexUsed_Then_IndexesCreateCorrectly()
         {
             // Index implicit operator (int).
             Index expected = 1;
 
-            Index.FromStart(1).Is(expected);
-            new Index(1).Is(expected);
+            Assert.Equal(Index.FromStart(1), expected);
+            Assert.Equal(new Index(1), expected);
 
             // Index LIteral(fromEnd).
             var reverse = ^4;
 
-            Index.FromEnd(4).Is(reverse);
-            new Index(4, fromEnd: true).Is(reverse);
+            Assert.Equal(Index.FromEnd(4), reverse);
+            Assert.Equal(new Index(4, fromEnd: true), reverse);
 
             // Variable(int) to Index(fromEnd).
             var num = 4;
-            (^num).Is(reverse);
-
-            return;
+            Assert.Equal(^num, reverse);
         }
 
     }

@@ -1,8 +1,9 @@
-using ChainingAssertion;
-using Examples.Features.CS80.PatternMatchingEnhancements.Fixtures;
+using Examples.Features.CSharp80.Tests.PatternMatching.Fixtures;
 using Xunit;
 
-namespace Examples.Features.CS80.PatternMatchingEnhancements
+#pragma warning disable xUnit1045 // Avoid using TheoryData type arguments that might not be serializable
+
+namespace Examples.Features.CSharp80.Tests.PatternMatching
 {
     /// <summary>
     /// Tests for Property patterns of pattern matching in C# 8.0.
@@ -12,12 +13,10 @@ namespace Examples.Features.CS80.PatternMatchingEnhancements
     {
         [Theory]
         [MemberData(nameof(IfExpressionsData))]
-        public void WhenUsingIfExpressions(Segment input, bool expected)
+        public void When_PropertyPatternUsed_Then_DetectsEndOnXAxis(Segment input, bool expected)
         {
             var actual = IsAnyEndOnXAxis(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, actual);
 
             // Property patterns is equals: is { property: value }
             static bool IsAnyEndOnXAxis(Segment segment) =>

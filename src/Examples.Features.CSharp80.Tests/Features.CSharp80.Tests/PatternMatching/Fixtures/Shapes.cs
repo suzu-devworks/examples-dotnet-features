@@ -1,4 +1,4 @@
-namespace Examples.Features.CS80.PatternMatchingEnhancements.Fixtures
+namespace Examples.Features.CSharp80.Tests.PatternMatching.Fixtures
 {
     public abstract class Shape
     {

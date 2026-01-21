@@ -1,9 +1,10 @@
 using System;
-using ChainingAssertion;
-using Examples.Features.CS80.PatternMatchingEnhancements.Fixtures;
+using Examples.Features.CSharp80.Tests.PatternMatching.Fixtures;
 using Xunit;
 
-namespace Examples.Features.CS80.PatternMatchingEnhancements
+#pragma warning disable xUnit1045 // Avoid using TheoryData type arguments that might not be serializable
+
+namespace Examples.Features.CSharp80.Tests.PatternMatching
 {
     /// <summary>
     /// Tests for Tuple(Positional) patterns of pattern matching in C# 8.0.
@@ -13,15 +14,14 @@ namespace Examples.Features.CS80.PatternMatchingEnhancements
     {
         [Theory]
         [MemberData(nameof(SwitchExpressionsData))]
-        public void WhenUsingSwitchExpressions(Point input, string? expected)
+        public void When_EvaluatedInSwitchExpression_Then_ClassifiesPointCorrectly(Point input, string? expected)
         {
             var actual = GetClassify(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, actual);
 
             static string GetClassify(Point point)
             {
+                // C# 8.0 now allows you to use pattern matching in switch expressions.
                 // Specify a tuple, but you can also define a deconstructor.
                 return point switch
                 {
@@ -45,20 +45,12 @@ namespace Examples.Features.CS80.PatternMatchingEnhancements
 
 
         [Fact]
-        public void WhenCasingForStateMachine()
+        public void When_TuplePatternForStateMachine_Then_TransitionsStateCorrectly()
         {
             // Mads Torgersen's "Do More with Patterns in C# 8.0"
-
-            NewState(State.Locked, Operation.Open, new StateKey { IsValid = true })
-                .Is(State.Opened);
-
-            NewState(State.Opened, Operation.Close, new StateKey { IsValid = false })
-                .Is(State.Closed);
-
-            NewState(State.Opened, Operation.Lock, new StateKey { IsValid = false })
-                .Is(State.Opened);
-
-            return;
+            Assert.Equal(State.Opened, NewState(State.Locked, Operation.Open, new StateKey { IsValid = true }));
+            Assert.Equal(State.Closed, NewState(State.Opened, Operation.Close, new StateKey { IsValid = false }));
+            Assert.Equal(State.Opened, NewState(State.Opened, Operation.Lock, new StateKey { IsValid = false }));
 
             static State NewState(State state, Operation operation, StateKey key)
             {

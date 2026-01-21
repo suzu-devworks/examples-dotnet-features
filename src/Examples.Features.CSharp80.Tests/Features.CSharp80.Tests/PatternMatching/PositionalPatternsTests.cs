@@ -1,8 +1,9 @@
-using ChainingAssertion;
-using Examples.Features.CS80.PatternMatchingEnhancements.Fixtures;
+using Examples.Features.CSharp80.Tests.PatternMatching.Fixtures;
 using Xunit;
 
-namespace Examples.Features.CS80.PatternMatchingEnhancements
+#pragma warning disable xUnit1045 // Avoid using TheoryData type arguments that might not be serializable
+
+namespace Examples.Features.CSharp80.Tests.PatternMatching
 {
     /// <summary>
     /// Tests for Positional patterns of pattern matching in C# 8.0.
@@ -12,15 +13,14 @@ namespace Examples.Features.CS80.PatternMatchingEnhancements
     {
         [Theory]
         [MemberData(nameof(SwitchExpressionsData))]
-        public void WhenUsingSwitchExpressions(Shape input, string? expected)
+        public void When_EvaluatedInSwitchExpression_Then_MatchesValueFromDeconstruction(Shape input, string? expected)
         {
             var actual = GetClassify(input);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, actual);
 
             static string GetClassify(Shape shape)
             {
+                // C# 8.0 now allows you to use pattern matching in switch expressions.
                 return shape switch
                 {
                     // Positional patterns : <type>(item1, item2, item3 ... ) =>

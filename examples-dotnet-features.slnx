@@ -7,5 +7,6 @@
     <Project Path="src/Examples.Features.CSharp71.Tests/Examples.Features.CSharp71.Tests.csproj" />
     <Project Path="src/Examples.Features.CSharp72.Tests/Examples.Features.CSharp72.Tests.csproj" />
     <Project Path="src/Examples.Features.CSharp73.Tests/Examples.Features.CSharp73.Tests.csproj" />
+    <Project Path="src/Examples.Features.CSharp80.Tests/Examples.Features.CSharp80.Tests.csproj" />
   </Folder>
 </Solution>

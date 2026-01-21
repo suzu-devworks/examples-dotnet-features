@@ -1,9 +1,8 @@
 using System;
 using System.Linq;
-using ChainingAssertion;
 using Xunit;
 
-namespace Examples.Features.CS80.PatternMatchingEnhancements
+namespace Examples.Features.CSharp80.Tests.PatternMatching
 {
     /// <summary>
     /// Tests for var patterns of pattern matching in C# 8.0.
@@ -12,16 +11,15 @@ namespace Examples.Features.CS80.PatternMatchingEnhancements
     public class VarPatternsTests
     {
         [Theory]
-        [MemberData(nameof(IfExpressionData))]
-        public void WhenUsingSwitchExpressions(int input, int limit, bool expected)
+        [MemberData(nameof(SwitchExpressionData))]
+        public void When_EvaluatedInSwitchExpression_Then_ValidatesAcceptability(int input, int limit, bool expected)
         {
             var actual = IsAcceptable(input, limit);
-            actual.Is(expected);
-
-            return;
+            Assert.Equal(expected, actual);
 
             static bool IsAcceptable(int id, int absLimit)
             {
+                // C# 8.0 now allows you to use pattern matching in switch expressions.
                 return SimulateDataFetch(id) switch
                 {
                     // var Pattern: `var <variable> when .... => ...`
@@ -41,7 +39,7 @@ namespace Examples.Features.CS80.PatternMatchingEnhancements
 
         }
 
-        public static TheoryData<int, int, bool> IfExpressionData
+        public static TheoryData<int, int, bool> SwitchExpressionData
             => new TheoryData<int, int, bool>
             {
                 { 1, 11, true},
