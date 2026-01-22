@@ -1,4 +1,5 @@
 using System;
+using Examples.Features.CSharp70.Tests.PatternMatching.Fixtures;
 using Xunit;
 
 namespace Examples.Features.CSharp70.Tests.PatternMatching
@@ -10,31 +11,38 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
     public class ConstantPatternsTests
     {
         [Theory]
-        [InlineData(103, true)]
-        [InlineData(202, false)]
-        [InlineData(301, true)]
-        public void When_UsingIfExpressions_Then_ReturnsByExplicitlyConstants(object input, bool expected)
+        [MemberData(nameof(IfExpressionData))]
+        public void When_EvaluatedInIfExpression_Then_MatchesSpecifiedConstants(int input, bool expected)
         {
             Assert.Equal(expected, IsIntConstant(input));
 
-            bool IsIntConstant(object value)
+            bool IsIntConstant(int value)
             {
-                // Constant Pattern: `is <constant>`
+                // C# 7.0 Constant Pattern.
                 return (value is 103) || (value is 207) || (value is 301);
             }
         }
 
+        public static TheoryData<int, bool> IfExpressionData
+            => new TheoryData<int, bool>
+            {
+                        { 103, true },
+                        { 202, false },
+                        { 250, false },
+                        { 301, true },
+            };
+
         [Theory]
-        [MemberData(nameof(SwitchStatementsData))]
-        public void When_UsingSwitchStatements_Then_ReturnsByExplicitlyConstants(int input, decimal expected)
+        [MemberData(nameof(SwitchStatementData))]
+        public void When_EvaluatedInSwitchStatement_Then_MatchesSpecifiedConstants(int input, decimal expected)
         {
             Assert.Equal(expected, GetGroupTicketPrice(input));
 
             decimal GetGroupTicketPrice(int visitorCount)
             {
+                // C# 7.0 Constant Pattern.
                 switch (visitorCount)
                 {
-                    // Constant Pattern: `case <constant>:`
                     case 1: return 12.0m;
                     case 2: return 20.0m;
                     case 3: return 27.0m;
@@ -47,7 +55,7 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
 
         }
 
-        public static TheoryData<int, decimal> SwitchStatementsData
+        public static TheoryData<int, decimal> SwitchStatementData
             => new TheoryData<int, decimal>
             {
                 { 0, 0.0m },
@@ -60,13 +68,13 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
         [Theory]
         [InlineData(null, true)]
         [InlineData("abc", false)]
-        public void When_UsingIfExpressionsIsNull_Then_CheckingForNull(object input, bool expected)
+        public void When_EvaluatedInIfExpression_Then_CanCheckForNull(object input, bool expected)
         {
             Assert.Equal(expected, IsNull(input));
 
             bool IsNull(object value)
             {
-                // Null Constant Pattern: `is null`
+                // C# 7.0 Constant Pattern (is null).
                 return value is null;
             }
         }
@@ -74,29 +82,20 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
         [Theory]
         [InlineData(null, true)]
         [InlineData("abc", false)]
-        public void When_UsingSwitchStatementsCaseIsNull_Then_CheckingForNull(object input, bool expected)
+        public void When_EvaluatedInSwitchStatement_Then_CanCheckForNull(object input, bool expected)
         {
             Assert.Equal(expected, IsNull(input));
 
             bool IsNull(object value)
             {
+                // C# 7.0 Constant Pattern (is null).
                 switch (value)
                 {
-                    // Null Constant Pattern: `case null:`
                     case null: return true;
                     default:
                         return false;
                 }
             }
-        }
-
-        public enum ContactType
-        {
-            None = 0,
-            Phone,
-            MobilePhone,
-            Email,
-            SocialNetwork
         }
 
         [Theory]
@@ -105,13 +104,13 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
         [InlineData(ContactType.MobilePhone, true)]
         [InlineData(ContactType.Email, false)]
         [InlineData(ContactType.SocialNetwork, false)]
-        public void When_UsingExpressionsWithEnum_Then_CanBeUsedAsConstant(ContactType input, bool expected)
+        public void When_EvaluatedInIfExpression_WithEnum_Then_MatchesSpecifiedConstants(ContactType input, bool expected)
         {
             Assert.Equal(expected, IsPhoneContact(input));
 
             bool IsPhoneContact(object value)
             {
-                // Constant Pattern: `is <constant>`
+                // C# 7.0 Constant Pattern with Enum.
                 return value is ContactType.MobilePhone || value is ContactType.Phone;
             }
         }
@@ -122,15 +121,15 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
         [InlineData(ContactType.MobilePhone, "000-0000-0000")]
         [InlineData(ContactType.Email, "xxxxxxx@xxxxxxxx.xx.xx")]
         [InlineData(ContactType.SocialNetwork, "@xxxxxxxxxx")]
-        public void When_UsingSwitchStatementsWithEnum_Then_CanBeUsedAsConstant(ContactType input, string expected)
+        public void When_EvaluatedInSwitchStatement_WithEnum_Then_MatchesSpecifiedConstants(ContactType input, string expected)
         {
             Assert.Equal(expected, GetPattern(input));
 
             string GetPattern(ContactType value)
             {
+                // C# 7.0 Constant Pattern with Enum.
                 switch (value)
                 {
-                    // Constant Pattern: `case <constant>:`
                     case ContactType.Phone: return "000-000-0000";
                     case ContactType.MobilePhone: return "000-0000-0000";
                     case ContactType.Email: return "xxxxxxx@xxxxxxxx.xx.xx";

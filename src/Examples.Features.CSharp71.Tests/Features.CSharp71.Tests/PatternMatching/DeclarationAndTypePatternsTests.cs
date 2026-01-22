@@ -10,7 +10,7 @@ namespace Examples.Features.CS71.PatternMatching
     public class DeclarationAndTypePatternsTests
     {
         [Fact]
-        public void When_UsingIfExpressions_WithGenericTypeParameters_Then_CanBeReferencedBySpecificType()
+        public void When_EvaluatedInIfExpression_WithGenericType_Then_IsAvailableAsNewTypedVariable()
         {
             string actual;
 
@@ -28,6 +28,7 @@ namespace Examples.Features.CS71.PatternMatching
                 string result = null;
 
                 // C# 7.0 : error CS8314: An expression of type 'T' cannot be handled by a pattern of type 'Derived1' in C# 7.0. Please use language version 7.1 or greater.
+                // C# 7.1 Declaration Pattern with Generic Type.
                 if (input is Derived1 derived)
                 {
                     result = derived.SayDerived1();
@@ -38,7 +39,7 @@ namespace Examples.Features.CS71.PatternMatching
         }
 
         [Fact]
-        public void When_UsingSwitchStatements_WithGenericTypeParameters_Then_CanBeUsedLookLikeOverride()
+        public void When_EvaluatedInSwitchStatement_WithGenericType_Then_IsAvailableAsNewTypedVariable()
         {
             string actual;
 
@@ -57,14 +58,13 @@ namespace Examples.Features.CS71.PatternMatching
                 switch (input)
                 {
                     // C# 7.0 : error CS8314: An expression of type 'T' cannot be handled by a pattern of type 'Derived1' in C# 7.0. Please use language version 7.1 or greater.
+                    // C# 7.1 Declaration Pattern with Generic Type.
                     case Derived1 d:
                         result = d.SayDerived1();
                         break;
-                    // C# 7.0 : error CS8314: An expression of type 'T' cannot be handled by a pattern of type 'Derived2' in C# 7.0. Please use language version 7.1 or greater.
                     case Derived2 d:
                         result = d.SayDerived2();
                         break;
-                    // C# 7.0 : error CS8314: An expression of type 'T' cannot be handled by a pattern of type 'Derived3' in C# 7.0. Please use language version 7.1 or greater.
                     case Derived3 d:
                         result = d.SayDerived3();
                         break;

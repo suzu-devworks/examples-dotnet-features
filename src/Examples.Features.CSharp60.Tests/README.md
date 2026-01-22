@@ -38,7 +38,7 @@
 
 - <https://github.com/dotnet/roslyn>
 
-コンパイラをC#で作り直したことにより、コード解析などいろいろできるようになったらしい。**C#6.0はこれが主役**
+コンパイラをC#で作り直したことにより、コード解析などいろいろできるようになったらしい。**C# 6.0はこれが主役**
 
 ### Static Imports
 
@@ -229,7 +229,7 @@ nameof(MyNamespace.MyClass))
 
 よく使う！
 
-`PropertyChangedEventArgs` は `nameof` と C#5.0の `[CallerMemberName]`とどっちがいいだろう・・・
+`PropertyChangedEventArgs` は `nameof` と C# 5.0の `[CallerMemberName]`とどっちがいいだろう・・・
 
 ### Index initializers
 

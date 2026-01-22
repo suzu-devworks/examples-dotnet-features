@@ -12,18 +12,18 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
     public class PropertyPatternsTests
     {
         [Theory]
-        [MemberData(nameof(IfExpressionsData))]
-        public void When_PropertyPatternUsed_Then_DetectsEndOnXAxis(Segment input, bool expected)
+        [MemberData(nameof(IfExpressionData))]
+        public void When_EvaluatedInIfExpression_Then_MatchesValueFromNesting(Segment input, bool expected)
         {
             var actual = IsAnyEndOnXAxis(input);
             Assert.Equal(expected, actual);
 
-            // Property patterns is equals: is { property: value }
             static bool IsAnyEndOnXAxis(Segment segment) =>
+                // C# 8.0 Property Pattern.
                 segment is { Start: { Y: 0 } } || segment is { End: { Y: 0 } };
         }
 
-        public static TheoryData<Segment, bool> IfExpressionsData
+        public static TheoryData<Segment, bool> IfExpressionData
             => new TheoryData<Segment, bool>
             {
                 {
@@ -52,5 +52,28 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
                 }
             };
 
+        [Theory]
+        [MemberData(nameof(SwitchExpressionData))]
+        public void When_EvaluatedInSwitchExpression_Then_MatchesValueFromNesting(Point input, string expected)
+        {
+            var actual = Display(input);
+            Assert.Equal(expected, actual);
+
+            static string Display(object o) => o switch
+            {
+                Point { X: 0, Y: 0 } => "origin",
+                Point { X: 1, Y: _ } p => $"({p.X}, {p.Y})",
+                Point { X: var x, Y: var y } => $"({x}, {y})",
+                _ => "unknown"
+            };
+        }
+
+        public static TheoryData<Point, string> SwitchExpressionData
+              => new TheoryData<Point, string>
+              {
+                  { new Point { X = 0, Y = 0 }, "origin" },
+                  { new Point { X = 1, Y = 2 }, "(1, 2)" },
+                  { new Point { X = 3, Y = 0 }, "(3, 0)" },
+              };
     }
 }

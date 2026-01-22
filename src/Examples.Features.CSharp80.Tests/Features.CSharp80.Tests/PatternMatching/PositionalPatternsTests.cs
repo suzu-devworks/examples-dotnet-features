@@ -12,7 +12,7 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
     public class PositionalPatternsTests
     {
         [Theory]
-        [MemberData(nameof(SwitchExpressionsData))]
+        [MemberData(nameof(SwitchExpressionData))]
         public void When_EvaluatedInSwitchExpression_Then_MatchesValueFromDeconstruction(Shape input, string? expected)
         {
             var actual = GetClassify(input);
@@ -20,10 +20,9 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
 
             static string GetClassify(Shape shape)
             {
-                // C# 8.0 now allows you to use pattern matching in switch expressions.
+                // C# 8.0 Positional Pattern.
                 return shape switch
                 {
-                    // Positional patterns : <type>(item1, item2, item3 ... ) =>
                     Rectangle(100, 100, null) => "Found 100x100 rectangle without a point",
                     Rectangle(100, 100, _) => "Found 100x100 rectangle",
                     _ => "Different, or null shape"
@@ -31,7 +30,7 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
             }
         }
 
-        public static TheoryData<Shape, string?> SwitchExpressionsData
+        public static TheoryData<Shape, string?> SwitchExpressionData
            => new TheoryData<Shape, string?>
            {
                 {

@@ -12,7 +12,7 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
     public class DeclarationAndTypePatternsTests
     {
         [Fact]
-        public void When_UsingIfExpressions_Then_AssignedResultToNewVariable()
+        public void When_EvaluatedInIfExpression_Then_IsAvailableAsNewTypedVariable()
         {
             var input = new[] { "Hello world" };
             Assert.Equal("Hello world", GetString(input));
@@ -21,7 +21,7 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
 
             string GetString(object value)
             {
-                // Declaration Pattern: `is <type> <variable>`
+                // C# 7.0 Declaration Pattern.
                 if (value is IEnumerable<string> converted)
                 {
                     return converted.FirstOrDefault();
@@ -34,7 +34,7 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
         }
 
         [Fact]
-        public void When_UsingSwitchStatements_Then_CanBeProcessingByTypes()
+        public void When_EvaluatedInSwitchStatement_Then_IsAvailableAsNewTypedVariable()
         {
             var input = new[] { 10, 20, 30 };
             Assert.Equal("array length 3.", GetMessage(input));
@@ -43,9 +43,9 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
 
             string GetMessage<T>(IEnumerable<T> source)
             {
+                // C# 7.0 Declaration Pattern.
                 switch (source)
                 {
-                    // Declaration Pattern: `case <type> <variable>:`
                     case Array array:
                         return $"array length {array.Length}.";
 

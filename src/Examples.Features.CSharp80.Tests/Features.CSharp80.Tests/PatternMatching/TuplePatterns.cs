@@ -13,19 +13,18 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
     public class TuplePatterns
     {
         [Theory]
-        [MemberData(nameof(SwitchExpressionsData))]
-        public void When_EvaluatedInSwitchExpression_Then_ClassifiesPointCorrectly(Point input, string? expected)
+        [MemberData(nameof(SwitchExpressionData))]
+        public void When_EvaluatedInSwitchExpression_Then_MatchesValueFromDeconstruction(Point input, string? expected)
         {
             var actual = GetClassify(input);
             Assert.Equal(expected, actual);
 
             static string GetClassify(Point point)
             {
-                // C# 8.0 now allows you to use pattern matching in switch expressions.
+                // C# 8.0 Tuple Pattern.
                 // Specify a tuple, but you can also define a deconstructor.
                 return point switch
                 {
-                    // Tuple patterns : (item1, item2, item3 ... ) => ...
                     (0, 0) => "Origin",
                     (1, 0) => "positive X basis end",
                     (0, 1) => "positive Y basis end",
@@ -34,7 +33,7 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
             }
         }
 
-        public static TheoryData<Point, string?> SwitchExpressionsData
+        public static TheoryData<Point, string?> SwitchExpressionData
            => new TheoryData<Point, string?>
             {
                 { new Point { X = 0, Y = 0 }, "Origin" },
@@ -45,9 +44,10 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
 
 
         [Fact]
-        public void When_TuplePatternForStateMachine_Then_TransitionsStateCorrectly()
+        public void When_EvaluatedInTuplePattern_Then_ActsAsStateMachine()
         {
-            // Mads Torgersen's "Do More with Patterns in C# 8.0"
+            // Mads Torgersen's Blog: "Do More with Patterns in C# 8.0"
+            // spell-checker: words Mads Torgersen
             Assert.Equal(State.Opened, NewState(State.Locked, Operation.Open, new StateKey { IsValid = true }));
             Assert.Equal(State.Closed, NewState(State.Opened, Operation.Close, new StateKey { IsValid = false }));
             Assert.Equal(State.Opened, NewState(State.Opened, Operation.Lock, new StateKey { IsValid = false }));

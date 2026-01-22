@@ -20,9 +20,9 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
             static bool IsAcceptable(int id, int absLimit)
             {
                 // C# 8.0 now allows you to use pattern matching in switch expressions.
+                // C# 8.0 var Pattern.
                 return SimulateDataFetch(id) switch
                 {
-                    // var Pattern: `var <variable> when .... => ...`
                     var x when -absLimit <= x.Min() && x.Max() <= absLimit => true,
                     _ => false,
                 };

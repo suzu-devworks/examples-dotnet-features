@@ -13,7 +13,7 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
     public class DeclarationAndTypePatternsTests
     {
         [Theory]
-        [MemberData(nameof(SwitchExpressionsData))]
+        [MemberData(nameof(SwitchExpressionData))]
         public void When_EvaluatedInSwitchExpression_Then_AssignedResultToNewVariable(object input, string? expected)
         {
             var actual = GetMessage(input);
@@ -21,10 +21,9 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
 
             static string? GetMessage(object value)
             {
-                // C# 8.0 now allows you to use pattern matching in switch expressions.
+                // C# 8.0 Declaration Pattern.
                 return value switch
                 {
-                    // Declaration Pattern: `<type> <variable> => ...`
                     string message => message,
                     IEnumerable<string> messages => messages.FirstOrDefault(),
                     _ => null,
@@ -32,7 +31,7 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
             }
         }
 
-        public static TheoryData<object, string?> SwitchExpressionsData
+        public static TheoryData<object, string?> SwitchExpressionData
             => new TheoryData<object, string?>
             {
                 { new[] { "Hello world" }, "Hello world"  },
