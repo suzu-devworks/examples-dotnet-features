@@ -18,6 +18,7 @@
     "contravariantly",
     "covariantly",
     "deconstructor",
+    "localsinit",
     "nameof",
     "Pinnable",
     "stackalloc",

@@ -1,4 +1,4 @@
-namespace Examples.Features.CS90.InitOnlySetters.Fixtures
+namespace Examples.Features.CSharp90.Tests.InitOnlySetters.Fixtures
 {
     /// <summary>
     /// Define standard private-setter property.

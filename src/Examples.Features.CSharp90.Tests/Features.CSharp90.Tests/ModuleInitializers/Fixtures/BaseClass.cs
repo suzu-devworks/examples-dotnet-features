@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Examples.Features.CS90.ModuleInitializers.Fixtures
+namespace Examples.Features.CSharp90.Tests.ModuleInitializers.Fixtures
 {
     public abstract class BaseClass
     {
