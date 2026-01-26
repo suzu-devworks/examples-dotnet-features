@@ -1,7 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace Examples.Features.CS110.ExtendedNameofScope;
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+#pragma warning disable CS8321 // Local function is declared but never used
+
+namespace Examples.Features.CSharp110.Tests.ExtendedNameofScope;
 
 /// <summary>
 /// Tests for Extended nameof scope in C# 11.0.
@@ -9,7 +12,7 @@ namespace Examples.Features.CS110.ExtendedNameofScope;
 public class ExtendedNameofScopeTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_UsingInParameterAttributes_Then_CanBeUsed()
     {
         _ = Method("Hello world.");
 
@@ -19,9 +22,7 @@ public class ExtendedNameofScopeTests
             .OfType<NotNullIfNotNullAttribute>()
             .FirstOrDefault();
 
-        attribute!.ParameterName.Should().Be("msg");
-
-        return;
+        Assert.Equal("msg", attribute!.ParameterName);
     }
 
     [AttributeUsage(AttributeTargets.All)]
@@ -37,15 +38,11 @@ public class ExtendedNameofScopeTests
     [ParameterString(nameof(msg))]
     public static string? Method(string? msg)
     {
-#pragma warning disable CS8321 // The local function 'xxx' is declared but never used
         [ParameterString(nameof(T))]
         static void LocalFunction<T>(T param)
         { }
-#pragma warning restore CS8321
 
-#pragma warning disable IDE0039 // Use local function instead of lambda
         var lambdaExpression = ([ParameterString(nameof(aNumber))] int aNumber) => aNumber.ToString();
-#pragma warning restore IDE0039
 
         return msg;
     }

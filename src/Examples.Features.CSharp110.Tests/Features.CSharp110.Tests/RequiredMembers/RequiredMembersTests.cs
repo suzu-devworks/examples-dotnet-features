@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace Examples.Features.CS110.RequiredMembers;
+namespace Examples.Features.CSharp110.Tests.RequiredMembers;
 
 /// <summary>
 /// Tests for Required members in C# 11.0.
@@ -8,20 +8,18 @@ namespace Examples.Features.CS110.RequiredMembers;
 public class RequiredMembersTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_UsingRequiredProperty_Then_CanForceInitialization()
     {
         // error CS9035: Required member 'xxx' must be set in the object initializer or attribute constructor.
         //_ = new MyClass();
 
         var actual = new MyClass { Text = "My class text.", Value = null };
 
-        using (new AssertionScope())
-        {
-            actual.Text.Should().Be("My class text.");
-            actual.Value.Should().BeNull();
-        }
-
-        return;
+        Assert.Multiple(
+            () => Assert.NotNull(actual),
+            () => Assert.Equal("My class text.", actual.Text),
+            () => Assert.Null(actual.Value)
+        );
     }
 
     private class MyClass
@@ -48,24 +46,22 @@ public class RequiredMembersTests
     }
 
     [Fact]
-    public void WhenUsingGenericNewConstraint()
+    public void When_UsingGenericNewConstraint_Then_CanNotUsedTypeArgument()
     {
         // A type with any required members may not be used as a type argument when the type parameter includes the new() constraint.
 
-        // error CS9040: 'MyClass' cannot satisfy the 'new()' constraint on parameter 'T' in the generic type or or method 'MyGenericNewClass<T>'
-        //  because 'MyClass' has required members.
-        //_ = new MyGenericNewClass<MyClass> { Value = new MyClass { Text = "My generic class.", Value = 0 } };
-
         var actual = new MyGenericClass<MyClass> { Value = new MyClass { Text = "My generic class.", Value = 0 } };
 
-        using (new AssertionScope())
-        {
-            actual.Value.Should().BeAssignableTo<MyClass>();
-            actual.Value.Text.Should().Be("My generic class.");
-            actual.Value.Value.Should().Be(0);
-        }
+        Assert.Multiple(
+            () => Assert.NotNull(actual),
+            () => Assert.IsType<MyClass>(actual.Value),
+            () => Assert.Equal("My generic class.", actual.Value.Text),
+            () => Assert.Equal(0, actual.Value.Value)
+        );
 
-        return;
+        // error CS9040: 'MyClass' cannot satisfy the 'new()' constraint on parameter 'T' in the generic type or or method 'MyGenericNewClass<T>'
+        //  because 'MyClass' has required members.
+        // _ = new MyGenericNewClass<MyClass> { Value = new MyClass { Text = "My generic class.", Value = 0 } };
     }
 
     private class MyGenericClass<T>
@@ -80,7 +76,7 @@ public class RequiredMembersTests
     }
 
     [Fact]
-    public void WhenUsingPositionalInitializer()
+    public void When_UsingSetsRequiredMembersAttributes_Then_DisablesCompilerChecks()
     {
         // The SetsRequiredMembers disables the compiler's checks that all required members
         //  are initialized when an object is created. Use it with caution.
@@ -90,24 +86,20 @@ public class RequiredMembersTests
 
         var student1 = new Student() { Id = Guid.NewGuid(), FirstName = "Conrad", LastName = "Baz" };
 
-        using (new AssertionScope())
-        {
-            student1.Id.Should().NotBe(Guid.Empty);
-            student1.FirstName.Should().Be("Conrad");
-            student1.LastName.Should().Be("Baz");
-        }
+        Assert.Multiple(
+            () => Assert.NotEqual(Guid.Empty, student1.Id),
+            () => Assert.Equal("Conrad", student1.FirstName),
+            () => Assert.Equal("Baz", student1.LastName)
+        );
 
         // No Id check occurs.
         var student2 = new Student("Daisy", "Hum");
 
-        using (new AssertionScope())
-        {
-            student2.Id.Should().Be(Guid.Empty);
-            student2.FirstName.Should().Be("Daisy");
-            student2.LastName.Should().Be("Hum");
-        }
-
-        return;
+        Assert.Multiple(
+            () => Assert.Equal(Guid.Empty, student2.Id),
+            () => Assert.Equal("Daisy", student2.FirstName),
+            () => Assert.Equal("Hum", student2.LastName)
+        );
     }
 
     public class Person

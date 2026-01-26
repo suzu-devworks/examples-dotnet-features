@@ -1,6 +1,7 @@
-<Solution>
+﻿<Solution>
   <Folder Name="/src/">
     <Project Path="src/Examples.Features.CSharp100.Tests/Examples.Features.CSharp100.Tests.csproj" />
+    <Project Path="src/Examples.Features.CSharp110.Tests/Examples.Features.CSharp110.Tests.csproj" />
     <Project Path="src/Examples.Features.CSharp40.Tests/Examples.Features.CSharp40.Tests.csproj" />
     <Project Path="src/Examples.Features.CSharp50.Tests/Examples.Features.CSharp50.Tests.csproj" />
     <Project Path="src/Examples.Features.CSharp60.Tests/Examples.Features.CSharp60.Tests.csproj" />

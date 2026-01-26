@@ -1,11 +1,11 @@
-using Examples.Features.CS110.FileLocalTypes.Fixtures;
+using Examples.Features.CSharp110.Tests.FileLocalTypes.Fixtures;
 
-namespace Examples.Features.CS110.FileLocalTypes;
+namespace Examples.Features.CSharp110.Tests.FileLocalTypes;
 
 public class FileLocalTypesTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_UsingFileLocalTypes_Then_AccessibleOnlyWithinFile()
     {
         // OK.
         _ = new MyInternalScopeClass();
@@ -22,8 +22,6 @@ public class FileLocalTypesTests
         //_ = new OtherFileFileScopeClass();
         // error CS0246: The type or namespace name 'OtherFileFileScopeClass' could not be found (are you missing a using directive or an assembly reference?)
         // _ = new OtherFileFileScopeClass.OtherFileInnerPublicClass();
-
-        return;
     }
 }
 

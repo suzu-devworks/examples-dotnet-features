@@ -10,7 +10,7 @@ Workspace for studying dotnet programming.
 ## C# features
 
 - [C# version 12.0](./src/Examples.Features.CS120.Tests/)
-- [C# version 11.0](./src/Examples.Features.CS110.Tests/)
+- [C# version 11.0](./src/Examples.Features.CSharp110.Tests/)
 - [C# version 10.0](./src/Examples.Features.CSharp100.Tests/)
 - [C# version 9.0](./src/Examples.Features.CSharp90.Tests/)
 - [C# version 8.0](./src/Examples.Features.CSharp80.Tests/)

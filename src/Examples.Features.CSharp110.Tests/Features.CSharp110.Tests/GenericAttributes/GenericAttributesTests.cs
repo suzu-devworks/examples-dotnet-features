@@ -5,29 +5,26 @@ namespace Examples.GenericAttributes;
 public class GenericAttributesTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_UsingGenericAttributes_Then_CanBeTypeAnnotationsSimplified()
     {
         var attribute1 = GetType()
             .GetMethod("Method1")
             ?.GetCustomAttribute<TypeAttribute>(inherit: false);
 
-        attribute1.Should().BeOfType<TypeAttribute>();
+        Assert.IsType<TypeAttribute>(attribute1);
 
 
         var attribute2 = GetType()
             .GetMethod("Method2")
             ?.GetCustomAttribute<GenericAttribute<string>>(inherit: false);
 
-        attribute2.Should().BeOfType<GenericAttribute<string>>();
+        Assert.IsType<GenericAttribute<string>>(attribute2);
 
         var attribute3 = GetType()
             .GetMethod("Method2")
             ?.GetCustomAttribute(typeof(GenericAttribute<>), inherit: false);
 
-        attribute3.Should().BeOfType<GenericAttribute<string>>();
-
-        return;
-
+        Assert.IsType<GenericAttribute<string>>(attribute3);
     }
 
     // Before C# 11:
@@ -60,5 +57,3 @@ public class GenericAttributesTests
     // private static string? Method3() => default;
 
 }
-
-

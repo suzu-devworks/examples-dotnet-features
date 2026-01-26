@@ -1,4 +1,4 @@
-namespace Examples.Features.CS110.RawStringLiterals;
+namespace Examples.Features.CSharp110.Tests.RawStringLiterals;
 
 /// <summary>
 /// Tests for Raw string literals in C# 11.0.
@@ -6,7 +6,7 @@ namespace Examples.Features.CS110.RawStringLiterals;
 public class RawStringLiteralsTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_UsingRawStringLiteral_Then_TrailingBlockSpacesTrimmed()
     {
         // error CS8936: Feature 'raw string literals' its no available in C# 10.0. Please use language version 11.0 or greater.
 
@@ -19,7 +19,7 @@ public class RawStringLiteralsTests
             Some have "quoted text" in them.
             """;
 
-        longMessage.Should().HaveLength(169);
+        Assert.Equal(169, longMessage.Length);
 
         // Multiple $ characters denote how many consecutive braces start and end the interpolation:
 
@@ -35,13 +35,13 @@ public class RawStringLiteralsTests
             You are at {{{longitude}}, {{latitude}}}
             """;
 
-        location2.Should().Be("You are at {43.062, 141.37}");
+        Assert.Equal("You are at {43.062, 141.37}", location2);
 
         var location3 = $$$"""
             You are at {{{{longitude}}}, {latitude}}
             """;
 
-        location3.Should().Be("You are at {43.062, {latitude}}");
+        Assert.Equal("You are at {43.062, {latitude}}", location3);
 
         // The preceding example specifies that two braces start and end an interpolation.
 
@@ -49,9 +49,7 @@ public class RawStringLiteralsTests
                         Hello world.
                 """;
 
-        preSpaceLiteral.Should().StartWith("        H");
-
-        return;
+        Assert.StartsWith("        H", preSpaceLiteral);
     }
 
 }
