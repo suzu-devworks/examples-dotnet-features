@@ -1,4 +1,4 @@
-namespace Examples.Features.CS100.ExtendedPropertyPatterns.Fixtures
+namespace Examples.Features.CSharp100.Tests.ExtendedPropertyPatterns.Fixtures
 {
     public class Segment
     {

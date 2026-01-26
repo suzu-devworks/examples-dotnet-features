@@ -1,10 +1,28 @@
-# Examples.Features.CS100.Tests
+# C# version 10.0 (Examples.Features.CSharp100.Tests)
 
-## C# version 10.0
+## Table of contents. <!-- omit in toc -->
 
-### See also
+- [Overview](#overview)
+  - [Since](#since)
+- [Features](#features)
+  - [Record structs](#record-structs)
+  - [Improvements of structure types](#improvements-of-structure-types)
+  - [Interpolated string handlers](#interpolated-string-handlers)
+  - [global using directives](#global-using-directives)
+  - [File-scoped namespace declaration](#file-scoped-namespace-declaration)
+  - [Extended property patterns](#extended-property-patterns)
+  - [Improvements on lambda expressions](#improvements-on-lambda-expressions)
+  - [Allow const interpolated strings](#allow-const-interpolated-strings)
+  - [Record types can seal ToString()](#record-types-can-seal-tostring)
+  - [Assignment and declaration in same deconstruction](#assignment-and-declaration-in-same-deconstruction)
+  - [Improved definite assignment](#improved-definite-assignment)
+  - [Allow AsyncMethodBuilder attribute on methods](#allow-asyncmethodbuilder-attribute-on-methods)
+  - [CallerArgumentExpression attribute](#callerargumentexpression-attribute)
+  - [Enhanced #line pragma](#enhanced-line-pragma)
 
-* [What's new in C# 10 - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-10)
+## Overview
+
+- [What's new in C# 10 - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-10)
 
 ### Since
 
@@ -12,53 +30,27 @@
 - .NET 6.0
 - Visual Studio 2022 version 17.0 Preview
 
-
-## Table of contents. <!-- omit in toc -->
-
-- [Examples.Features.CS100.Tests](#examplesfeaturescs100tests)
-  - [C# version 10.0](#c-version-100)
-    - [See also](#see-also)
-    - [Since](#since)
-  - [Features](#features)
-    - [\*Record structs](#record-structs)
-    - [\*Improvements of structure types](#improvements-of-structure-types)
-    - [\*Interpolated string handlers](#interpolated-string-handlers)
-    - [global using directives](#global-using-directives)
-    - [File-scoped namespace declaration](#file-scoped-namespace-declaration)
-    - [Extended property patterns](#extended-property-patterns)
-    - [Improvements on lambda expressions](#improvements-on-lambda-expressions)
-    - [Allow const interpolated strings](#allow-const-interpolated-strings)
-    - [Record types can seal ToString()](#record-types-can-seal-tostring)
-    - [Assignment and declaration in same deconstruction](#assignment-and-declaration-in-same-deconstruction)
-    - [\*Improved definite assignment](#improved-definite-assignment)
-    - [\*Allow AsyncMethodBuilder attribute on methods](#allow-asyncmethodbuilder-attribute-on-methods)
-    - [\*CallerArgumentExpression attribute](#callerargumentexpression-attribute)
-    - [\*Enhanced #line pragma](#enhanced-line-pragma)
-
-
 ## Features
 
-### *Record structs
+### Record structs
 
 > レコード構造体
 
-### *Improvements of structure types
+### Improvements of structure types
 
 > 構造体型の機能強化
 
-* パラメータなしのコンストラクタ
+- パラメータなしのコンストラクタ
 
-
-### *Interpolated string handlers
+### Interpolated string handlers
 
 > 補間された文字列ハンドラー
-
 
 ### global using directives
 
 > グローバルな using ディレクティブ
 
-* [Implicit Using directives](https://learn.microsoft.com/ja-jp/dotnet/core/tutorials/top-level-templates#implicit-using-directives)
+- [Implicit Using directives](https://learn.microsoft.com/ja-jp/dotnet/core/tutorials/top-level-templates#implicit-using-directives)
 
 ```cs
 global using System;
@@ -81,7 +73,6 @@ namespace MyNamespace;
 
 ```
 
-
 ### Extended property patterns
 
 > 拡張プロパティのパターン
@@ -97,7 +88,6 @@ data is { Prop1.Prop2: pattern }
 
 ```
 
-
 ### Improvements on lambda expressions
 
 > ラムダ式の機能強化
@@ -109,7 +99,6 @@ C# 10 には、ラムダ式の処理方法に多くの機能強化が加えら�
 - 属性をラムダ式に適用できます。
 
 自然型？コンパイラーがパラメーターなどから推測できる型のことらしい。
-
 
 ### Allow const interpolated strings
 
@@ -125,13 +114,12 @@ const string Version = "10.0";
 const string FullProductName = $"{Platform} - Language: {Language} Version: {Version}";
 ```
 
-
 ### Record types can seal ToString()
 
 > レコードの型で `ToString()` を `sealed` することができる。
 
 `sealed` に することで派生レコードでは `ToString()` を `override` できなります。
-これにより共通の文字列表現を強制できるようになります。 
+これにより共通の文字列表現を強制できるようになります。
 
 ```cs
 // C# 10.0 or later
@@ -141,7 +129,6 @@ private record SealedRecord(int Value)
         => $"<<< {GetType().Name}: {{ Value = {Value} }} >>>";
 }
 ```
-
 
 ### Assignment and declaration in same deconstruction
 
@@ -160,18 +147,15 @@ int x = 0;
 (x, int y) = point;
 ```
 
-
-### *Improved definite assignment
+### Improved definite assignment
 
 > 限定代入の機能強化
 
-
-### *Allow AsyncMethodBuilder attribute on methods
+### Allow AsyncMethodBuilder attribute on methods
 
 > メソッドで AsyncMethodBuilder 属性を許可する
 
-
-### *CallerArgumentExpression attribute
+### CallerArgumentExpression attribute
 
 > CallerArgumentExpression 属性での診断
 
@@ -187,8 +171,6 @@ public static void Validate(bool condition, [CallerArgumentExpression("condition
 }
 ```
 
-
-### *Enhanced #line pragma
+### Enhanced #line pragma
 
 > 拡張 #line pragma
-

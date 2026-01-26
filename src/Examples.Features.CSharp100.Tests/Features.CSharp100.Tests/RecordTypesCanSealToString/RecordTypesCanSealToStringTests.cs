@@ -1,4 +1,4 @@
-namespace Examples.Features.CS100.RecordTypesCanSealToString;
+namespace Examples.Features.CSharp100.Tests.RecordTypesCanSealToString;
 
 /// <summary>
 /// Tests for Record types can seal <c>ToString()</c> in C# 10.0.
@@ -6,7 +6,7 @@ namespace Examples.Features.CS100.RecordTypesCanSealToString;
 public class RecordTypesCanSealToStringTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_SealedToString_Then_FormattedStringsReturned()
     {
         var normal = new NormalRecord(123);
         var target = new SealedRecord(123);
@@ -17,15 +17,10 @@ public class RecordTypesCanSealToStringTests
         var actual1 = target.ToString();
         var actual2 = derived.ToString();
 
-        using (new AssertionScope())
-        {
-            original.Should().Be("NormalRecord { Value = 123 }");
 
-            actual1.Should().Be("(・ω≦) ﾃﾍﾍﾟﾛ - SealedRecord: { Value = 123 }");
-            actual2.Should().Be("(・ω≦) ﾃﾍﾍﾟﾛ - DerivedRecord: { Value = 123 }");
-        }
-
-        return;
+        Assert.Equal("NormalRecord { Value = 123 }", original);
+        Assert.Equal("(・ω≦) ﾃﾍﾍﾟﾛ - SealedRecord: { Value = 123 }", actual1);
+        Assert.Equal("(・ω≦) ﾃﾍﾍﾟﾛ - DerivedRecord: { Value = 123 }", actual2);
     }
 
     private record NormalRecord(int Value);

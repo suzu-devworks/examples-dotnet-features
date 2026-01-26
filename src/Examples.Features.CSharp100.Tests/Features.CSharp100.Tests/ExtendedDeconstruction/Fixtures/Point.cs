@@ -1,4 +1,4 @@
-namespace Examples.Features.CS100.SameDeconstruction.Fixtures
+namespace Examples.Features.CSharp100.Tests.ExtendedDeconstruction.Fixtures
 {
     public class Point
     {

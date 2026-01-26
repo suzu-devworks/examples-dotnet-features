@@ -1,6 +1,8 @@
-using Examples.Features.CS100.ExtendedPropertyPatterns.Fixtures;
+using Examples.Features.CSharp100.Tests.ExtendedPropertyPatterns.Fixtures;
 
-namespace Examples.Features.CS100.ExtendedPropertyPatterns;
+#pragma warning disable xUnit1045 // Avoid using TheoryData type arguments that might not be serializable
+
+namespace Examples.Features.CSharp100.Tests.ExtendedPropertyPatterns;
 
 /// <summary>
 /// Tests for Extended property patterns in C# 10.0.
@@ -9,26 +11,22 @@ public class PropertyPatternsTests
 {
     [Theory]
     [MemberData(nameof(IfExpressionsData))]
-    public void WhenUsingIfExpressions_WithNestedProperty(Segment input, bool expected)
+    public void When_EvaluatedInIfExpression_Then_MatchesValueFromNestingProperty(Segment input, bool expected)
     {
-        var actual8 = IsAnyEndOnXAxis8(input);
-        actual8.Should().Be(expected);
+        var actual8 = IsAnyEndOnXAxisWithCS8(input);
+        Assert.Equal(expected, actual8);
 
-        var actual10 = IsAnyEndOnXAxis10(input);
-        actual10.Should().Be(expected);
+        var actual10 = IsAnyEndOnXAxisWithCS10(input);
+        Assert.Equal(expected, actual10);
 
-        return;
-
-        static bool IsAnyEndOnXAxis8(Segment segment)
+        static bool IsAnyEndOnXAxisWithCS8(Segment segment)
         {
             // Property patterns is equals: is { property: value }
             // C# 8.0 or later
-#pragma warning disable IDE0170 // Simplify property pattern
             return segment is { Start: { Y: 0 } } || segment is { End: { Y: 0 } };
-#pragma warning restore IDE0170
         }
 
-        static bool IsAnyEndOnXAxis10(Segment segment)
+        static bool IsAnyEndOnXAxisWithCS10(Segment segment)
         {
             // Property patterns is equals: is { property: value }
             // C# 9.0 : error CS8773: Feature 'extended property patterns' is not available in C# 9.0. Please use language version 10.0 or greater.

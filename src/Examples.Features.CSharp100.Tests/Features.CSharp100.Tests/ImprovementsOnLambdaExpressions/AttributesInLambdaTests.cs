@@ -1,14 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace Examples.Features.CS100.ImprovementsOnLambdaExpressions;
+namespace Examples.Features.CSharp100.Tests.ImprovementsOnLambdaExpressions;
 
 /// <summary>
 /// Tests for Attributes of Improvements on lambda expressions in C# 10.0.
 /// </summary>
-public class AttributesTests
+public class AttributesInLambdaTests
 {
     [Fact]
-    public void WhenAddingAttributesToLambdaExpression()
+    public void When_AttributesAddedToLambda_Then_AttributeDetected()
     {
         // C# 9.0 : Tests.cs(16,41): error CS8773: Feature 'lambda attributes' is not available in C# 9.0. Please use language version 10.0 or greater.
         Func<string?, int?> parse = [ProvidesNullCheck] (s) => (s is not null) ? int.Parse(s) : null;
@@ -17,19 +17,11 @@ public class AttributesTests
             .OfType<ProvidesNullCheckAttribute>();
         var has = attrs.Any();
 
-        has.Should().BeTrue();
-
-        return;
+        Assert.True(has);
     }
-
-    [AttributeUsage(AttributeTargets.Method)]
-    private class ProvidesNullCheckAttribute : Attribute
-    {
-    }
-
 
     [Fact]
-    public void WhenAddingAttributesToLambdaExpressionParameters()
+    public void When_AttributesAddedToLambdaParameters_Then_AllAttributesDetected()
     {
         // C# 9.0 : error CS8773: Feature 'lambda attributes' is not available in C# 9.0. Please use language version 10.0 or greater.
         var concat = ([DisallowNull] string a, [DisallowNull] string b) => a + b;
@@ -38,7 +30,7 @@ public class AttributesTests
             .SelectMany(p => p.GetCustomAttributes(inherit: false)
                 .OfType<DisallowNullAttribute>());
 
-        paramAttrs.Should().HaveCount(2);
+        Assert.Equal(2, paramAttrs.Count());
 
         // C# 9.0 : error CS8773: Feature 'lambda attributes' is not available in C# 9.0. Please use language version 10.0 or greater.
         var inc = [return: NotNullIfNotNull(nameof(s))] (int? s) => s.HasValue ? s++ : null;
@@ -47,9 +39,12 @@ public class AttributesTests
                     .GetCustomAttributes(inherit: false)
                     .OfType<NotNullIfNotNullAttribute>();
 
-        returnAttrs.Should().HaveCount(1);
+        Assert.Single(returnAttrs);
+    }
 
-        return;
+    [AttributeUsage(AttributeTargets.Method)]
+    private class ProvidesNullCheckAttribute : Attribute
+    {
     }
 
 }

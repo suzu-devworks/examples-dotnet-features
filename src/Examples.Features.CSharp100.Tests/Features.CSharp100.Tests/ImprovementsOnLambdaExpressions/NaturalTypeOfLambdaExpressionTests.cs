@@ -1,8 +1,6 @@
 using System.Linq.Expressions;
 
-#pragma warning disable IDE0039 // Use local function instead of lambda
-
-namespace Examples.Features.CS100.ImprovementsOnLambdaExpressions;
+namespace Examples.Features.CSharp100.Tests.ImprovementsOnLambdaExpressions;
 
 /// <summary>
 /// Tests for Natural type of Improvements on lambda expressions in C# 10.0.
@@ -10,68 +8,60 @@ namespace Examples.Features.CS100.ImprovementsOnLambdaExpressions;
 public class NaturalTypeOfLambdaExpressionTests
 {
     [Fact]
-    public void WhenCompilerInfersDelegateTypes()
+    public void When_LambdaInferenceEnabled_Then_DelegateResolved()
     {
         // C# 9.0 OK
         Func<string, int> parseInt = (string s) => int.Parse(s);
 
         var original = parseInt("123");
-        original.Should().Be(123);
+        Assert.Equal(123, original);
 
         // C# 9.0 : error CS8773: Feature 'inferred delegate type' is not available in C# 9.0. Please use language version 10.0 or greater.
         var parse = (string s) => int.Parse(s);
 
         var actual = parse("123");
-        actual.Should().Be(123);
-
-        return;
+        Assert.Equal(123, actual);
     }
 
     [Fact]
-    public void WhenAssignedToLessExplicitTypes()
+    public void When_AssignedToObjectOrDelegate_Then_TypeInferred()
     {
         // C# 9.0 : error CS1660: Cannot convert lambda expression to type 'object' because it is not a delegate type
         object parse1 = (string s) => int.Parse(s);
 
-        parse1.Should().BeAssignableTo<Func<string, int>>();
+        Assert.IsType<Func<string, int>>(parse1, exactMatch: false);
 
         // C# 9.0: error CS1660: Cannot convert lambda expression to type 'Delegate' because it is not a delegate type
         Delegate parse2 = (string s) => int.Parse(s);
 
-        parse2.Should().BeAssignableTo<Func<string, int>>();
-
-        return;
+        Assert.IsType<Func<string, int>>(parse2, exactMatch: false);
     }
 
     [Fact]
-    public void WhenExactlyOneOverloadOnMethodGroups_HasNaturalType()
+    public void When_SingleOverloadMethodGroup_Then_NaturalTypeInferred()
     {
         // C# 9.0 : error CS8773: Feature 'inferred delegate type' is not available in C# 9.0. Please use language version 10.0 or greater.
         var read = Console.Read; // Just one overload; Func<int> inferred
 
-        read.Should().BeAssignableTo<Func<int>>();
+        Assert.IsType<Func<int>>(read, exactMatch: false);
 
         // error CS8917: The delegate type could not be inferred.
         // C# 9.0 : error CS8773: Feature 'inferred delegate type' is not available in C# 9.0. Please use language version 10.0 or greater.
         //var write = Console.Write; // ERROR: Multiple overloads, can't choose
-
-        return;
     }
 
     [Fact]
-    public void WhenAssignedToLambdaExpression()
+    public void When_AssignedToExpression_Then_TypedExpressionProduced()
     {
         // C# 9.0 : error CS1660: Cannot convert lambda expression to type 'LambdaExpression' because it is not a delegate type
         LambdaExpression parseExpr1 = (string s) => int.Parse(s);
 
-        parseExpr1.Should().BeAssignableTo<Expression<Func<string, int>>>();
+        Assert.IsType<Expression<Func<string, int>>>(parseExpr1, exactMatch: false);
 
         // C# 9.0 : error CS1660: Cannot convert lambda expression to type 'Expression' because it is not a delegate type
         Expression parseExpr2 = (string s) => int.Parse(s);
 
-        parseExpr2.Should().BeAssignableTo<Expression<Func<string, int>>>();
-
-        return;
+        Assert.IsType<Expression<Func<string, int>>>(parseExpr2, exactMatch: false);
     }
 
 }
