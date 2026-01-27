@@ -1,7 +1,5 @@
 using System.Text;
 
-#pragma warning disable IDE0230 // Use UTF-8 string literal
-
 namespace Examples.Features.CSharp110.Tests.UTF8StringLiterals;
 
 /// <summary>

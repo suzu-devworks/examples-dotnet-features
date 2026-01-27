@@ -1,5 +1,3 @@
-#pragma warning disable format
-
 // C# 11.0
 using CS11Nullable = System.Nullable<int>;
 using CS11Primitive = System.Int32;
@@ -8,14 +6,11 @@ using CS11Tuple = System.ValueTuple<int, int>;
 
 // C# 12.0 or later
 using CS12Array = int[];
-
 using CS12Nullable = int?;
 using CS12Primitive = int;
 
 using CS12Tuple = (int, int);
-
 using Point = (int x, int y);
-#pragma warning restore format
 
 namespace Examples.Features.CSharp120.Tests.AliasAnyType;
 

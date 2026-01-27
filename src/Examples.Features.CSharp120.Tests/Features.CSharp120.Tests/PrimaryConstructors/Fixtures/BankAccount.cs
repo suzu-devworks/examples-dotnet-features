@@ -55,9 +55,7 @@ public class LineOfCreditAccount : BankAccount
 {
     private readonly decimal _creditLimit;
 
-#pragma warning disable IDE0290 // Use primary constructor
     public LineOfCreditAccount(string accountID, string owner, decimal creditLimit) : base(accountID, owner)
-#pragma warning restore IDE0290
     {
         _creditLimit = creditLimit;
     }

@@ -47,9 +47,9 @@ namespace Examples.Features.CSharp72.Tests.PrivateProtectedAccessModifier
 
             private class PrivateClass { }
 
-#pragma warning disable IDE0040 // Add accessibility modifiers
+#pragma warning disable IDE0040 // Add accessibility modifier
             class UnspecifiedClass { }
-#pragma warning restore IDE0040 // Add accessibility modifiers
+#pragma warning restore IDE0040
 
             // C# 7.2 or later
             // C# 7.1 : error CS8302: Feature 'private protected' is not available in C# 7.1. Please use language version 7.2 or greater.

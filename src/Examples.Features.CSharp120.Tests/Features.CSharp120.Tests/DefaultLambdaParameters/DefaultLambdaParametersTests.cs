@@ -1,7 +1,5 @@
 namespace Examples.Features.CSharp120.Tests.DefaultLambdaParameters;
 
-#pragma warning disable IDE0039 // Use local function instead of lambda
-
 /// <summary>
 /// Tests for Default lambda parameters in C# 12.0.
 /// </summary>

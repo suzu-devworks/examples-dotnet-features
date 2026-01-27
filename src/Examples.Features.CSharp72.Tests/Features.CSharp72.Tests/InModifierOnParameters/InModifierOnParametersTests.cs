@@ -74,9 +74,7 @@ namespace Examples.Features.CSharp72.Tests.InModifierOnParameters
 
             // call by out modifier.
             {
-#pragma warning disable IDE0059 // Remove unnecessary value assignment.
                 var input = new LargeStructure() { Values = 0 };
-#pragma warning restore IDE0059 // Remove unnecessary value assignment.
 
                 UpdateParams(out input);
                 // error CS1620: Argument 1 must be passed with the 'out' keyword

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Examples.Features.CSharp70.Tests.LocalFunctions
@@ -45,9 +46,8 @@ namespace Examples.Features.CSharp70.Tests.LocalFunctions
 
             IEnumerable<T> Inner()
             {
-                foreach (var x in source)
-                    if (predicate(x))
-                        yield return x;
+                foreach (var x in source.Where(predicate))
+                    yield return x;
             }
         }
 

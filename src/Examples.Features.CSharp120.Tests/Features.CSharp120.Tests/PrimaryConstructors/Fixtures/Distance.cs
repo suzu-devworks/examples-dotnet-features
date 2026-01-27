@@ -41,23 +41,20 @@ internal struct MutableDistance(double dx, double dy)
     public MutableDistance() : this(0, 0) { }
 }
 
-#pragma warning disable IDE1006 // Naming rule violation
-internal record struct RecordDistance(double dx, double dy)
+internal record struct RecordDistance(double Dx, double Dy)
 {
-    public readonly double Magnitude => Math.Sqrt(dx * dx + dy * dy);
-    public readonly double Direction => Math.Atan2(dy, dx);
+    public readonly double Magnitude => Math.Sqrt(Dx * Dx + Dy * Dy);
+    public readonly double Direction => Math.Atan2(Dy, Dx);
 
     public void Translate(double deltaX, double deltaY)
     {
         // property access.
-        this.dx += deltaX;
-        this.dy += deltaY;
+        this.Dx += deltaX;
+        this.Dy += deltaY;
     }
 
     public RecordDistance() : this(0, 0) { }
 }
-#pragma warning restore IDE1006 // Naming rule violation
-
 
 public interface IService
 {

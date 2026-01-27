@@ -39,7 +39,7 @@ namespace Examples.Features.CSharp70.Tests.PatternMatching
             var input = new[] { 10, 20, 30 };
             Assert.Equal("array length 3.", GetMessage(input));
             Assert.Equal("[ abcd ].", GetMessage(new List<char> { 'a', 'b', 'c', 'd' }));
-            Assert.Equal("default message.", GetMessage("abcde".Select(x => x)));
+            Assert.Equal("default message.", GetMessage("abcde"));
 
             string GetMessage<T>(IEnumerable<T> source)
             {

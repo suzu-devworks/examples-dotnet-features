@@ -1,9 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-#pragma warning disable CS8321 // Local function is declared but never used
-
 namespace Examples.Features.CSharp110.Tests.ExtendedNameofScope;
 
 /// <summary>
@@ -38,9 +35,11 @@ public class ExtendedNameofScopeTests
     [ParameterString(nameof(msg))]
     public static string? Method(string? msg)
     {
+#pragma warning disable CS8321 // Local function is declared but never used
         [ParameterString(nameof(T))]
         static void LocalFunction<T>(T param)
         { }
+#pragma warning restore CS8321
 
         var lambdaExpression = ([ParameterString(nameof(aNumber))] int aNumber) => aNumber.ToString();
 

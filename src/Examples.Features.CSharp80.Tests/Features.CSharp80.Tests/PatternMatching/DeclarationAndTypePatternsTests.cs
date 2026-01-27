@@ -3,6 +3,7 @@ using System.Linq;
 using Xunit;
 
 #pragma warning disable xUnit1045 // Avoid using TheoryData type arguments that might not be serializable
+#pragma warning disable CA1861 // Avoid constant arrays as arguments to params methods
 
 namespace Examples.Features.CSharp80.Tests.PatternMatching
 {
@@ -32,6 +33,7 @@ namespace Examples.Features.CSharp80.Tests.PatternMatching
         }
 
         public static TheoryData<object, string?> SwitchExpressionData
+
             => new TheoryData<object, string?>
             {
                 { new[] { "Hello world" }, "Hello world"  },
