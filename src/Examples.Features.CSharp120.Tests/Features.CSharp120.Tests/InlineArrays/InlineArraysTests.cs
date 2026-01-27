@@ -1,4 +1,4 @@
-namespace Examples.Features.CS120.InlineArrays;
+namespace Examples.Features.CSharp120.Tests.InlineArrays;
 
 /// <summary>
 /// Tests for Inline arrays in C# 12.0.
@@ -6,7 +6,7 @@ namespace Examples.Features.CS120.InlineArrays;
 public class InlineArraysTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_BufferIsFilled_Then_EnumeratesValues()
     {
         var buffer = new Buffer10<int>();
         for (int i = 0; i < 10; i++)
@@ -20,24 +20,17 @@ public class InlineArraysTests
             result.Add(i);
         }
 
-        result.Should().BeEquivalentTo([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
-        return;
+        Assert.Equal([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], result);
     }
 
     [System.Runtime.CompilerServices.InlineArray(10)]
     public struct Buffer10<T>
     {
-#pragma warning disable IDE0044 // Add readonly modifier
-#pragma warning disable IDE0051 // Remove unused private member
         private T _element0;
-#pragma warning restore IDE0051
-#pragma warning restore IDE0044
-
     }
 
     [Fact]
-    public void WhenReadingArrayElement()
+    public void When_ReadingArrayElement_Then_RefsBehaveAsExpected()
     {
         var buffer = new Buffer10<int>();
         for (int i = 0; i < 10; i++)
@@ -48,10 +41,6 @@ public class InlineArraysTests
         M1(buffer);
         M2(buffer);
         M3();
-
-        return;
-
-#pragma warning disable IDE0059 // Remove unnecessary value assignment
 
         static void M1(Buffer10<int> x)
         {
@@ -91,12 +80,10 @@ public class InlineArraysTests
             // _ = GetBuffer()[..];
         }
 
-#pragma warning restore IDE0059
-
     }
 
     [Fact]
-    public void UnderstandConversions()
+    public void When_ConvertingInlineArray_Then_SpansBehave()
     {
         var buffer = new Buffer10<int>();
         for (int i = 0; i < 10; i++)
@@ -109,11 +96,7 @@ public class InlineArraysTests
         M3();
 
         ReadOnlySpan<int> actual = buffer;
-        actual.ToArray().Should().BeEquivalentTo([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
-        return;
-
-#pragma warning disable IDE0059 // Remove unnecessary value assignment
+        Assert.Equal([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], actual.ToArray());
 
         static void M1(Buffer10<int> x)
         {
@@ -141,8 +124,6 @@ public class InlineArraysTests
             // error CS9164: Cannot convert expression to 'Span<int>' because it is not an assignable variable
             //System.Span<int> b = GetBuffer();
         }
-
-#pragma warning restore IDE0059
 
     }
 

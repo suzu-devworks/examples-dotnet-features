@@ -1,6 +1,6 @@
-using Examples.Features.CS120.RefReadonlyParameters.Fixtures;
+using Examples.Features.CSharp120.Tests.RefReadonlyParameters.Fixtures;
 
-namespace Examples.Features.CS120.RefReadonlyParameters;
+namespace Examples.Features.CSharp120.Tests.RefReadonlyParameters;
 
 /// <summary>
 /// Tests for <c>ref readonly</c> parameters in C# 12.0.
@@ -8,7 +8,7 @@ namespace Examples.Features.CS120.RefReadonlyParameters;
 public class RefReadonlyParametersTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_UsingRefAndReadonly_Then_CallsSucceed()
     {
         int value = 100;
 
@@ -45,7 +45,7 @@ public class RefReadonlyParametersTests
     }
 
     [Fact]
-    public void UseGeneric()
+    public void When_UsingGenericRefAndReadonly_Then_CallsSucceed()
     {
         string value = "Hello world.";
 

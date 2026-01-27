@@ -1,4 +1,4 @@
-namespace Examples.Features.CS120.RefReadonlyParameters.Fixtures;
+namespace Examples.Features.CSharp120.Tests.RefReadonlyParameters.Fixtures;
 
 public static class Functions
 {

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Examples.Features.CS120.PrimaryConstructors.Fixtures;
+namespace Examples.Features.CSharp120.Tests.PrimaryConstructors.Fixtures;
 
 [AttributeUsage(AttributeTargets.All)]
 public class FooAttribute : Attribute;

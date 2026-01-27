@@ -1,47 +1,49 @@
-using Examples.Features.CS120.CollectionExpressions.Fixtures;
+using Examples.Features.CSharp120.Tests.CollectionExpressions.Fixtures;
 
-namespace Examples.Features.CS120.CollectionExpressions;
+namespace Examples.Features.CSharp120.Tests.CollectionExpressions;
 
 public class CollectionExpressionsTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_CreatingCollections_Then_ShapesMatch()
     {
         // Create an array:
         int[] a = [1, 2, 3, 4, 5, 6, 7, 8];
 
-        a.Should().HaveCount(8)
-            .And.AllBeAssignableTo<int>()
-            .And.BeInAscendingOrder()
-            .And.Equal(1, 2, 3, 4, 5, 6, 7, 8);
+        Assert.Equal(8, a.Length);
+        Assert.All(a, item => Assert.IsType<int>(item));
+        Assert.Equal([1, 2, 3, 4, 5, 6, 7, 8], a);
 
         // Create a list:
         List<string> b = ["one", "two", "three"];
         IList<string> bb = ["one", "two", "three"]; // It seems okay to use interface.
 
-        b.Should().HaveCount(3)
-            .And.AllBeAssignableTo<string>()
-            .And.Equal("one", "two", "three");
+        Assert.Equal(3, b.Count);
+        Assert.All(b, item => Assert.IsType<string>(item));
+        Assert.Equal(["one", "two", "three"], b);
 
-        bb.Should().HaveCount(3)
-            .And.AllBeAssignableTo<string>()
-            .And.BeEquivalentTo(b);
+        Assert.Equal(3, bb.Count);
+        Assert.All(bb, item => Assert.IsType<string>(item));
+        Assert.Equal(b, bb);
 
         // Create a span
         Span<char> c = ['a', 'b', 'c', 'd', 'e', 'f', 'h', 'i'];
 
         // Span<T> ?
         // https://github.com/fluentassertions/fluentassertions/issues/902
-        c.ToArray().Should().HaveCount(8)
-            .And.AllBeAssignableTo<char>()
-            .And.ContainInOrder(['a', 'b', 'c']);
+        char[] cArray = c.ToArray();
+        Assert.Equal(8, cArray.Length);
+        Assert.All(cArray, item => Assert.IsType<char>(item));
 
         // Create a jagged 2D array:
         int[][] twoD = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
-        twoD.Should().HaveCount(3)
-            .And.AllSatisfy(x => x.Should().HaveCount(3)
-                .And.AllBeOfType<int>());
+        Assert.Equal(3, twoD.Length);
+        Assert.All(twoD, x =>
+        {
+            Assert.Equal(3, x.Length);
+            Assert.All(x, item => Assert.IsType<int>(item));
+        });
 
         // Create a jagged 2D array from variables:
         int[] row0 = [1, 2, 3];
@@ -49,15 +51,16 @@ public class CollectionExpressionsTests
         int[] row2 = [7, 8, 9];
         int[][] twoDFromVariables = [row0, row1, row2];
 
-        twoDFromVariables.Should().HaveCount(3)
-            .And.AllSatisfy(x => x.Should().HaveCount(3)
-                .And.AllBeOfType<int>());
-
-        return;
+        Assert.Equal(3, twoDFromVariables.Length);
+        Assert.All(twoDFromVariables, x =>
+        {
+            Assert.Equal(3, x.Length);
+            Assert.All(x, item => Assert.IsType<int>(item));
+        });
     }
 
     [Fact]
-    public void UseSpreadElement()
+    public void When_SpreadingElements_Then_SequencesCombine()
     {
         string[] vowels = ["a", "e", "i", "o", "u"];
         string[] consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
@@ -65,29 +68,32 @@ public class CollectionExpressionsTests
 
         string[] alphabet = [.. vowels, .. consonants, "y"];
 
-        alphabet.Should().HaveCount(vowels.Length + consonants.Length + 1)
-            .And.AllBeAssignableTo<string>()
-            .And.AllSatisfy(x => x.Should().HaveLength(1)
-                .And.MatchRegex(@"^[a-z]$"));
+        Assert.Equal(vowels.Length + consonants.Length + 1, alphabet.Length);
+        Assert.All(alphabet, item => Assert.IsType<string>(item));
+        Assert.All(alphabet, x =>
+        {
+            Assert.Single(x);
+            Assert.Matches(@"^[a-z]$", x);
+        });
 
         // Spreads can be used with slice pattern (pattern matching).
-        (alphabet is ["a", "b", "c", ..]).Should().BeFalse();
-        (alphabet is ["a", "e", "i", ..]).Should().BeTrue();
+        Assert.False(alphabet is ["a", "b", "c", ..]);
+        Assert.True(alphabet is ["a", "e", "i", ..]);
 
         // You can also cut out an array using a slicing pattern.
         if (alphabet is [var first, .. var middle, var last])
         {
-            first.Should().BeOfType<string>().And.Be("a");
-            last.Should().BeOfType<string>().And.Be("y");
-            middle.Should().BeOfType<string[]>()
-                .And.HaveCount(24);
+            Assert.IsType<string>(first);
+            Assert.Equal("a", first);
+            Assert.IsType<string>(last);
+            Assert.Equal("y", last);
+            Assert.IsType<string[]>(middle);
+            Assert.Equal(24, middle.Length);
         }
-
-        return;
     }
 
     [Fact]
-    public void UnderstandConversionRules()
+    public void When_ConvertingExpressions_Then_TargetsAreAllowed()
     {
         // A single dimensional array type T[]
         int[] a = [1, 2, 3];
@@ -134,13 +140,11 @@ public class CollectionExpressionsTests
             .. e4,
             .. e5,
             ];
-        all.Should().HaveCount(3 * 9);
-
-        return;
+        Assert.Equal(3 * 9, all.Length);
     }
 
     [Fact]
-    public void UnderstandRefSafety()
+    public void When_UsingRefSafety_Then_SpansRemainScoped()
     {
         // A collection expression with a safe-context of declaration-block cannot escape the enclosing scope,
         // and the compiler may store the collection on the stack rather than the heap.
@@ -163,13 +167,11 @@ public class CollectionExpressionsTests
         var b = AsSpan(1, 2, 3);
 
         int[] all = [.. a, .. b];
-        all.Should().HaveCount(3 * 2);
-
-        return;
+        Assert.Equal(3 * 2, all.Length);
     }
 
     [Fact]
-    public void UseCollectionBuilder()
+    public void When_UsingCollectionBuilder_Then_CreatesExpectedBuffer()
     {
         // A type opts in to collection expression support by writing a Create() method and applying
         // the `System.Runtime.CompilerServices.CollectionBuilderAttribute`
@@ -177,14 +179,13 @@ public class CollectionExpressionsTests
 
         LineBuffer line = ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!'];
 
-        line.Should().HaveCount(80)
-            .And.StartWith("Hello World!".ToCharArray());
-
-        return;
+        char[] lineArray = line.ToArray();
+        Assert.Equal(80, lineArray.Length);
+        Assert.StartsWith("Hello World!", new string(lineArray));
     }
 
     [Fact]
-    public void UseEmptyCollectionLiteral()
+    public void When_UsingEmptyLiteral_Then_CollectionsStayEmpty()
     {
         // error CS9176: There is no target type for the collection expression.
         //var v = [];
@@ -198,12 +199,12 @@ public class CollectionExpressionsTests
             // List<int> l = [x, y, .. b ? [1, 2, 3] : []];
             List<int> l = [x, y, .. b ? [1, 2, 3] : (int[])[]];
 
-            l.Should().HaveCount(2);
+            Assert.Equal(2, l.Count);
 
             // this is okay.
             int[] l2 = b ? [1, 2, 3] : [];
 
-            l2.Should().BeEmpty();
+            Assert.Empty(l2);
 
         }
 
@@ -213,29 +214,27 @@ public class CollectionExpressionsTests
             // Can be a singleton, like Array.Empty<int>()
             int[] x = [];
 
-            x.Should().BeEmpty();
+            Assert.Empty(x);
 
             // Can be a singleton. Allowed to use Array.Empty<int>(), Enumerable.Empty<int>(),
             // or any other implementation that can not be mutated.
             IEnumerable<int> y = [];
 
-            y.Should().BeEmpty();
+            Assert.Empty(y);
 
             // Must not be a singleton.  Value must be allowed to mutate, and should not mutate
             // other references elsewhere.
             List<int> z = [];
 
-            z.Should().BeEmpty();
+            Assert.Empty(z);
         }
 
         // Add method is not required for empty collection
         ConvertibleCollection c1 = [];
-        c1.Should().BeEmpty();
+        Assert.Empty(c1);
 
         ConvertibleCollectionWithAdd c2 = [];
-        c2.Should().BeEmpty();
-
-        return;
+        Assert.Empty(c2);
     }
 
 }

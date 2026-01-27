@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Examples.Features.CS120.CollectionExpressions.Fixtures;
+namespace Examples.Features.CSharp120.Tests.CollectionExpressions.Fixtures;
 
 public class ConvertibleCollection : IEnumerable<int>
 {

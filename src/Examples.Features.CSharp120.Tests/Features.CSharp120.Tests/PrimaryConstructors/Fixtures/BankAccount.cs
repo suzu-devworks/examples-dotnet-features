@@ -1,4 +1,4 @@
-namespace Examples.Features.CS120.PrimaryConstructors.Fixtures;
+namespace Examples.Features.CSharp120.Tests.PrimaryConstructors.Fixtures;
 
 // The base class should look like the following code.
 

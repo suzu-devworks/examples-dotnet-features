@@ -1,4 +1,4 @@
-namespace Examples.Features.CS120.DefaultLambdaParameters;
+namespace Examples.Features.CSharp120.Tests.DefaultLambdaParameters;
 
 #pragma warning disable IDE0039 // Use local function instead of lambda
 
@@ -8,19 +8,17 @@ namespace Examples.Features.CS120.DefaultLambdaParameters;
 public class DefaultLambdaParametersTests
 {
     [Fact]
-    public void BasicUsage()
+    public void When_UsingDefaultLambdaParameter_Then_AddsIncrement()
     {
         var incrementBy = (int source, int increment = 1) => source + increment;
 
-        incrementBy(5).Should().Be(6);
+        Assert.Equal(6, incrementBy(5));
+        Assert.Equal(7, incrementBy(5, 2));
 
-        incrementBy(5, 2).Should().Be(7);
-
-        return;
     }
 
     [Fact]
-    public void UseParams()
+    public void When_UsingParamsLambda_Then_SumsValues()
     {
         var sum = (params int[] values) =>
         {
@@ -32,12 +30,10 @@ public class DefaultLambdaParametersTests
         };
 
         var empty = sum();
-        empty.Should().Be(0);
+        Assert.Equal(0, empty);
 
         var sequence = new[] { 1, 2, 3, 4, 5 };
         var total = sum(sequence);
-        total.Should().Be(15);
-
-        return;
+        Assert.Equal(15, total);
     }
 }

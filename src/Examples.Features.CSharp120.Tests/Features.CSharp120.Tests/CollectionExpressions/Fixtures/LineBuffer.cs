@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 
-namespace Examples.Features.CS120.CollectionExpressions.Fixtures;
+namespace Examples.Features.CSharp120.Tests.CollectionExpressions.Fixtures;
 
 [CollectionBuilder(typeof(LineBufferBuilder), nameof(LineBufferBuilder.Create))]
 public class LineBuffer : IEnumerable<char>

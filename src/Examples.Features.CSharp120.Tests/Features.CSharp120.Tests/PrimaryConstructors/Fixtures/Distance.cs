@@ -1,4 +1,4 @@
-namespace Examples.Features.CS120.PrimaryConstructors.Fixtures;
+namespace Examples.Features.CSharp120.Tests.PrimaryConstructors.Fixtures;
 
 // Magnitude:
 //  The mathematical magnitude, determined by Pythagorean theorem.
@@ -22,7 +22,7 @@ public readonly struct Distance(double dx, double dy)
         // CS9114: A primary constructor parameter of a readonly type cannot be assigned to.
         // dx += deltaX;
         // dy += deltaY;
-        throw new NotSupportedException("CS9114");
+        throw new NotSupportedException();
     }
 }
 
