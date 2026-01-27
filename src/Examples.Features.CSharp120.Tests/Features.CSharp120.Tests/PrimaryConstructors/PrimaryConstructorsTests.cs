@@ -54,7 +54,7 @@ public partial class PrimaryConstructorsTests
 
         // properties are generated.
         Assert.Equal(10.1, actual1.Dx);
-        Assert.Equal(20.2, actual1.dy);
+        Assert.Equal(20.2, actual1.Dy);
 
         // Equals generated.
         Assert.Equal(new RecordDistance(10.1, 20.2), actual1);
@@ -70,7 +70,7 @@ public partial class PrimaryConstructorsTests
         Assert.Equal(1.025141272267905, actual2.Direction);
 
         Assert.Equal(3.4, actual2.Dx);
-        Assert.Equal(5.6, actual2.dy);
+        Assert.Equal(5.6, actual2.Dy);
 
         Assert.Equal(new RecordDistance(3.4, 5.6), actual2);
     }
