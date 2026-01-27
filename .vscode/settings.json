@@ -1,47 +1,40 @@
 {
-  "omnisharp.enableEditorConfigSupport": true,
-  "omnisharp.enableAsyncCompletion": true,
-  "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
-  "csharpFormatUsings.sortOrder": "System Microsoft",
-  "csharpFormatUsings.splitGroups": false,
-  "csharpFormatUsings.removeUnnecessaryUsings": true,
-  "csharpextensions.privateMemberPrefix": "_",
-  "csharpextensions.useFileScopedNamespace": true,
-  "files.associations": {
-    ".dockerignore": "ignore",
-    "appsettings*.json": "jsonc",
-    "web.config": "xml",
-  },
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
-  },
   "[aspnetcorerazor]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[csharp]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": "explicit"
+    },
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "[razor]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
   },
-  "cSpell.ignorePaths": [
-    "package-lock.json",
-    "node_modules",
-    "vscode-extension",
-    ".git/objects",
-    ".vscode",
-    ".vscode-insiders",
-    ".devcontainer/devcontainer.json"
-  ],
-  "cSpell.words": [
-    "Contravariance",
-    "Contravariances",
-    "contravariantly",
-    "covariantly",
-    "Linq",
-    "nameof",
-    "Stackalloc",
-    "struct",
-    "structs",
-    "Unmanaged"
-  ]
+  "csharpOrganizeUsings.removeUnnecessaryUsings": true,
+  "csharpOrganizeUsings.sortOrder": "System",
+  "csharpOrganizeUsings.splitGroups": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "files.associations": {
+    ".dockerignore": "ignore",
+    "appsettings*.json": "jsonc",
+    "web.config": "xml"
+  },
+  "markdown.extension.toc.levels": "2..6",
+  "markdownlint.config": {
+    "MD024": false
+  },
+  "omnisharp.enableAsyncCompletion": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.enableMsBuildLoadProjectsOnDemand": true
 }
