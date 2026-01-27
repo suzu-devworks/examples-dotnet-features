@@ -64,8 +64,6 @@ namespace Examples.Features.CSharp72.Tests.RefStructTypes
                     param.Modify(3, newStack);
                 }
             }
-
-            return;
         }
 
 
