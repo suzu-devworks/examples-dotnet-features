@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <!-- <TargetFrameworks>$(LatestFramework);net10.0</TargetFrameworks> -->
     <TargetFrameworks>$(LatestFramework)</TargetFrameworks>
+    <LangVersion>14</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Examples</RootNamespace>
