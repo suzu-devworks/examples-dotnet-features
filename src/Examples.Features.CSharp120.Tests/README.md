@@ -17,6 +17,7 @@
 ## Overview
 
 - [What's new in C# 12 - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-12)
+- [The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-12)
 
 ### Since
 

@@ -22,7 +22,7 @@
 
 ## Overview
 
-- [What's new in C# 11 - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-11)
+[The history of C# - Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-version-history#c-version-11)
 
 ### Since
 
