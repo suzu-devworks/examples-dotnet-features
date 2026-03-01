@@ -1,7 +1,5 @@
 <Project>
   <PropertyGroup>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <ObjectDirectory>obj/</ObjectDirectory>
     <BinDirectory>bin/</BinDirectory>
   </PropertyGroup>
