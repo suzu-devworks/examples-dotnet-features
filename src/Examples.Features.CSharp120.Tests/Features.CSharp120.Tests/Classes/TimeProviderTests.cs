@@ -254,4 +254,46 @@ public class TimeProviderTests
         }
     }
 
+    [Fact]
+    public void When_UsingTimerByTimeProvider_Then_TimerBehavesCorrectly()
+    {
+        var fakeTime = new FakeTimeProvider(new DateTimeOffset(2024, 3, 1, 10, 0, 0, TimeSpan.Zero));
+        using var service = new HeartbeatService(fakeTime);
+
+        // Start the timer
+        Assert.Equal(0, service.BeatCount);
+
+        // Advance time by 59 seconds - should not trigger the timer yet
+        fakeTime.Advance(TimeSpan.FromSeconds(59));
+        Assert.Equal(0, service.BeatCount);
+
+        // Advance time by 1 second - should trigger the timer
+        fakeTime.Advance(TimeSpan.FromSeconds(1));
+        Assert.Equal(1, service.BeatCount);
+
+        // Advance time by 10 minutes - should trigger the timer 10 more times
+        fakeTime.Advance(TimeSpan.FromMinutes(10));
+        Assert.Equal(11, service.BeatCount);
+    }
+
+    public class HeartbeatService : IDisposable
+    {
+        private readonly ITimer _timer;
+        public int BeatCount { get; private set; }
+
+        public HeartbeatService(TimeProvider timeProvider)
+        {
+            _timer = timeProvider.CreateTimer(
+                callback: _ => BeatCount++,
+                state: null,
+                dueTime: TimeSpan.FromMinutes(1),
+                period: TimeSpan.FromMinutes(1));
+        }
+
+        public void Dispose()
+        {
+            _timer.Dispose();
+            GC.SuppressFinalize(this);
+        }
+    }
 }
