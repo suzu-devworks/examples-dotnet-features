@@ -19,6 +19,8 @@
   - [Allow AsyncMethodBuilder attribute on methods](#allow-asyncmethodbuilder-attribute-on-methods)
   - [CallerArgumentExpression attribute](#callerargumentexpression-attribute)
   - [Enhanced #line pragma](#enhanced-line-pragma)
+- [.NET Library classes to Remember](#net-library-classes-to-remember)
+  - [`LoggerMessageAttribute` class](#loggermessageattribute-class)
 
 ## Overview
 
@@ -45,6 +47,10 @@
 ### Interpolated string handlers
 
 > 補間された文字列ハンドラー
+
+文字列補間（`$"{var}"`）の処理を最適化・カスタマイズする仕組みです。従来のString.Formatによるボックス化やメモリ割り当てを削減し、高性能な文字列構築（特に`ReadOnlySpan<char>`の活用）やカスタムログ出力、型安全な解析を可能にします。
+
+補間された文字列ハンドラーは補間された文字列を結果文字列に変換する型です。 挿入文字列の型が stringの場合 `System.Runtime.CompilerServices.DefaultInterpolatedStringHandler` によって処理されます。
 
 ### global using directives
 
@@ -174,3 +180,10 @@ public static void Validate(bool condition, [CallerArgumentExpression("condition
 ### Enhanced #line pragma
 
 > 拡張 #line pragma
+
+## .NET Library classes to Remember
+
+### `LoggerMessageAttribute` class
+
+- [LoggerMessageAttribute Class (Microsoft.Extensions.Logging) | Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/api/microsoft.extensions.logging.loggermessageattribute)
+- [High-performance logging - .NET | Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/core/extensions/logging/high-performance-logging)
