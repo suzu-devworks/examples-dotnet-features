@@ -46,6 +46,10 @@
 
 > 補間された文字列ハンドラー
 
+文字列補間（`$"{var}"`）の処理を最適化・カスタマイズする仕組みです。従来のString.Formatによるボックス化やメモリ割り当てを削減し、高性能な文字列構築（特に`ReadOnlySpan<char>`の活用）やカスタムログ出力、型安全な解析を可能にします。
+
+補間された文字列ハンドラーは補間された文字列を結果文字列に変換する型です。 挿入文字列の型が stringの場合 `System.Runtime.CompilerServices.DefaultInterpolatedStringHandler` によって処理されます。
+
 ### global using directives
 
 > グローバルな using ディレクティブ
