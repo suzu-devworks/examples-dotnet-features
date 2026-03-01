@@ -19,6 +19,8 @@
   - [Allow AsyncMethodBuilder attribute on methods](#allow-asyncmethodbuilder-attribute-on-methods)
   - [CallerArgumentExpression attribute](#callerargumentexpression-attribute)
   - [Enhanced #line pragma](#enhanced-line-pragma)
+- [.NET Library classes to Remember](#net-library-classes-to-remember)
+  - [`LoggerMessageAttribute` class](#loggermessageattribute-class)
 
 ## Overview
 
@@ -178,3 +180,10 @@ public static void Validate(bool condition, [CallerArgumentExpression("condition
 ### Enhanced #line pragma
 
 > 拡張 #line pragma
+
+## .NET Library classes to Remember
+
+### `LoggerMessageAttribute` class
+
+- [LoggerMessageAttribute Class (Microsoft.Extensions.Logging) | Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/api/microsoft.extensions.logging.loggermessageattribute)
+- [High-performance logging - .NET | Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/core/extensions/logging/high-performance-logging)

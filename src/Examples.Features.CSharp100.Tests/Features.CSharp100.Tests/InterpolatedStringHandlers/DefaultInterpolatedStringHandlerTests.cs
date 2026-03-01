@@ -1,6 +1,6 @@
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using Examples.Features.CSharp100.Tests.InterpolatedStringHandlers.Fixtures;
+using Examples.Features.CSharp100.Tests.Helpers;
 using Microsoft.Extensions.Logging;
 
 namespace Examples.Features.CSharp100.Tests.InterpolatedStringHandlers;
@@ -79,7 +79,7 @@ public class DefaultInterpolatedStringHandlerTests
             LogLevel logLevel,
             [InterpolatedStringHandlerArgument("logger", "logLevel")] LogInterpolatedStringHandler builder)
         {
-#pragma warning disable CA1873 // Avoid potentially expensive logging/
+#pragma warning disable CA1873 // Avoid potentially expensive logging.
 #pragma warning disable CA2254 // Template should be a static expression.
             logger.Log(logLevel, builder.ToString());
 #pragma warning restore CA2254 // Template should be a static expression.

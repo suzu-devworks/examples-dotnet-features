@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Text;
-using Examples.Features.CSharp100.Tests.InterpolatedStringHandlers.Fixtures;
+using Examples.Features.CSharp100.Tests.Helpers;
 using Microsoft.Extensions.Logging;
 
 namespace Examples.Features.CSharp100.Tests.InterpolatedStringHandlers;

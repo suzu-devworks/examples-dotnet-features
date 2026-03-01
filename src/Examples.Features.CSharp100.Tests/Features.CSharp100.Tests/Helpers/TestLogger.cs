@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace Examples.Features.CSharp100.Tests.InterpolatedStringHandlers.Fixtures;
+namespace Examples.Features.CSharp100.Tests.Helpers;
 
 /// <summary>
 /// A test logger that implements ILogger<T> but only logs messages at or above the specified log level.
