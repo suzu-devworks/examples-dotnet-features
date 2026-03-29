@@ -11,7 +11,7 @@
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/dotnet:2": {
-      "version": "10.0"
+      "version": "11.0"
     }
   },
   "customizations": {
