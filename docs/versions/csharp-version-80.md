@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Readonly members](#readonly-members)
   - [Default interface methods](#default-interface-methods)
@@ -30,6 +31,10 @@
 - .NET Core 3.0
 - .NET Core 3.1
 - Visual Studio 2019 version 16.3
+
+## To study
+
+- [Examples.Features.CSharp80.Tests](../../src/Examples.Features.CSharp80.Tests/)
 
 ## Features
 

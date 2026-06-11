@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Initializers on stackalloc arrays](#initializers-on-stackalloc-arrays)
   - [Use fixed statements with any type that supports a pattern](#use-fixed-statements-with-any-type-that-supports-a-pattern)
@@ -28,6 +29,10 @@
 - November 2017
 - .NET Core 2.1
 - Visual Studio 2017 version 15.5
+
+## To study
+
+- [Examples.Features.CSharp72.Tests](../../src/Examples.Features.CSharp72.Tests/)
 
 ## Features
 

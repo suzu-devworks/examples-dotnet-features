@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Accessing fixed fields without pinning](#accessing-fixed-fields-without-pinning)
   - [Reassign ref local variables](#reassign-ref-local-variables)
@@ -26,6 +27,10 @@
 - .NET Core 2.1, 2.2
 - .NET Framework 4.8
 - Visual Studio 2017 version 15.7
+
+## To study
+
+- [Examples.Features.CSharp73.Tests](../../src/Examples.Features.CSharp73.Tests/)
 
 ## Features
 

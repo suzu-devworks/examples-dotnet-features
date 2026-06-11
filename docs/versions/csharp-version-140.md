@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Extension members](#extension-members)
   - [Null-conditional assignment](#null-conditional-assignment)
@@ -26,6 +27,10 @@
   - November 2025
   - .NET 10.0
   - Visual Studio 2026 version 18.0
+
+## To study
+
+- [Examples.Features.CSharp140.Tests](../../src/Examples.Features.CSharp140.Tests/)
 
 ## Features
 

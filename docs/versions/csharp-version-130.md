@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [params collections](#params-collections)
   - [New lock type and semantics](#new-lock-type-and-semantics)
@@ -27,6 +28,10 @@
   - November 2024
   - .NET 9.0
   - Visual Studio 2022 version 17.12
+
+## To study
+
+- [Examples.Features.CSharp130.Tests](../../src/Examples.Features.CSharp130.Tests/)
 
 ## Features
 

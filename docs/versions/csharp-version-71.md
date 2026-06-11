@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [async Main method](#async-main-method)
   - [default literal expressions](#default-literal-expressions)
@@ -19,6 +20,10 @@
 - August 2017
 - .NET Core 2.0
 - Visual Studio 2017 version 15.3
+
+## To study
+
+- [Examples.Features.CSharp71.Tests](../../src/Examples.Features.CSharp71.Tests/)
 
 ## Features
 

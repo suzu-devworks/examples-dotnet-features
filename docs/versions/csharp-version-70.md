@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Out variables](#out-variables)
   - [Tuples and deconstruction](#tuples-and-deconstruction)
@@ -25,6 +26,10 @@
 - March 2017
 - .NET Framework 4.7
 - Visual Studio 2017 version 15.0
+
+## To study
+
+- [Examples.Features.CSharp70.Tests](../../src/Examples.Features.CSharp70.Tests/)
 
 ## Features
 

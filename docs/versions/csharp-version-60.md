@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Compiler-as-a-service (Roslyn)](#compiler-as-a-service-roslyn)
   - [Static Imports](#static-imports)
@@ -29,6 +30,10 @@
 - .NET Core 1.0
 - .NET Core 1.1
 - Visual Studio 2015
+
+## To study
+
+- [Examples.Features.CSharp60.Tests](../../src/Examples.Features.CSharp60.Tests/)
 
 ## Features
 

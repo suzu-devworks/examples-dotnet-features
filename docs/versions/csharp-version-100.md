@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Record structs](#record-structs)
   - [Improvements of structure types](#improvements-of-structure-types)
@@ -31,6 +32,10 @@
 - November 2021
 - .NET 6.0
 - Visual Studio 2022 version 17.0 Preview
+
+## To study
+
+- [Examples.Features.CSharp100.Tests](../../src/Examples.Features.CSharp100.Tests/)
 
 ## Features
 

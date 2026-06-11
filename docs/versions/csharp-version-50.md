@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Asynchronous methods](#asynchronous-methods)
   - [Caller info attributes](#caller-info-attributes)
@@ -18,6 +19,10 @@
 - August 2012
 - .NET Framework 4.5
 - Visual Studio 2012, 2013
+
+## To study
+
+- [Examples.Features.CSharp50.Tests](../../src/Examples.Features.CSharp50.Tests/)
 
 ## Features
 

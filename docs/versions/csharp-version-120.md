@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Primary constructors](#primary-constructors)
   - [Collection expressions](#collection-expressions)
@@ -27,6 +28,10 @@
   - November 2023
   - .NET 8.0
   - Visual Studio 2022 version 17.8
+
+## To study
+
+- [Examples.Features.CSharp120.Tests](../../src/Examples.Features.CSharp120.Tests/)
 
 ## Features
 

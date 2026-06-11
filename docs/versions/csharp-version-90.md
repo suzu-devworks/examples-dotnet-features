@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Records](#records)
   - [Init only setters](#init-only-setters)
@@ -31,6 +32,10 @@
 - September 2020
 - .NET 5.0
 - Visual Studio 2019 version 16.8, Preview 4
+
+## To study
+
+- [Examples.Features.CSharp90.Tests](../../src/Examples.Features.CSharp90.Tests/)
 
 ## Features
 

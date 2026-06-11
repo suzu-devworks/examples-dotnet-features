@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Since](#since)
+- [To study](#to-study)
 - [Features](#features)
   - [Dynamic binding](#dynamic-binding)
   - [Named and optional arguments](#named-and-optional-arguments)
@@ -19,6 +20,10 @@
 - April 2010
 - .NET Framework 4
 - Visual Studio 2010
+
+## To study
+
+- [Examples.Features.CSharp40.Tests](../../src/Examples.Features.CSharp40.Tests/)
 
 ## Features
 
