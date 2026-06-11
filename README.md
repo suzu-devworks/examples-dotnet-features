@@ -6,33 +6,45 @@
 
 ## What is the purpose of this repository?
 
-This repository is just my personal playground for learning and experimenting with .NET programming in C#.
+This repository is basically my personal playground for learning and experimenting with .NET programming in C#.
 
-The content here might actually be helpful to other developers facing similar issues.
+Most of the content focuses on the Generic Host and the infrastructure commonly used in .NET applications,
+such as dependency injection, configuration, logging, application lifetime management, and command-line argument handling.
 
-However, please keep in mind that this code is based solely on my own perspective and probably has lots of inaccurate or questionable parts!
+The repository primarily serves as a personal knowledge base and a place to explore ideas through small, focused examples.
 
-## C# features
+The examples reflect my current understanding of each topic and may evolve over time.
 
-- [C# version 14.0](./src/Examples.Features.CSharp140.Tests/)
-- [C# version 13.0](./src/Examples.Features.CSharp130.Tests/)
-- [C# version 12.0](./src/Examples.Features.CSharp120.Tests/)
-- [C# version 11.0](./src/Examples.Features.CSharp110.Tests/)
-- [C# version 10.0](./src/Examples.Features.CSharp100.Tests/)
-- [C# version 9.0](./src/Examples.Features.CSharp90.Tests/)
-- [C# version 8.0](./src/Examples.Features.CSharp80.Tests/)
-- [C# version 7.3](./src/Examples.Features.CSharp73.Tests/)
-- [C# version 7.2](./src/Examples.Features.CSharp72.Tests/)
-- [C# version 7.1](./src/Examples.Features.CSharp71.Tests/)
-- [C# version 7.0](./src/Examples.Features.CSharp70.Tests/)
-- [C# version 6.0](./src/Examples.Features.CSharp60.Tests/)
-- [C# version 5.0](./src/Examples.Features.CSharp50.Tests/)
-- [C# version 4.0](./src/Examples.Features.CSharp40.Tests/)
-- [C# version 3.0](./src/Examples.Features.CSharp30.Tests/README.md)
-- [C# version 2.0](./src/Examples.Features.CSharp20.Tests/README.md)
-- [C# version 1.2](./src/Examples.Features.CSharp12.Tests/README.md)
-- [C# version 1.0](./src/Examples.Features.CSharp10.Tests/README.md)
+## The history of C# versions
 
-## References
+- [C# version 15.0](./docs/versions/csharp-version-150.md)
+- [C# version 14.0](./docs/versions/csharp-version-140.md)
+- [C# version 13.0](./docs/versions/csharp-version-130.md)
+- [C# version 12.0](./docs/versions/csharp-version-120.md)
+- [C# version 11.0](./docs/versions/csharp-version-110.md)
+- [C# version 10.0](./docs/versions/csharp-version-100.md)
+- [C# version  9.0](./docs/versions/csharp-version-90.md)
+- [C# version  8.0](./docs/versions/csharp-version-80.md)
+- [C# version  7.3](./docs/versions/csharp-version-73.md)
+- [C# version  7.2](./docs/versions/csharp-version-72.md)
+- [C# version  7.1](./docs/versions/csharp-version-71.md)
+- [C# version  7.0](./docs/versions/csharp-version-70.md)
+- [C# version  6.0](./docs/versions/csharp-version-60.md)
+- [C# version  5.0](./docs/versions/csharp-version-50.md)
+- [C# version  4.0](./docs/versions/csharp-version-40.md)
+- [C# version  3.0](./docs/versions/csharp-version-30.md)
+- [C# version  2.0](./docs/versions/csharp-version-20.md)
+- [C# version  1.2](./docs/versions/csharp-version-12.md)
+- [C# version  1.0](./docs/versions/csharp-version-10.md)
 
-- [Wikipedia ...](https://en.wikipedia.org/wiki/C_Sharp_(programming_language))
+## Why use Dev Containers?
+
+I recommend using Dev Containers when working with this repository.
+
+The development container provides the tools and dependencies needed to build and run the examples,
+making it easy to get started without modifying your local environment.
+
+For container details, see [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json).
+
+After the container is created, run [`.devcontainer/postCreateCommand.sh`](.devcontainer/postCreateCommand.sh)
+and follow the instructions shown in the terminal.

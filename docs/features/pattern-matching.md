@@ -1,6 +1,7 @@
 # Pattern matching <!-- omit in toc -->
 
-is 式、switch ステートメント、switch 式を使って、入力式を任意の数の特性と照合します。
+Use `is` expressions, `switch` statements, and `switch` expressions to match an input expression against
+any number of patterns.
 
 ## Pattern types <!-- omit in toc -->
 
@@ -17,9 +18,10 @@ is 式、switch ステートメント、switch 式を使って、入力式を任
 
 > 宣言パターンと型パターン
 
-式のランタイム型をチェックし、一致が成功した場合は、宣言された変数に式の結果を代入します。
+Checks the runtime type of an expression and, if the match succeeds, assigns the result to the declared
+variable.
 
-C# 7.0 から導入
+C# 7.0 introduced this.
 
 ```cs
 if (value is <type> <variable>)
@@ -36,7 +38,7 @@ switch (value)
 }
 ```
 
-C# 7.1 でジェネリック型のパターンマッチができるようになりました
+C# 7.1 added pattern matching for generic type parameters.
 
 ```cs
 public void Method<T>(T value)
@@ -48,7 +50,7 @@ public void Method<T>(T value)
 }
 ```
 
-C# 8.0 で `switch` 式が導入されました
+C# 8.0 introduced `switch` expressions.
 
 ```cs
 return value switch 
@@ -58,7 +60,7 @@ return value switch
 }
 ```
 
-C# 9.0 で `switch` ステートメント、`switch` 式で、受け取る変数の破棄を省略できるようになりました。
+C# 9.0 lets `switch` statements and `switch` expressions omit discard variables.
 
 ```cs
     switch (value)
@@ -80,19 +82,19 @@ C# 9.0 で `switch` ステートメント、`switch` 式で、受け取る変数
 
 > 定数パターン
 
-式の結果が指定された定数と等しいかどうかをテストします。
+Tests whether the result of an expression is equal to a specified constant.
 
-定数パターンでは、次のような任意の定数式を使用できます。
+Constant patterns can use any of the following constant expressions:
 
-- 整数または浮動小数点数値リテラル
-- char
-- 文字列リテラル
-- ブール値 true または false
-- 列挙型値
-- 宣言された定数フィールドまたはローカルの名前
-- null
+- Integer or floating-point numeric literals
+- `char`
+- String literals
+- Boolean values `true` or `false`
+- Enumeration values
+- The name of a declared constant field or local
+- `null`
 
-C# 7.0 から導入
+C# 7.0 introduced this.
 
 ```cs
 if (value is <constant>)
@@ -116,7 +118,7 @@ switch (value)
 }
 ```
 
-C# 8.0 で `switch` 式が導入されました
+C# 8.0 introduced `switch` expressions.
 
 ```cs
 return value switch 
@@ -128,9 +130,9 @@ return value switch
 
 > var パターン
 
-nullを含む任意の式に一致させ、その結果を宣言された変数に代入します。
+Matches any expression, including `null`, and assigns the result to the declared variable.
 
-- C# 7.0 から導入
+- Introduced in C# 7.0
 
 ```cs
     if (value is var <variable> && <variable> ... )
@@ -151,9 +153,9 @@ nullを含む任意の式に一致させ、その結果を宣言された変数�
 
 > 破棄パターン
 
-`switch` で任意の式に一致させます。
+Matches any expression in a `switch`.
 
-C# 8.0 から導入
+C# 8.0 introduced this.
 
 ```cs
 return value switch 
@@ -166,11 +168,11 @@ return value switch
 
 > 位置指定パターン
 
-式の結果を分解し、結果の値が入れ子になったパターンに一致するかどうかをテストします。
+Deconstructs the result of an expression and tests whether the resulting values match nested patterns.
 
-タプルをつかったパターンもこのパターンです。
+Tuple-based patterns are also positional patterns.
 
-C# 8.0 から導入
+C# 8.0 introduced this.
 
 ```cs
 return value switch
@@ -184,9 +186,9 @@ return value switch
 
 > プロパティ パターン
 
- 式のプロパティまたはフィールドが入れ子になったパターンに一致するかどうかをテストします。
+Tests whether the properties or fields of an expression match nested patterns.
 
-C# 8.0 から導入
+C# 8.0 introduced this.
 
 ```cs
 if ( value is { property: <constant>} <variable>)
@@ -211,7 +213,8 @@ return value switch
 }
 ```
 
-Empty "{ }" を使って `is not null` の代わりに使用して変数に格納することもできます。
+You can also use empty `{ }` patterns instead of `is not null` when you want to capture the value
+into a variable.
 
 ```cs
 if (value is { } <variable>)
@@ -224,25 +227,25 @@ if (value is { } <variable>)
 
 > 論理パターン
 
-式がパターンの論理的な組み合わせと一致するかどうかをテストします。
+Tests whether an expression matches a logical combination of patterns.
 
-C# 9.0 から導入
+C# 9.0 introduced this.
 
 ### Relational patterns
 
 > リレーショナル パターン
 
-式の結果と指定された定数を比較します。
+Compares the result of an expression against a specified constant.
 
-C# 9.0 から導入
+C# 9.0 introduced this.
 
 ### List patterns
 
 > リスト パターン
 
-シーケンス要素が対応する入れ子になったパターンと一致するかどうかをテストします。
+Tests whether sequence elements match the corresponding nested patterns.
 
-C# 11.0 から導入
+C# 11.0 introduced this.
 
 ```cs
     if (value is [ pattern (, pattern)* ])
@@ -251,11 +254,11 @@ C# 11.0 から導入
     }
 ```
 
-シーケンス要素を評価するのは定数ではなく *入れ子になったパターン* なので
+Because sequence elements are matched against *nested patterns* rather than constants alone, you can:
 
-- 任意のパターンを評価するために破棄パターンを使用する。
-- `var` パターンで変数をキャプチャする
-- `and/or` や `>`,`>=` などの論理パターンを評価する
-- プロパティパターンを評価する。
+- Use discard patterns to match any element.
+- Capture variables with `var` patterns.
+- Evaluate logical patterns such as `and` / `or` and relational patterns such as `>` and `>=`.
+- Evaluate property patterns.
 
-などができます。
+and so on.
