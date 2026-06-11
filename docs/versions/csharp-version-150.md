@@ -25,10 +25,12 @@
 
 > コレクション式の引数
 
-with(...)要素をコレクション式の最初の要素として使用することで、基になるコレクションのコンストラクターまたはファクトリ メソッドに引数を渡すことができます。
+By using a `with(...)` element as the first item in a collection expression,
+you can pass arguments to the underlying collection constructor or factory method.
 
 ### Union types
 
 > ユニオン型
 
-複数のケース型の 1 つである値を表す 共用体型が導入 されています。 union キーワードを使用して共用体を宣言します。
+Union types represent a value that can be one of multiple case types.
+You declare a union using the `union` keyword.

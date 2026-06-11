@@ -40,83 +40,84 @@
 
 > `stackalloc` 配列初期化子
 
-C# 7.2 以降では、`Span<T>` 構造体と併用することで、`unsafe` なしで `stackalloc` を使えるようになりました。
-`stackalloc` は"[アンマネージ型](https://docs.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/unmanaged-types)"のみで使用できます、
+C# 7.2 and later let you use `stackalloc` without `unsafe` when combined with `Span<T>`.
+`stackalloc` can only be used with "[unmanaged types](https://docs.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/unmanaged-types)".
 
-stack size は 4MB(64-bit) または 1MB(32-bit) しかないのでサイズに注意して使用しましょう。
+Stack size is only about 4MB (64-bit) or 1MB (32-bit), so watch your allocation size.
 
 ### Use fixed statements with any type that supports a pattern
 
 > パターンをサポートする任意のタイプで `fixed` を使用できます。
 
-※ To C# 7.3
+See C# 7.3.
 
 ### Access fixed fields without pinning
 
 > ピン留めを使用せずに `fixed` フィールドにアクセスできます。
 
-※ To C# 7.3
+See C# 7.3.
 
 ### Reassign ref local variables
 
 > `ref` ローカル変数を再割り当てすることができます。
 
-※ To C# 7.3
+See C# 7.3.
 
 ### Declare readonly struct types, to indicate that a struct is immutable and should be passed as an in parameter to its member methods
 
 > `readonly struct` 型を宣言し、構造体が不変であり、inパラメーターとしてそのメンバーメソッドに渡される必要があることを示します。
 
-C# 7.2 以降では、`readonly` 修飾子を使用して、構造体型が変更不可であることを宣言します。
+In C# 7.2 and later, you can use the `readonly` modifier to declare that a struct type is immutable.
 
-- すべてのフィールド宣言には、`readonly` が必要です
-- 自動的に実装されるものも含めて、すべてのプロパティは、読み取り専用である必要があります。
+- All field declarations must be `readonly`.
+- All properties, including auto-implemented ones, must be read-only.
 
 ### Add the in modifier on parameters, to specify that an argument is passed by reference but not modified by the called method
 
 > `in` メソッドパラメータにより、参照渡し引数が呼び出されたメソッドによって変更されないように指定します。
 
-`in` は参照渡しの書き込み不可なるので大きな構造体のコピーを避ける目的で使われます。
+`in` is pass-by-reference and read-only, so it's useful to avoid copying large structs.
 
-ただし `in` については `readonly` と同様に少し注意が必要のようです。
+That said, `in` has a few caveats, similar to `readonly`.
 
-`readonly` ではない構造体の `readonly` フィールドに対してメソッドを呼ぶと、防衛的コピーが発生するという問題があるようです。
-この問題は、`in` でも起こります。`readonly struct` を使えば回避できる点も `readonly` フィールドと同様です。
+Calling methods on a `readonly` field of a non-`readonly` struct can trigger defensive copies.
+The same issue can happen with `in`. As with `readonly` fields, using `readonly struct` helps avoid it.
 
- `in` は非同期( `async` )やイテレータ( `yield` )には使用できません。
+`in` can't be used in async (`async`) methods or iterators (`yield`).
 
 ### Use the ref readonly modifier on method returns, to indicate that a method returns its value by reference but doesn't allow writes to that object
 
 > メソッド戻りの `ref readonly` 修飾子を使用し、メソッドが参照によってその値を戻しますが、そのオブジェクトに対する書き込みを許可しないことを指定します。
 
-次の両方の条件に当てはまる場合は、`ref readonly` の戻り値を使用します。
+Use `ref readonly` returns when both of these apply:
 
-- 戻り値が、`IntPtr.Size` より大きい `struct` である。
-- ストレージの有効期間が、値を返すメソッドより長い。
+- The return value is a `struct` larger than `IntPtr.Size`.
+- The storage lifetime is longer than the method returning the value.
 
 ### Declare ref struct types, to indicate that a struct type accesses managed memory directly and must always be stack allocated
 
 > `ref struct`を宣言し、構造体がマネージド対象メモリに直接アクセスでき、常にスタックにアロケートする必要があることを示します。
 
-C# 7.2 で `Span<T>` 構造体という型が提供されましたが、この機能において「スタック上に置かれている必要がある」(ヒープに置けない)という制限が重要になります。
-この機能をコンパイラが `Span<T>` だけ特別扱いしないよう ref構造体 ( `ref struct` )というデータ型を導入しました。
+C# 7.2 introduced `Span<T>`, and an important part of this feature is that it must live on the stack (not the heap).
+To avoid hardcoding special handling just for `Span<T>`, C# introduced the `ref struct` type category.
 
 ### Use additional generic constraints
 
 > 追加のジェネリック制約を使用できます。
 
-※ To C# 7.3
+See C# 7.3.
 
 ### Non-trailing named arguments
 
 > 末尾以外で名前付き引数を使用できる。
 
-名前付き引数は、位置引数と共に使用するとき、次の場合において有効となります
+Named arguments are valid with positional arguments in the following cases:
 
-- 後ろに位置引数が続かない場合。
-- 正しい位置で使用される場合。（これが追加されました）
+- No positional arguments appear after them.
+- They are used in the correct position (this part was added).
 
-数値リテラルや、`true`, `false`, `null` リテラルなどを直接指定する場合、呼び出し元からは何を設定しているかが分かりづらかったのを変数を使わずに解決することができるようになりました。
+This improves call-site readability when passing literals such as numbers,
+`true`, `false`, or `null`, without introducing temporary variables.
 
 ```cs
     // C# 7.2 or later
@@ -128,8 +129,8 @@ C# 7.2 で `Span<T>` 構造体という型が提供されましたが、この�
 
 > 数値リテラルの先頭のアンダースコア ( `_` )
 
-C# 7.0で数値リテラルの区切り文字 ( `_` ) が追加されましたが、
-C# 7.2 以降では、先頭（といっても `0x`, `0b` の後ろ）に区切り文字を含めることができるようになりました。
+C# 7.0 introduced `_` as a digit separator in numeric literals.
+From C# 7.2 onward, you can also place separators at the beginning (right after `0x` or `0b`).
 
 ```cs
 // C# 7.2 or later
@@ -141,9 +142,11 @@ int b = 0b_1001_1111;
 
 > `private protected` アクセス修飾子
 
-`public` > `protected internal` > ( `internal`: 同一アセンブリ | `protected` : 派生 ) > **`private protected`** > `private`.
+`public` > `protected internal` >
+( `internal`: same assembly | `protected`: derived types ) >
+**`private protected`** > `private`.
 
-派生かつ同一アセンブリで参照可能です。
+Accessible from derived types within the same assembly.
 
 | Accessibility Levels | the containing class | current derived | current assembly | another derived | another assembly |
 | -------------------- | :------------------: | :-------------: | :--------------: | :-------------: | :--------------: |
@@ -164,7 +167,7 @@ int b = 0b_1001_1111;
 
 > 条件演算子( `?:` )での `ref` 利用
 
-条件式 ( `?:` ) の結果を参照にすることができるようになりました。
+You can now make the result of a conditional expression (`?:`) a reference.
 
 ```cs
 // C# 7.2 or later

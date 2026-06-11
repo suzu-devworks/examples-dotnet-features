@@ -43,27 +43,28 @@
 
 > レコード型
 
-データをカプセル化するための組み込み機能を提供する参照型を定義します。
+Defines reference types with built-in support for encapsulating data.
 
-- レコード型には次の機能があります。
-  - 不変プロパティを持つ参照型を作成するための簡潔な構文
-  - データ中心の参照型に役立つ Behavior:
+- Record types provide features like:
+  - Concise syntax for creating reference types with immutable properties
+  - Useful behavior for data-centric reference types:
     - Value equality (operator ==)
-    - Concise syntax for nondestructive mutation (with式)
-    - Built-in formatting for display (ToStringメソッド)
-  - 継承階層のサポート
+    - Concise syntax for nondestructive mutation (`with` expressions)
+    - Built-in display formatting (`ToString` method)
+  - Support for inheritance hierarchies
 
 ### Init only setters
 
 > 初期化専用セッター
 
-init のみのセッターでは、オブジェクトの構築時のみ、プロパティまたはインデクサー要素に値が割り当てられます。with 式も含まれるようです。
+With init-only setters, values can be assigned to properties or indexers
+only during object construction (including `with` expressions).
 
 ### Top-level statements
 
 > トップレベルステートメント
 
-小規模なコンソール プログラムとユーティリティの Main() として使用できるようです。
+This is well-suited to small console applications and utility-style `Main()` programs.
 
 ```cs
 // C# 9.0 or later
@@ -76,16 +77,16 @@ Console.WriteLine("Hello World!");
 
 > パターンマッチングの拡張
 
-- Relational patterns（リレーショナルパターン）
-- Logical patterns（論理パターン）
+- Relational patterns
+- Logical patterns
 
 ### Performance and interop
 
 > パフォーマンスと相互運用
 
-- Native sized integers (ネイティブ サイズの整数)
-- Function pointers (関数ポインター)
-- Suppress emitting localsinit flag (localsinit フラグの出力を抑制する)
+- Native-sized integers
+- Function pointers
+- Suppress emitting the `localsinit` flag
 
 <!-- ----- -->
 ### Fit and finish features
@@ -96,7 +97,7 @@ Console.WriteLine("Hello World!");
 
 > new式 の型推論
 
-型がわかっている場合は、コンストラクターの型指定を必要としません。
+When the target type is known, you don't need to repeat the constructor type.
 
 ```cs
 //C# 8.0
@@ -139,9 +140,10 @@ List<string> lines = new();
 
 > モジュールの初期化子
 
- モジュール初期化子は、ModuleInitializerAttribute 属性が関連付けられているメソッドです。 これらのメソッドは、全体モジュール内の他のフィールド アクセスまたはメソッド呼び出しの前にランタイムによって呼び出されます。
+A module initializer is a method associated with `ModuleInitializerAttribute`.
+The runtime invokes these methods before any other field access or method call in the module.
 
-- モジュール初期化子メソッドは次のようなものです。
+- Module initializer methods must be:
   - Must be ```static```
   - Must be parameter-less
   - Must return ```void```

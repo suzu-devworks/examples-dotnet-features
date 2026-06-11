@@ -31,7 +31,7 @@
 
 > 非同期 `Main`
 
-アプリケーションのエントリ ポイントに `async` 修飾子を設定できます。
+You can put the `async` modifier on an application's entry point.
 
 ```cs
 // C# 7.0
@@ -75,23 +75,23 @@ public static Task<int> Main(string[] args)
 
 > `default` 式
 
-これまでも既定値を作るために、`default(T)` という構文がありましたが、`default` 式になったので簡略化しました。
+We already had `default(T)` for creating default values, but `default` literals made this cleaner and shorter.
 
-default リテラルは、次のいずれの場合でも使用できます。
+You can use default literals in any of these cases:
 
-- 変数の代入または初期化。
-- 省略可能なメソッド パラメーターの既定値の宣言。
-- メソッド呼び出しでの引数値の指定。
-- return ステートメント内、または式のようなメンバー内の式として。
+- Variable assignment or initialization.
+- Declaring default values for optional method parameters.
+- Supplying argument values in method calls.
+- As an expression in `return` statements or expression-bodied members.
 
 ### Inferred tuple element names
 
 > タプル要素名の推論
 
-C# 7.0で追加したタプルの要素名が、タプル構築時に渡した変数から推論できるようになりました。
+Tuple element names introduced in C# 7.0 can now be inferred from variable names used when creating tuples.
 
 ### Pattern matching on generic type parameters
 
 > ジェネリック型に対するパターンマッチング
 
-型がジェネリック型パラメーターである変数にパターン マッチ式を使用できます。
+You can use pattern matching expressions on variables whose type is a generic type parameter.

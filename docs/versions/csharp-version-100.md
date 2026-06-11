@@ -47,17 +47,19 @@
 
 > 構造体型の機能強化
 
-- パラメータなしのコンストラクタ
+- Parameter-less constructors
 
 ### Interpolated string handlers
 
 > 補間された文字列ハンドラー
 
-文字列補間（`$"{var}"`）の処理を最適化・カスタマイズする仕組みです。従来のString.Formatによるボックス化やメモリ割り当てを削減し、高性能な文字列構築（特に`ReadOnlySpan<char>`の活用）やカスタムログ出力、型安全な解析を可能にします。
+This feature allows optimization and customization of how string interpolation (`$"{var}"`) is processed.
+It can reduce boxing and memory allocations from traditional `String.Format`, and enables
+high-performance string construction (especially with `ReadOnlySpan<char>`), custom logging output,
+and type-safe parsing.
 
-補間された文字列ハンドラーは補間された文字列を結果文字列に変換する型です。
-挿
-入文字列の型が stringの場合 `System.Runtime.CompilerServices.DefaultInterpolatedStringHandler` によって処理されます。
+An interpolated string handler is a type that turns interpolated text into the final output string.
+When the inserted value is a `string`, it's handled by `System.Runtime.CompilerServices.DefaultInterpolatedStringHandler`.
 
 ### global using directives
 
@@ -79,7 +81,7 @@ global using System.Threading.Tasks;
 
 > ファイル スコープの名前空間の宣言
 
-ネストが一階層減りました。
+This removes one level of nesting.
 
 ```cs
 namespace MyNamespace;
@@ -90,7 +92,7 @@ namespace MyNamespace;
 
 > 拡張プロパティのパターン
 
-入れ子になったプロパティまたはプロパティ パターン内のフィールドを参照できます。
+You can reference nested properties or fields inside property patterns.
 
 ```cs
 // C# 8.0 or later
@@ -105,19 +107,19 @@ data is { Prop1.Prop2: pattern }
 
 > ラムダ式の機能強化
 
-C# 10 には、ラムダ式の処理方法に多くの機能強化が加えられています。
+C# 10 adds several nice improvements to how lambdas work.
 
-- ラムダ式には自然型があり、コンパイラによってラムダ式またはメソッド グループからデリゲート型を推測できます。
-- ラムダ式には、コンパイラによって推測できない場合に、戻り値の型を宣言できます。
-- 属性をラムダ式に適用できます。
+- Lambdas have a natural type, so the compiler can infer delegate types from lambdas or method groups.
+- You can declare a return type when the compiler can't infer it.
+- You can apply attributes to lambdas.
 
-自然型？コンパイラーがパラメーターなどから推測できる型のことらしい。
+Natural type basically means a type the compiler can infer from things like parameters.
 
 ### Allow const interpolated strings
 
 > 定数の補間文字列
 
-使用するのが const ならば文字列補完がつかえるようになりました。
+You can now use string interpolation in `const` strings.
 
 ```cs
 // C# 10.0 or later
@@ -131,8 +133,8 @@ const string FullProductName = $"{Platform} - Language: {Language} Version: {Ver
 
 > レコードの型で `ToString()` を `sealed` することができる。
 
-`sealed` に することで派生レコードでは `ToString()` を `override` できなります。
-これにより共通の文字列表現を強制できるようになります。
+Marking it `sealed` prevents derived records from overriding `ToString()`.
+That makes it easy to enforce a consistent string representation.
 
 ```cs
 // C# 10.0 or later
@@ -172,7 +174,7 @@ int x = 0;
 
 > CallerArgumentExpression 属性での診断
 
-引数のテキスト表現に置き換えられるパラメーターを指定できます。
+You can specify a parameter that gets replaced with the argument's source text.
 
 ```cs
 public static void Validate(bool condition, [CallerArgumentExpression("condition")] string? message = null)

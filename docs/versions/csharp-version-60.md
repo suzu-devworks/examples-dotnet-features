@@ -44,7 +44,8 @@
 
 - <https://github.com/dotnet/roslyn>
 
-コンパイラをC#で作り直したことにより、コード解析などいろいろできるようになったらしい。**C# 6.0はこれが主役**
+By rewriting the compiler in C#, the platform enabled richer tooling scenarios,
+including advanced code analysis APIs. **This is a major feature in C# 6.0.**
 
 ### Static Imports
 
@@ -88,7 +89,7 @@ public static void Main(string[] args)
   }
 ```
 
-これは使える・・・
+This feature is practically useful in production code.
 
 ### Await in catch/finally blocks
 
@@ -112,7 +113,7 @@ public static void Main(string[] args)
   }
 ```
 
-制限あったんだ・・・
+I didn't realize this used to be restricted...
 
 ### Auto property initializers
 
@@ -159,9 +160,9 @@ public int Value { get; }
 
 > Expression-bodied メンバ
 
-`=>` を使った簡易文法で関数定義できるようになりました。
+You can define members with concise `=>` syntax.
 
-関数、読み取り専用 (getter のみ) のプロパティで使えるます。
+It works for methods and read-only (getter-only) properties.
 
 ```cs
 // Older
@@ -205,7 +206,7 @@ var element = arr?[index];
 var result = func?.Invoke();
 ```
 
-nullチェックを書くのがめんどくさくなってきた。
+This significantly reduces repetitive null-checking code.
 
 ### String interpolation
 
@@ -233,18 +234,21 @@ nameof(MyNamespace.MyClass))
 // output "MyClass" muu...
 ```
 
-よく使う！
+This operator is broadly used in day-to-day development.
 
-`PropertyChangedEventArgs` は `nameof` と C# 5.0の `[CallerMemberName]`とどっちがいいだろう・・・
+For `PropertyChangedEventArgs`, choosing between `nameof` and C# 5.0's
+`[CallerMemberName]` depends on the intended maintainability and call-site clarity.
 
 ### Index initializers
 
 > Index 初期化子
 
-Dictionary の初期化が直観的になった。"Index"　なので Dictionary に限ったことではない。
+Dictionary initialization became much more intuitive. Since this is about "index" access, it's not limited to `Dictionary`.
 
 ### Extension Add methods in collection initializers
 
 > コレクション初期化子内でのAdd拡張メソッドの利用
 
-C# 3.0 で「コレクション初期化子」が追加されましたが、これは、Add メソッドの呼び出しに展開されるものです。これまでは、Add は通常のメソッドでないといけませんでした。 これが、C# 6 で、拡張メソッドでもよくなりました。
+C# 3.0 introduced collection initializers, which are expanded into `Add` method calls.
+Until then, `Add` had to be a normal instance method. In C# 6,
+extension methods can also be used.

@@ -38,13 +38,14 @@
 
 > ピン留めを使用せずに fixed フィールドにアクセスできます。
 
-- `unsafe` なので保留。
+- Uses `unsafe`, so I'll skip it for now.
 
 ### Reassign ref local variables
 
 > `ref` ローカル変数を再割り当てできます。
 
-参照先の値の書き換えは C# 7.2 でもできていましたが、`ref` ローカル変数を使い回して参照を切り替えることができるようになりました。
+In C# 7.2, changing the referenced value was already possible.
+Now you can also reuse a `ref` local variable and switch the referenced target.
 
 ```cs
 // C# 7.3 or later
@@ -59,7 +60,7 @@ rx = ref y
 
 > `stackalloc` 配列で初期化子を使用できます。
 
-C# 7.2で追加された `stackalloc` に初期化子を使用できるようになりました。
+You can now use initializers with `stackalloc`, which was added in C# 7.2.
 
 ```cs
 // C# 7.2
@@ -75,9 +76,9 @@ Span<int> arr4 = stackalloc[] { 1, 2, 3 };
 
 > パターンをサポートする型と共に fixed ステートメントを使用できます。
 
-`unsafe` なので保留。
+Uses `unsafe`, so I'll skip it for now.
 
-`GetPinnableReference()`というメソッドが重要らしい。
+`GetPinnableReference()` is the key method for this feature.
 
 ### Using more generic constraints
 
@@ -92,10 +93,10 @@ Span<int> arr4 = stackalloc[] { 1, 2, 3 };
 
 > タプル型を使用して == と != をテストできます。
 
-C# 7.3 以降では、タプル型で == および != 演算子がサポートされます。
-これは、後述するValueTupleの演算子が呼ばれるわけではなく、 コンパイラーによる特別な処理が入ります。
+C# 7.3 and later support `==` and `!=` for tuple types.
+This doesn't call `ValueTuple` operators directly; the compiler applies special handling.
 
-これらの演算子により、左側のオペランドのメンバーが、"タプル要素の順序"に従って、右側のオペランドの対応するメンバーと比較されます。
+These operators compare members from the left operand to corresponding members on the right based on tuple element order.
 
 ```cs
 // C# 7.3 or later
@@ -117,9 +118,11 @@ var t2 = (B: 5, A: 10);
 
 > 式の変数をより多くの場所で使用できます。
 
-C# 7.0から式中で、 `is` 演算子や `out` 変数宣言を使って、 式中でも変数宣言できるようになりましたが、 いくつか制限がありました。 C# 7.3で、これまではできなかった以下の個所でも変数宣言ができるようになりました。
+Since C# 7.0, variables could be declared in expressions using `is` and `out`,
+but there were several restrictions. C# 7.3 also allows declarations
+in the following locations:
 
-- クエリ式
+- Query expressions
 
 ```cs
 // C# 7.3 or later
@@ -130,9 +133,9 @@ var q =
     select s;
 ```
 
-- コンストラクター初期子
-- フィールド初期化子
-- プロパティ初期化子
+- Constructor initializers
+- Field initializers
+- Property initializers
 
 ```cs
 // C# 7.3 or later
@@ -165,7 +168,7 @@ public class Derived
 public double X { get; set; }
 ```
 
-実は `event` では以前から使えていたようです。
+Apparently this had already been available for `event`.
 
 ```cs
 // C# 7.2
@@ -183,6 +186,6 @@ public event PropertyChangedEventHandler PropertyChanged;
 
 > オーバーロードの解決のあいまいなケースが削減されました。
 
-- 静的メソッドかインスタンス メソッドかの違いで解決できるようになった
-- ジェネリック型制約の違いで解決できるようになった
-- メソッド グループを引数にするとき、メソッドの戻り値を見るようになった
+- Ambiguity can now be resolved by static-vs-instance method differences.
+- It can also be resolved by differences in generic constraints.
+- When passing method groups as arguments, return types are now considered.

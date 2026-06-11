@@ -37,7 +37,7 @@
 
 > `out` 変数宣言
 
-`out` 引数を受け取ると同時に、式の中で変数宣言できるようになりました。
+You can now declare a variable right inside the expression while passing an `out` argument.
 
 ```CS
 // C# 7.0 or later
@@ -52,65 +52,70 @@ var newValue = converted;
 
 > タプルと分解
 
-軽量データ構造で複数のデータ要素をグループ化するための簡潔な構文を提供します。
+This gives you a concise way to group multiple values in a lightweight data structure.
 
-タプルの一番の目的はメソッドの戻り値です。out引数はやっぱり不自然に思います。
+The primary use case for tuples is method return values.
+Compared with tuples, `out` arguments are often less readable.
 
-分解はタプル専用の構文ではなく、以下のように、`Deconstruct` という名前のメソッド(拡張メソッドでも可)を持っている型なら何にでも使うことができます。
+Deconstruction is not limited to tuples.
+It can be used with any type that defines a `Deconstruct` method,
+including extension methods.
 
-タプル `System.ValueTuple` と `System.Tuple` は異なります。主な違いは次のとおりです:
+`System.ValueTuple` and `System.Tuple` are different. Main differences:
 
-- `System.ValueTuple` は値型です、`System.Tuple` は参照型です。
-- `System.ValueTuple` は可変(mutable) です、`System.Tuple` は不変(immutable)です。
-- `System.ValueTuple` のデータメンバーはフィールドです、`System.Tuple` のデータメンバーはプロパティです。
+- `System.ValueTuple` is a value type, while `System.Tuple` is a reference type.
+- `System.ValueTuple` is mutable, while `System.Tuple` is immutable.
+- `System.ValueTuple` stores data as fields, while `System.Tuple` uses properties.
 
 ### Pattern matching
 
 > パターン マッチング
 
-C# 7.0で、is 演算子と switch ステートメントが拡張されて、`is`/`case` の後ろにパターンを書けるようになりました。
+In C# 7.0, the `is` operator and `switch` statement were expanded so you can write patterns after `is` and `case`.
 
-パターンは次のようなものがあります。
+Pattern types include:
 
-- 宣言パターン、型パターン ( `is <Type> <variable>` )
-- 定数パターン ( `is <value>`)
-- var パターン ( `is var <variable>` )
+- Declaration/type patterns ( `is <Type> <variable>` )
+- Constant patterns ( `is <value>` )
+- `var` patterns ( `is var <variable>` )
 
 ### Local functions
 
 > ローカル関数
 
-C# 6.0 以前にも匿名関数やラムダ式など、ローカルスコープのみで使用する関数を定義する方法はありましたが、できないことや素直に書きづらいものがありました。
+Before C# 6.0, local-scope logic could be expressed using anonymous functions and lambdas,
+but several scenarios remained cumbersome.
 
-具体的には、
+For example:
 
-- 再帰呼び出しが素直に書けない（書けないわけではない）
-- イテレータが書けない
-- ジェネリックにできない
-- オプション引数が書けない
+- Recursive calls were possible, but not straightforward.
+- You couldn't write iterators.
+- You couldn't make them generic.
+- You couldn't use optional parameters.
 
-これらをローカル関数で解消しました。
+Local functions solve those issues.
 
-そしてラムダ式などの `Func<T>` や `Action<T>` オブジェクトの生成がなくなり、効率の良い最適化がかかりパフォーマンスが上がることもあるようです。
+In addition, avoiding allocations of `Func<T>` / `Action<T>` objects can enable
+better compiler optimizations and may improve performance.
 
 ### Expanded expression bodied members
 
 > 拡張された式形式のメンバー
 
-`=>` 形式のメンバー定義に、コンストラクタ―、ファイナライザ―、プロパティのgetter, setter が許可されました。
+`=>` member syntax now allows constructors, finalizers, and property getters/setters.
 
 ### Ref locals and returns
 
 > `ref` 戻り値と `ref` ローカル変数
 
-戻り値とローカル変数でも参照渡しを使えるようになりました。
-これにより、巨大な値型を無駄なコピーなく取り扱えるようになります。
+You can now use by-reference semantics with return values and local variables too.
+That helps handle large value types without unnecessary copying.
 
 ### Discards
 
 > 破棄
 
-タプルと分解が入ったので、`_`でイラナイものを明示することができるようになってます。
+With tuples and deconstruction, you can explicitly mark unused values with `_`.
 
 ```cs
 // C# 7.0 or later
@@ -133,19 +138,20 @@ C# 6.0 以前にも匿名関数やラムダ式など、ローカルスコープ�
 
 > バイナリ、数値リテラル表記の拡張
 
-`0x`, `0X` 以外に `0b`, `0B` が増えました。`0o` は作られないようです。
+In addition to `0x`/`0X`, C# now supports `0b`/`0B` for binary literals. Looks like `0o` wasn't introduced.
 
-また `_` はあくまで桁区切りなので余計な所には書けません。
+Also, `_` is just a digit separator, so you can't place it arbitrarily.
 
 ### Throw expressions
 
 > `throw` 式
 
-C# 7.0 以降、`throw` は、式およびステートメントとして使用できます。 これにより、以前サポートされていなかったコンテキストでの例外のスローが可能になります。
+From C# 7.0 onward, `throw` can be used as both an expression and a statement.
+This allows exceptions to be thrown in previously unsupported expression contexts.
 
-- 条件演算子(`?` や `:` の後ろ)
-- Null 合体演算子(`??` の後ろ)
-- ラムダ式や式形式メンバーの中(`=>` の後ろ)
+- In conditional operators (after `?` or `:`)
+- In null-coalescing operators (after `??`)
+- Inside lambdas and expression-bodied members (after `=>`)
 
 ```cs
 // C# 7.0 or later
@@ -164,17 +170,20 @@ C# 7.0 以降、`throw` は、式およびステートメントとして使用�
 
 > `async` メソッドの返り値型の一般化
 
-asyncメソッドの戻り値で指定できるのは、`void`、`Task`、`Task<TResult>` のみでしたが、特定の条件を満たすように作れば任意の型を指定できるようになりました。
+Async methods previously allowed only `void`, `Task`, and `Task<TResult>` as return types,
+but custom types are now supported when they satisfy specific requirements.
 
-とは言っても「特定の条件を満たすように作る」のもめんどくさいです。([see ...](https://ufcpp.net/study/csharp/sp5_async.html#task-like))
+Designing a type that satisfies those requirements can still be non-trivial.
+([see ...](https://ufcpp.net/study/csharp/sp5_async.html#task-like))
 
-非同期メソッドで、大部分が実際には非同期処理を行わないような場合。Taskオブジェクトをいちいち作成するオーバーヘッドを軽減するため、`ValueTask` 構造体が導入されています。
+For async methods where most calls do not perform asynchronous work,
+`ValueTask` was introduced to reduce `Task` allocation overhead.
 
-`ValueTask` は Taskよりメソッドの提供が少なく。`WhenAll()` や `WhenAny()` するには `.AsTask()`する必要があります。
+`ValueTask` has fewer helper APIs than `Task`. If you want `WhenAll()` or `WhenAny()`, you need to call `.AsTask()`.
 
-`ValueTask<TResult>` は、インスタンスに対して次の操作を実行した場合の結果は未定義になります。
+For `ValueTask<TResult>`, behavior is undefined if you do the following on the same instance:
 
-- 複数回 `await` する。
-- 複数回 `AsTask()` を呼び出す。
-- 操作がまだ完了していないときに `.Result` または `.GetAwaiter().GetResult()` を使用する
-- これらの手法の 1 つ以上を使用して複数回インスタンスを操作します。
+- `await` it multiple times.
+- Call `AsTask()` multiple times.
+- Use `.Result` or `.GetAwaiter().GetResult()` before the operation completes.
+- Combine one or more of these patterns and operate on the same instance multiple times.

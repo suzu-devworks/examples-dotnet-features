@@ -39,29 +39,29 @@
 
 > プライマリ コンストラクター
 
-すべての class と struct で、プライマリ コンストラクターを作成できるようになりました。
+You can now define primary constructors on all `class` and `struct` types.
 
-プライマリコンストラクターを使用する場合には面倒なメンバー変数の宣言を省略するだけではなく、
-他のコンストラクターを宣言する場合にプライマリコンストラクターの呼び出しを強制することができます。
+Primary constructors don't just reduce boilerplate member declarations.
+They can also force other constructors to chain through the primary constructor.
 
-プライマリ コンストラクター パラメーターは、クラス定義全体のスコープ内にある場合でも、パラメーターとして扱うためのルールがあります。
+Even though primary constructor parameters are in scope across the type, they still follow parameter-specific rules.
 
-- プライマリ コンストラクター パラメーターは、必要がない場合には保存されない場合があります。
-- プライマリ コンストラクター パラメーターはクラスのメンバーではありません。`this.` ではアクセスできません。
-- プライマリ コンストラクター パラメーターは割当先になることができます。
-- `record` 型の場合を除き、プライマリ コンストラクター パラメーターはプロパティにはなりません。
+- Primary constructor parameters might not be stored if they are not needed.
+- They are not class members, so you can't access them via `this.`.
+- They can be assignment targets.
+- Except for `record` types, they don't automatically become properties.
 
-プライマリ コンストラクター パラメーターの主な用途は次のとおりです。
+Typical uses of primary constructor parameters include:
 
-- base()コンストラクターを呼び出す際の引数とします。
-- メンバーフィールドまたはプロパティを初期化します。
-- インスタンスメンバーからコンストラクターパラメータを参照します。
+- Passing arguments to `base()` constructors.
+- Initializing member fields or properties.
+- Referencing constructor parameters from instance members.
 
 ### Collection expressions
 
 > コレクション式
 
-コレクション式は、共通のコレクション値を作成するための新しい簡潔な構文を導入します。
+Collection expressions introduce a concise new syntax for creating common collection values.
 
 ```cs
 // Create an array:
@@ -83,7 +83,7 @@ int[] row2 = [7, 8, 9];
 int[][] twoDFromVariables = [row0, row1, row2];
 ```
 
-コレクション式のスプレッド演算子である `..` は、その引数をコレクションの要素に置き換えます。
+The spread operator `..` in collection expressions expands its argument into collection elements.
 
 ```cs
 int[] row0 = [1, 2, 3];
@@ -96,9 +96,9 @@ int[] single = [.. row0, .. row1, .. row2];
 
 > `ref readonly` パラメーター
 
-`ref readonly` パラメーターが追加されたことにより、`ref` パラメーターまたは `in` パラメーターを使用する API がより明確になります。
+Adding `ref readonly` parameters makes APIs that use `ref` or `in` semantics clearer.
 
-これによりコールサイト ルールは次のようになります:
+So the call-site rules look like this:
 
 | Callsite annotation | ref parameter | ref readonly parameter | in parameter | out parameter |
 | ------------------- | ------------- | ---------------------- | ------------ | ------------- |
@@ -107,60 +107,61 @@ int[] single = [.. row0, .. row1, .. row2];
 | out                 | Error         | Error                  | Error        | Allowed       |
 | No annotation       | Error         | Warning                | Allowed      | Error         |
 
-`ref readonly` を指定すると `ref` または `in` が無い場合には警告が表示されます。
+For `ref readonly`, you get a warning when neither `ref` nor `in` is specified.
 
-右辺値、左辺値のルールは次のとおりです：
+Rules for rvalues and lvalues are as follows:
 
 | Value kind | ref parameter | ref readonly parameter | in parameter | out parameter |
 | ---------- | ------------- | ---------------------- | ------------ | ------------- |
 | rvalue     | Error         | Warning                | Allowed      | Error         |
 | lvalue     | Allowed       | Allowed                | Allowed      | Allowed       |
 
-`ref readonly` を指定すると 右辺値参照で警告が表示されます。
+With `ref readonly`, rvalue arguments produce a warning.
 
 ### Default lambda parameters
 
 > 既定のラムダ パラメーター
 
-ラムダ式のパラメーターに既定値を定義できるようになりました。
+You can now define default values for lambda parameters.
 
 ### Alias any type
 
 > 任意の型の別名設定
 
-using 別名ディレクティブを使うと、名前付き型だけでなく、任意の型に別名を設定できます。
+Using alias directives can now target any type, not just named types.
 
-何ができるようになったかというと:
+What this means in practice:
 
-- `int`, `string` などキーワードを using エイリアスの右辺に書けるようになった
-- タプル型、ポインター型、配列型などが、C# の専用構文を使って書けるようになった
+- You can put keywords like `int` and `string` on the right side of a using alias.
+- You can also alias tuple, pointer, array, and other types using normal C# type syntax.
 
 ### Inline arrays
 
 > インライン配列
 
-インライン配列は、同じ型の N 個の要素によるブロックが連続して含まれている構造体のことです。
-これは、安全でないコードでのみ使用できる 固定バッファー 宣言を、安全なコードとして記述し直したものです。
-インライン配列は、 次の特徴を持つ struct です:
+An inline array is a struct that contains a contiguous block of `N` elements of the same type.
+It's basically a safe-code alternative to fixed buffer declarations that previously required unsafe code.
+Inline arrays are `struct` types with these characteristics:
 
-- 含まれているフィールドは 1 つです。
-- この構造体では、レイアウトが明示的に指定されません。
+- They contain exactly one field.
+- Their layout is not explicitly specified.
 
-ランタイムやライブラリ作成者向きのパフォーマンス向上を目的とした機能です。
+This feature mainly targets performance-focused runtime and library authors.
 
 ### Experimental attribute
 
 > 試験段階の属性
 
-型、メソッド、またはアセンブリには、試験的機能を示す `System.Diagnostics.CodeAnalysis.ExperimentalAttribute` マークを付けることができます。
+You can mark types, methods, or assemblies with
+`System.Diagnostics.CodeAnalysis.ExperimentalAttribute` to indicate experimental features.
 
 ### Interceptors
 
 > インターセプター
 
-*インターセプターは試験的な機能であり、C# 12 のプレビュー モードで使用できます。*
+*Interceptors are experimental and available in C# 12 preview mode.*
 
-保留。
+Pending.
 
 ## .NET Library classes to Remember
 

@@ -31,16 +31,17 @@
 
 > 動的型付け変数
 
-**C# 4.0 の主役。**
+**The main star of C# 4.0.**
 
-DLR(Dynamic Language Runtime)の流行を見越して追加された機能と思われますが・・・。
+This feature appears to have been introduced in anticipation of
+the DLR (Dynamic Language Runtime) adoption trend.
 
-`dynamic` で次のようなことができるようになります。
+With `dynamic`, you can do things like:
 
-- 遅延バインド
-- ダックタイピング
-- ジェネリクス利用時の静的メソッド呼び出し
-- 多重ディスパッチ
+- Late binding
+- Duck typing
+- Calling static methods when working with generics
+- Multiple dispatch
 
 ### Named and optional arguments
 
@@ -50,22 +51,22 @@ DLR(Dynamic Language Runtime)の流行を見越して追加された機能と思
 
 > ジェネリックの共変性と反変性
 
-型システムにおいては、共変性、反変性、不変性は、次のように定義されます。
+In type systems, covariance, contravariance, and invariance are defined like this:
 
 - `Covariance`
-  - 最初に指定された型よりも限定的な（強い)派生型を使用できるようにします。
+  - Lets you use a more specific (stronger) derived type than the one originally specified.
   - for example, `IEnumerable<T>`, `IEnumerator<T>`, `IQueryable<T>`, and `IGrouping<TKey,TElement>`.
 - `Contravariance`
-  - 最初に指定された型よりも一般的な (弱い) 型を使用できるようにします。
+  - Lets you use a more general (weaker) type than the one originally specified.
   - for example: `IComparer<T>`, `IComparable<T>`, and `IEqualityComparer<T>`.
 - `Invariance`
-  - 最初に指定された型のみを使用できることを意味します。
+  - Means only the originally specified type can be used.
 
 ### Embedded interop types
 
 > COM(Embedded) 相互運用型の特別処理
 
-COM 相互運用用のクラス(Runtime Callable Wrapper) を特別あつかいして COM 呼び出しをやりやすくしたそうです。
+It seems COM interop classes (Runtime Callable Wrappers) got special handling to make COM calls easier.
 
-- COM インタフェースの引数は `ref` キーワードはオプションになった。（ref ばっかりになるので）
-- COM オブジェクトのインデックス付きプロパティが使えるようになった。（`get_X(index)`, `Set_X(index, value)` => `X[index]`)
+- `ref` became optional for COM interface arguments (since everything used to be `ref` all the time).
+- Indexed properties on COM objects became usable (`get_X(index)`, `Set_X(index, value)` => `X[index]`).

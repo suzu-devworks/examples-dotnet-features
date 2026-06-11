@@ -83,14 +83,14 @@
 
 > インデックスと範囲
 
-インデックスと範囲には、シーケンス内の 1 つの要素または範囲にアクセスできる簡潔な構文が用意されています。
+Indices and ranges provide concise syntax for accessing a single element or a slice within a sequence.
 
-この言語のサポートでは、次の 2 つの新しい型と 2 つの新しい演算子を使用しています。
+This language support uses two new types and two new operators:
 
-- [`System.Index`] はシーケンスとしてインデックスを表します。
-- index from end 演算子の `^`、シーケンスの末尾から相対的なインデックスを指定します。
-- [`System.Range`] はシーケンスのサブ範囲を表します。
-- 範囲演算子の `..`、範囲の先頭と末尾をそのオペランドとして指定します。
+- [`System.Index`] represents an index into a sequence.
+- The index-from-end operator `^` specifies an index relative to the end of a sequence.
+- [`System.Range`] represents a sub-range of a sequence.
+- The range operator `..` specifies the start and end of a range.
 
 ### Null-coalescing assignment
 
