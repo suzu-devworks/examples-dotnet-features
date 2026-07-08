@@ -24,7 +24,8 @@
         "streetsidesoftware.code-spell-checker",
         "DavidAnson.vscode-markdownlint",
         "ms-dotnettools.csdevkit",
-        "aliasadidev.nugetpackagemanagergui"
+        "aliasadidev.nugetpackagemanagergui",
+        "DotJoshJohnson.xml"
       ]
     }
   }
