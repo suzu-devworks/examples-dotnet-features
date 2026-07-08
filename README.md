@@ -4,18 +4,19 @@
 [![build](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/dotnet-build.yml)
 [![CodeQL](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/suzu-devworks/examples-dotnet-features/actions/workflows/github-code-scanning/codeql)
 
-## What is the purpose of this repository?
+## What is this repository?
 
-This repository is basically my personal playground for learning and experimenting with .NET programming in C#.
+This repository is part of the `examples` collection and investigates C# language features organized by language version.
+Each version is explored through small, focused test-based examples that document how the language has evolved
+from C# 1.0 to the present.
 
-Most of the content focuses on the Generic Host and the infrastructure commonly used in .NET applications,
-such as dependency injection, configuration, logging, application lifetime management, and command-line argument handling.
+The examples reflect personal exploration of the C# language and may evolve as understanding grows.
 
-The repository primarily serves as a personal knowledge base and a place to explore ideas through small, focused examples.
+## What topics are covered?
 
-The examples reflect my current understanding of each topic and may evolve over time.
+- C# language features from version 1.0 through 15.0
 
-## The history of C# versions
+### The history of C# versions
 
 - [C# version 15.0](./docs/versions/csharp-version-150.md)
 - [C# version 14.0](./docs/versions/csharp-version-140.md)
@@ -36,15 +37,3 @@ The examples reflect my current understanding of each topic and may evolve over 
 - [C# version  2.0](./docs/versions/csharp-version-20.md)
 - [C# version  1.2](./docs/versions/csharp-version-12.md)
 - [C# version  1.0](./docs/versions/csharp-version-10.md)
-
-## Why use Dev Containers?
-
-I recommend using Dev Containers when working with this repository.
-
-The development container provides the tools and dependencies needed to build and run the examples,
-making it easy to get started without modifying your local environment.
-
-For container details, see [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json).
-
-After the container is created, run [`.devcontainer/postCreateCommand.sh`](.devcontainer/postCreateCommand.sh)
-and follow the instructions shown in the terminal.
