@@ -3,17 +3,21 @@
 {
   "name": ".NET - Ubuntu",
   "dockerComposeFile": [
-    "compose.develop.yaml"
+    "compose.dev.yaml"
   ],
   "service": "dev",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "postCreateCommand": "/bin/sh ./.devcontainer/postCreateCommand.sh",
   "remoteUser": "vscode",
+  "mounts": [
+    "source=${localEnv:HOME}/.copilot/instructions,target=/home/vscode/.copilot/instructions,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.copilot/skills,target=/home/vscode/.copilot/skills,type=bind,consistency=cached"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/node": {},
     "ghcr.io/devcontainers/features/copilot-cli": {},
     "ghcr.io/devcontainers/features/github-cli": {},
-    "ghcr.io/devcontainers/features/dotnet:2": {
+    "ghcr.io/devcontainers/features/dotnet": {
       "version": "11.0"
     }
   },
@@ -26,7 +30,11 @@
         "ms-dotnettools.csdevkit",
         "aliasadidev.nugetpackagemanagergui",
         "DotJoshJohnson.xml"
-      ]
+      ],
+      "settings": {
+        // Enable Copilot Chat code generation to use instruction files
+        "github.copilot.chat.codeGeneration.useInstructionFiles": true
+      }
     }
   }
 }
