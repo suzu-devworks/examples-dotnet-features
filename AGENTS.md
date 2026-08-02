@@ -21,7 +21,6 @@
 - Use English for all source code, comments, and documentation.
 - Preserve existing conventions.
 - Prefer simple implementations.
-- Prefer current language features when they improve readability or maintainability.
 
 ## Workflow
 
