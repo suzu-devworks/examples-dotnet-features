@@ -5,8 +5,12 @@
 - [Overview](#overview)
   - [Since](#since)
 - [Features](#features)
-  - [ExtCollection expression arguments](#extcollection-expression-arguments)
+  - [Collection expression arguments](#collection-expression-arguments)
   - [Union types](#union-types)
+  - [Closed hierarchies](#closed-hierarchies)
+  - [Extension indexers](#extension-indexers)
+  - [Labeled break and continue](#labeled-break-and-continue)
+  - [Memory safety](#memory-safety)
 
 ## Overview
 
@@ -21,7 +25,7 @@
 
 ## Features
 
-### ExtCollection expression arguments
+### Collection expression arguments
 
 > コレクション式の引数
 
@@ -34,3 +38,34 @@ you can pass arguments to the underlying collection constructor or factory metho
 
 Union types represent a value that can be one of multiple case types.
 You declare a union using the `union` keyword.
+
+### Closed hierarchies
+
+> 閉じた階層
+
+You can declare a closed inheritance hierarchy by applying the `closed` modifier to a class.
+
+A `closed` class can only be derived from within the assembly where it is declared, which means the set of direct
+ derived classes is determined at compile time.
+
+In the context of pattern matching, this means that if the classes are related within the same assembly,
+ you do not need to write a `default` clause provided that a `switch` expression covers all of them.
+
+### Extension indexers
+
+> 拡張機能インデクサ
+
+you can declare indexers in an extension block. Extension indexers let you index into a receiver
+ as though the indexer were declared on the receiver type.
+
+### Labeled break and continue
+
+> ラベル付き break と continue
+
+break and continue statements can name a label on an enclosing construct.
+
+Could it be that it was still "goto" all this time?
+
+### Memory safety
+
+> メモリの安全性
