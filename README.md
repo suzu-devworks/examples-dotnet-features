@@ -6,11 +6,13 @@
 
 ## What is this repository?
 
-This repository is part of the `examples` collection and investigates C# language features organized by language version.
-Each version is explored through small, focused test-based examples that document how the language has evolved
-from C# 1.0 to the present.
+This repository serves as my personal workspace and knowledge base for exploring various aspects of
+ programming with .NET and C#.
 
-The examples reflect personal exploration of the C# language and may evolve as understanding grows.
+It tracks the evolution of the language from C# 1.0 to the present day.
+
+While I created these samples for my own learning, I hope they prove useful to others facing similar challenges
+ or wondering about the same topics.
 
 ## What topics are covered?
 
